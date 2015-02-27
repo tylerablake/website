@@ -528,7 +528,7 @@ h1.navbar-brand {
 
 #about .welcome-block img {
     border: 3px solid #fff;
-    border-radius: 50%;
+    border-radius: 24%;
     margin-right: 35px;
     max-width: 100px;
 }
