@@ -352,6 +352,7 @@ h1.navbar-brand {
     top: 0;
     width: 100%;
     z-index: 11;
+    font-weight: 800;
 }
 
 .slide-caption .caption-content {
@@ -360,9 +361,9 @@ h1.navbar-brand {
 }
 
 .caption-content h2 {
-    color: #fff;
+    color: #009EE3;
     font-size: 52px;
-    font-weight: 400;
+    font-weight: 800;
     margin-bottom: 25px;
     text-transform: uppercase;
 }
