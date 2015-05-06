@@ -1516,3 +1516,29 @@ textarea.form-control {
         width: 380px;
     }
 }
+
+/* Blog */
+.thumbImage {
+    height: 100px;
+    width: 100px;
+}
+.thumbnail{
+    height: 280px;
+    width: 350px;
+}
+#angularImage{
+    height: 80px;
+    width: 500px;
+}
+#nodeImage{
+    height: 140px;
+    width: 500px;
+}
+#mvcImage{
+    height:120px; ;
+    width: 500px; ;
+}
+#codepalousaImage{
+    height: 120px;
+    width: 500px;
+}
