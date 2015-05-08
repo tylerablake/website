@@ -717,6 +717,7 @@ figcaption.mask {
     position: absolute;
     width: 100%;
     text-align: left;
+    opacity: 0.9;
     
     -webkit-transition: all 0.4s ease 0s;
        -moz-transition: all 0.4s ease 0s;
@@ -732,6 +733,7 @@ figcaption.mask {
 figcaption.mask h3 {
     margin: 0;
     color: #fff;
+        font-weight: bold;
 }
 
 ul.external {
