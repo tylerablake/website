@@ -717,6 +717,7 @@ figcaption.mask {
     position: absolute;
     width: 100%;
     text-align: left;
+    opacity: 0.9;
     
     -webkit-transition: all 0.4s ease 0s;
        -moz-transition: all 0.4s ease 0s;
@@ -732,6 +733,7 @@ figcaption.mask {
 figcaption.mask h3 {
     margin: 0;
     color: #fff;
+        font-weight: bold;
 }
 
 ul.external {
@@ -1515,4 +1517,30 @@ textarea.form-control {
     .footer-content {
         width: 380px;
     }
+}
+
+/* Blog */
+.thumbImage {
+    height: 100px;
+    width: 100px;
+}
+.thumbnail{
+    height: 280px;
+    width: 350px;
+}
+#angularImage{
+    height: 80px;
+    width: 500px;
+}
+#nodeImage{
+    height: 140px;
+    width: 500px;
+}
+#mvcImage{
+    height:120px; ;
+    width: 500px; ;
+}
+#codepalousaImage{
+    height: 120px;
+    width: 500px;
 }
