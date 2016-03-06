@@ -7,7 +7,7 @@ relative_permalinks: false
 
 # Setup
 title:            Tyler Blake
-tagline:          
+tagline:          Neature Walk Through Development!
 description:      'Welcome to my website! :)'
 url:              http://hyde.getpoole.com
 baseurl:          /
