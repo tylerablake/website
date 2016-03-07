@@ -6,14 +6,14 @@ permalink:        pretty
 relative_permalinks: false
 
 # Setup
-title:            Dev Quests
-tagline:          Software Devlopment
-description:      'Dev Quests, where we go on quests in software development! <span>Made by <a href="https://twitter.com/TylerBlakeLOU" target="_blank">Tyler Blake</a></span>.'
+title:            Tyler Blake
+tagline:          Neature Walk Through Development!
+description:      'Welcome to my website! Where we go on neature walks through development!'
 url:              http://hyde.getpoole.com
 baseurl:          /
 
 author:
-  name:           Tyler Blake
+  name:           'Tyler Blake'
   url:            https://twitter.com/TylerBlakeLOU
 
 paginate:         5
