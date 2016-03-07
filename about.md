@@ -24,3 +24,11 @@ title: About
 
 
 ### Skills
+<h5>Languages<h5>
+<p>Coming Soon!</p>
+<h5>Applications<h5>
+<p>Coming Soon!</p>
+<h5>Database<h5>
+<p>Coming Soon!</p>
+<h5>Technical Writing<h5>
+<p>Coming Soon!</p>
