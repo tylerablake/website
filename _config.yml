@@ -8,7 +8,7 @@ relative_permalinks: false
 # Setup
 title:            Dev Quests
 tagline:          Software Devlopment
-description:      'Dev Quests, where we go on quests in software development! Made by <a href="https://twitter.com/TylerBlakeLOU" target="_blank">Tyler Blake</a>.''
+description:      'Dev Quests, where we go on quests in software development! Made by <a href="https://twitter.com/TylerBlakeLOU" target="_blank">Tyler Blake</a>.'
 url:              http://hyde.getpoole.com
 baseurl:          /
 
