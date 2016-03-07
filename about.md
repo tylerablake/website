@@ -6,9 +6,9 @@ title: About
 ### Contact Info
 
 <p>Tyler Blake</p>
-<p href="http://www.linkedin.com/in/tyler-blake-2637274b">LinkedIn</p>
-<p href="http://github.com/tylerablake">github.com/tylerablake</p>
-<p href="http://twitter.com/TylerBlakeLOU">@TylerBlakeLOU</p>
+<a href="http://www.linkedin.com/in/tyler-blake-2637274b">LinkedIn</a>
+<a href="http://github.com/tylerablake">github.com/tylerablake</a>
+<a href="http://twitter.com/TylerBlakeLOU">@TylerBlakeLOU</a>
 
 
 ### Education Info
