@@ -16,11 +16,11 @@ title: About
 ### Experience
 
 <h4>KiZAN Technologies</h4>
-&emsp;<h5>Junior Associate Consultant</h5>
-&emsp;&emsp;<p>Work as a junior associate .NET consultant.</p>
+<h5>Junior Associate Consultant</h5>
+<p>Work as a junior associate .NET consultant.</p>
 <h4>UofL International Travel and Vaccine Clinic</h4>
-&emsp;<h5>Software Developer</h5>
-&emsp;&emsp;<p>Work as a .NET developer.</p>
+<h5>Software Developer</h5>
+<p>Work as a .NET developer.</p>
 
 
 ### Skills
