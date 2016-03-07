@@ -3,4 +3,4 @@ layout: post
 title: Introducing Jekyll and Hyde!
 ---
 
-This is a test blog post about Jekyll and Hyde.
+Welcome! I am currently migrating my site to more of a blog site thanks to Jekyll and Hyde!
