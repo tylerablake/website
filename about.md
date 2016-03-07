@@ -15,12 +15,18 @@ title: About
 
 ### Experience
 
-<h4>KiZAN Technologies</h4>
+<h4>KiZAN Technologies - May 2015 - Present</h4>
 <h5>Junior Associate Consultant</h5>
-<p>Work as a junior associate .NET consultant.</p>
-<h4>UofL International Travel and Vaccine Clinic</h4>
+<p>Work as a junior associate .NET consultant. More details coming soon!</p>
+<h4>Code Louisville - June 2015 - Present</h4>
+<h5>Mentor</h5>
+<p>Volunteer as a front end and .NET development mentor. More details coming soon!</p>
+<h4>University of Louisville - January 2016 - Present</h4>
+<h5>Mentor</h5>
+<p>Provide assistance to students and act as a .NET develpment mentor during their .NET student projects. More details coming soon!</p>
+<h4>UofL International Travel and Vaccine Clinic - August 2014 - April 2015</h4>
 <h5>Software Developer</h5>
-<p>Work as a .NET developer.</p>
+<p>Work as a .NET developer. More details coming soon!</p>
 
 
 ### Skills
