@@ -3,10 +3,6 @@ layout: page
 title: About
 ---
 
-<p class="message">
-  Hey there! This page is included as an example. Feel free to customize it for your own use upon downloading. Carry on!
-</p>
-
 ### Contact Info
 <p>Tyler Blake</p>
 <p></p>
@@ -14,11 +10,13 @@ title: About
 
 
 ### Education Info
-<p>University of Louisville, Louisville, KY</p>
+<h4>University of Louisville, Louisville, KY</h4>
 <p>B.S.B.A, Computer Information Systems</p>
 
 ### Experience
 
+<h4>KiZAN Technologies - Junior Associate Consultant</h4>
+<h4>UofL International Travel and Vaccine Clinic</h4>
 
 
 ### Skills
