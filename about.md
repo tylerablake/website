@@ -6,14 +6,15 @@ title: About
 ### Contact Info
 
 <p>Tyler Blake</p>
-<a href="http://www.linkedin.com/in/tyler-blake-2637274b">LinkedIn</a></br>
-<a href="http://github.com/tylerablake">github.com/tylerablake</a></br>
-<a href="http://twitter.com/TylerBlakeLOU">@TylerBlakeLOU</a></br>
+<a href="http://www.linkedin.com/in/tyler-blake-2637274b">LinkedIn</a><br>
+<a href="http://github.com/tylerablake">github.com/tylerablake</a><br>
+<a href="http://twitter.com/TylerBlakeLOU">@TylerBlakeLOU</a><br>
 
 
 ### Education Info
 
 #### University of Louisville, Louisville, KY
+
 ##### B.S.B.A, Computer Information Systems
 
 
