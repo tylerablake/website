@@ -8,7 +8,7 @@ relative_permalinks: false
 # Setup
 title:            Tyler Blake
 tagline:          Software Journeyman
-description:      'Welcome to my website! Where we go on quests through software development!'
+description:      'Welcome to my website, where we go on quests through software development!'
 url:              http://hyde.getpoole.com
 baseurl:          /
 
