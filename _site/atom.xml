@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+ <title>Tyler Blake</title>
+ <link href="http://hyde.getpoole.com/atom.xml" rel="self"/>
+ <link href="http://hyde.getpoole.com/"/>
+ <updated>2016-03-07T19:32:16-05:00</updated>
+ <id>http://hyde.getpoole.com</id>
+ <author>
+   <name>Tyler Blake</name>
+   <email></email>
+ </author>
+
+ 
+ <entry>
+   <title>Introducing Jekyll and Hyde!</title>
+   <link href="http://hyde.getpoole.com/2016/03/06/jekyll-and-hyde-blog/"/>
+   <updated>2016-03-06T00:00:00-05:00</updated>
+   <id>http://hyde.getpoole.com/2016/03/06/jekyll-and-hyde-blog</id>
+   <content type="html">&lt;p&gt;Welcome! I am currently migrating my site to more of a blog site thanks to Jekyll and Hyde!&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Lessons Learned Along the Way (Episode 1)</title>
+   <link href="http://hyde.getpoole.com/2016/03/02/lessons-learned-along-the-way/"/>
+   <updated>2016-03-02T00:00:00-05:00</updated>
+   <id>http://hyde.getpoole.com/2016/03/02/lessons-learned-along-the-way</id>
+   <content type="html">&lt;p&gt;This is placeholder text for a blog series covering lessons I have learned along the way.&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Setting Up Your Mac for .NET Development</title>
+   <link href="http://hyde.getpoole.com/2016/03/01/.net-development-on-a-mac/"/>
+   <updated>2016-03-01T00:00:00-05:00</updated>
+   <id>http://hyde.getpoole.com/2016/03/01/.net-development-on-a-mac</id>
+   <content type="html">&lt;p&gt;This is placeholder text for a blog on setting up my development environment for .NET development. More details coming soon!&lt;/p&gt;
+
+&lt;h3 id=&quot;parallels&quot;&gt;Parallels&lt;/h3&gt;
+
+&lt;h4 id=&quot;optimization&quot;&gt;Optimization&lt;/h4&gt;
+&lt;ul&gt;
+  &lt;li&gt;More details coming soon!&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;hardware-settings&quot;&gt;Hardware Settings&lt;/h4&gt;
+&lt;ul&gt;
+  &lt;li&gt;More details coming soon!&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;visual-studio-2015&quot;&gt;Visual Studio 2015&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Disable Browser Link&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;tools--options--environment--general&quot;&gt;Tools | Options | Environment | General&lt;/h4&gt;
+&lt;ul&gt;
+  &lt;li&gt;Disable “Automatically adjust visual experience based on client performance”&lt;/li&gt;
+  &lt;li&gt;Disable “Enable rich client visual experience”&lt;/li&gt;
+  &lt;li&gt;Disable “Use hardware graphics acceleration if available”&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;tools--options--debugging--general&quot;&gt;Tools | Options | Debugging | General&lt;/h4&gt;
+&lt;ul&gt;
+  &lt;li&gt;Disable “Diagnostic Tools”&lt;/li&gt;
+  &lt;li&gt;Disable “Perf Tips”&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;tools--options--environment--startup&quot;&gt;Tools | Options | Environment | Startup&lt;/h4&gt;
+&lt;ul&gt;
+  &lt;li&gt;Set “At startup:” to “Show empty environment”&lt;/li&gt;
+  &lt;li&gt;Disable “Download content every:”&lt;/li&gt;
+  &lt;li&gt;Set “Customize Start Page:” to “Default start page”&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;tools--options--environment--codelens&quot;&gt;Tools | Options | Environment | CodeLens&lt;/h4&gt;
+&lt;ul&gt;
+  &lt;li&gt;Disable any features you do not use in your daily workflow.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;resharper&quot;&gt;Resharper&lt;/h3&gt;
+
+&lt;h4 id=&quot;resharper--options--environment--intellisense--general&quot;&gt;ReSharper &amp;gt; Options &amp;gt; Environment &amp;gt; IntelliSense &amp;gt; General&lt;/h4&gt;
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;Use Visual Studio default intellisense to help speed up typing&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Disable Solution Wide Analysis&lt;/li&gt;
+  &lt;li&gt;Disable Unit Tests (if you don’t use Resharper for unit testing)&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+ </entry>
+ 
+
+</feed>
