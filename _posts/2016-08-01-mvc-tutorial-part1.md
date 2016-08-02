@@ -58,6 +58,6 @@ This is a tutorial series showing how to get up and running with MVC.
 * **Web.config** - Here is where you set up configuration details for your application, such as connection strings for connecting to your database.
 
 
-#### Now that we are aquainted with our solution explorer and files inide of it, now lets start working on our site.
+Now that we are aquainted with our solution explorer and files inide of it, now lets start working on our site.
 
 #### See you in the next part of this tutorial!
