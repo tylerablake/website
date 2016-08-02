@@ -1,6 +1,6 @@
 ---
 layout: post
-title: ASP .NET MVC Tutorial : Part 1
+title: ASP .NET MVC Tutorial &#58 Part 1
 ---
 
 This is a tutorial series showing how to get up and running with MVC. Here we will talk about what
