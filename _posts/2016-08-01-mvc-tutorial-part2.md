@@ -47,7 +47,7 @@ Now that you understand routing, let's start writing some code shall we?!
 #### Controllers
 * Now we must create a controller for each of these models inside of our "Controllers" folder.
 
-<img src="/assets/controllersSubfolder.png" width="500px;" height="350px;" style="margin:auto;">
+<img src="/assets/controllersSubfolders.png" width="500px;" height="350px;" style="margin:auto;">
 
 * You will be asked how you would like the controller to be scaffolded, this means it will auto generate the controller for you based off of a data model and DbContext for you.
 
