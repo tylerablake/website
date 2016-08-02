@@ -3,7 +3,8 @@ layout: post
 title: ASP .NET MVC Tutorial : Part 1
 ---
 
-This is a tutorial series showing how to get up and running with MVC.
+This is a tutorial series showing how to get up and running with MVC. Here we will talk about what
+MVC means and take a look at some of the files that get created for us when we create a new ASP .NET MVC project.
 
 ### What is MVC?
 
