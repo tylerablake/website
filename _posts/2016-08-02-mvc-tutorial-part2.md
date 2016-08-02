@@ -10,7 +10,7 @@ how an MVC application works, and start writing some code!
 * MVC handles requests from clients through routes. You can set up custom routes through the route.config.
 * Lets take a look at the default convetion for routing with MVC projects.
 
-<img src="/assets/defaultRouteConfig.png" width="400px;" height="350px;" style="margin:auto;"> 
+<img src="/assets/defaultRouteConfig.png" width="600px;" height="150px;" style="margin:auto;"> 
 
 *Here you can see that the **Default** route for the application is:
   * Home controller
@@ -21,7 +21,7 @@ how an MVC application works, and start writing some code!
 * Routing in MVC is a very important concept so lets take a closer look.
 * When you navigate through your web application you can see the routing through the navigation bar.
 
-<img src="/assets/defaultRoutingUrl.png" width="600px;" height="150px;" style="margin:auto;"> 
+<img src="/assets/defaultRoutingUrl.png" width="400px;" height="75px;" style="margin:auto;"> 
 
 * Here you can see that code being executed is in the student controller, Index method.
 **Note**: Index might be left off because it isn't needed in this instance, if you navigated to this page you would only see **localhost:5626/Student**
@@ -39,6 +39,6 @@ Now that you understand routing, let's start writing some code shall we?!
 
 * Add 2 more classes to the Models folder, Enrollment.cs and Course.cs.
 
-<img src="/assets/enrollmentClass.png" width="500px;" height="400px;" style="margin:auto;">
+<img src="/assets/enrollmentClass.png" width="500px;" height="350px;" style="margin:auto;">
 
-<img src="/assets/courseClass.png" width="600px;" height="350px;" style="margin:auto;">
+<img src="/assets/courseClass.png" width="550px;" height="250px;" style="margin:auto;">
