@@ -47,7 +47,7 @@ Now that you understand routing, let's start writing some code shall we?!
 #### Controllers
 * Now we must create a controller for each of these models inside of our "Controllers" folder.
 
-<img src="/assets/controllersSubfolders.png" width="500px;" height="350px;" style="margin:auto;">
+<img src="/assets/controllersSubfolders.png" width="350px;" height="150px;" style="margin:auto;">
 
 * You will be asked how you would like the controller to be scaffolded, this means it will auto generate the controller for you based off of a data model and DbContext for you.
 
@@ -57,7 +57,7 @@ Now that you understand routing, let's start writing some code shall we?!
 
 * Now that you have completed this step, you will notice that a corresponding folder has been created for you in the "Views" folder, 1 for each of the controllers you set up.
 
-<img src="/assets/viewsSubfolder.png" width="500px;" height="350px;" style="margin:auto;">
+<img src="/assets/viewsSubfolder.png" width="200px;" height="150px;" style="margin:auto;">
 
 * In each of these subfolders, you will have a file : "Index.cshtml"
 * **Note**: cshtml stands for c# html.
@@ -65,7 +65,7 @@ Now that you understand routing, let's start writing some code shall we?!
 * In these subfolders you will create a .cshtml file for each of your controller actions.
 * Below you can see that I already have an Index, Create, Edit, Delete, and Details methods in my Student controller
 
-<img src="/assets/studentViewsFolder.png" width="500px;" height="350px;" style="margin:auto;">
+<img src="/assets/studentViewsFolder.png" width="250px;" height="150px;" style="margin:auto;">
 
 
 #### DbContext and Mapping
@@ -86,9 +86,9 @@ Now that you understand routing, let's start writing some code shall we?!
 
 * Now we have to tell Entity Framwork how we want the tables to be built. We told it we wanted tables for the models, but we haven't specified what relationships we want them built on. Therefore, we created a Mapping folder, and inside of it, mapping files for each of our models.
 
-<img src="/assets/mappingFolder.png" width="500px;" height="350px;" style="margin:auto;">
+<img src="/assets/mappingFolder.png" width="200px;" height="100px;" style="margin:auto;">
 
-<img src="/assets/studentMapping.png" width="500px;" height="350px;" style="margin:auto;">
+<img src="/assets/studentMapping.png" width="600px;" height="300px;" style="margin:auto;">
 
 * Since we inherited from the EntityTypeConfiguration<> class, Entity Framework will look at our mapping files as a reference on how to build the relationships for the tables for us in the database.
 
