@@ -21,7 +21,7 @@ how an MVC application works, and start writing some code!
 * Routing in MVC is a very important concept so lets take a closer look.
 * When you navigate through your web application you can see the routing through the navigation bar.
 
-<img src="/assets/defaultRoutingUrl.png" width="400px;" height="75px;" style="margin:auto;"> 
+<img src="/assets/defaultRoutingUrl.png" width="300px;" height="30px;" style="margin:auto;"> 
 
 * Here you can see that code being executed is in the student controller, Index method.
 **Note**: Index might be left off because it isn't needed in this instance, if you navigated to this page you would only see **localhost:5626/Student**
