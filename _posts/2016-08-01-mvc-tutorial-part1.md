@@ -15,14 +15,14 @@ This is a tutorial series showing how to get up and running with MVC.
 
 #### Getting Started
 * Open Visual Studio and create a new "ASP .NET Web Application" project.
-![alt text](/assets/createProjectPrompt.png "Create Project Selection")
+<img src="/assets/createProjectPrompt.png" width="400px;" height="350px;" style="margin:auto;"> 
 * Select "MVC" template and check "Add Unit Tests" if you dare :)
 * By default, it will set individual account authentication for you.
 * Click "Ok" and voila, your first MVC project is on its way!
 
 #### Solution Explorer
 * Now, a lot of files have been created in our solution explorer for us, but what are they?
-![alt text](/assets/solutionExplorerContents.png "Solution Explorer Contents")
+<img src="/assets/solutionExplorerContents.png" height="400px;" style="margin:auto;"> 
 
 
 #### Properties
