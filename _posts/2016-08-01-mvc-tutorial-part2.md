@@ -78,13 +78,13 @@ Now that you understand routing, let's start writing some code shall we?!
 
 <img src="/assets/applicationDbContext.png" width="500px;" height="350px;" style="margin:auto;">
 
-* Here we tell Entity Frame work how we want the Database to be created. We tell it that we want it to create 3 tables : Student, Enrollment, and Course (noted by the DbSets<> at the bottom of the file).
+* Here we tell Entity Framework how we want the Database to be created. We tell it that we want it to create 3 tables : Student, Enrollment, and Course (noted by the DbSets<> at the bottom of the file).
 
-* Then we override the OnModelCreating method, to tell it to remove the convention to pluralize table names.
+* Then we override the OnModelCreating() method, to tell it to remove the convention to pluralize table names.
 
 	Entity Framework by default would name the Student table, "Students", which typically is not what you want to happen, so we tell Entity Framework to remove that convention for us. 
 
-* Now we have to tell Entity Framwork how we want the tables to be built. We told it we wanted tables for the models, but we haven't specified what relationships we want them built on. Therefore, we created a Mapping folder, and inside of it, mapping files for each of our models.
+* Now we have to tell Entity Framework how we want the tables to be built. We told it we wanted tables for the models, but we haven't specified what relationships we want them built on. Therefore, we created a Mapping folder, and inside of it, mapping files for each of our models.
 
 <img src="/assets/mappingFolder.png" width="200px;" height="100px;" style="margin:auto;">
 
