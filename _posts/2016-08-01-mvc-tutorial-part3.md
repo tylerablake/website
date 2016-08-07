@@ -33,13 +33,51 @@ This is a tutorial series showing how to get up and running with MVC. In this se
 
 * This is all we must do to get the functionality we wanted, but there is 1 thing we must make sure of. The **Name** property of the connection strings **must must**. (Shown below)
 
-*LocalDB Connection String
+* LocalDB Connection String
 
 <img src="/assets/localDBConnectionString.png" width="100%;" height="50px;" style="margin:auto;">
 
-*Release Connection String
+* Release Connection String
 
 <img src="/assets/releaseConnectionString.png" width="100%;" height="50px;" style="margin:auto;">
+
+#### Connecting to LocalDB in SSMS
+
+<img src="/assets/connectingToLocalDB.png" width="60%;" height="50px;" style="margin:auto;">
+
+* Once you have connected to LocalDB you can open it in your object exporer and you may see your database
+
+<img src="/assets/localDBObjectExplorer.png" width="60%;" height="50px;" style="margin:auto;">
+
+* If you do not see your database in the object explorer this is perfectly normal, remember when we set up the DB context and piggy backed off of the IdentityContext? That context is set to not get initialized until someone tries to register a user or log into the application. 
+
+* So let's run the application and register a user, 
+
+**Note**: you may notice that once you enter credentials the application takes longer than normal to load. This is because the proejct is creating and seeding your database for you.
+
+* Now once your application loads you can go back to SSMS and refresh the object explorer window and you will now see your database, but it will be empty because we haven't configured any seeding of our database. So let's do this now!
+
+
+#### Seeding the Database
+
+* Setting up your project to seed your database for you will help you in your development environment for debugging purposes without having to run through parts of your application manually to get data into your database.
+
+* MVC projects automatically scaffold some sample code for you in the Seed() method so where and how to seed the database are already written out for you!
+
+* Default Seed Method
+
+<img src="/assets/defaultSeedmethod.png" width="60%;" height="50px;" style="margin:auto;">
+
+<!-- * Updated Seed Method
+
+<img src="/assets/defaultSeedmethod.png" width="60%;" height="50px;" style="margin:auto;">
+ -->
+
+* Now that we have that done, let's blow away our DeveloperUniveristy database and close connections and run the solution so that the seed method will fire.
+
+* To do this right click on "Developer University" in the object explorer and click "Delete". Then make sure to check "Close Existing Connections" then click "Ok".
+
+* Now let's run our solution and log in (to make the seed method fire) and check our database to see if the data was seeded properly.
 
 <!-- TODO:
 
