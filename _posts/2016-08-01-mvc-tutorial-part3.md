@@ -51,7 +51,7 @@ This is a tutorial series showing how to get up and running with MVC. In this se
 
 * If you do not see your database in the object explorer this is perfectly normal, remember when we set up the DB context and piggy backed off of the IdentityContext? That context is set to not get initialized until someone tries to register a user or log into the application. 
 
-* So let's run the application and register a user, 
+* So let's run the application and register a user 
 
 **Note**: you may notice that once you enter credentials the application takes longer than normal to load. This is because the proejct is creating and seeding your database for you.
 
@@ -73,12 +73,18 @@ This is a tutorial series showing how to get up and running with MVC. In this se
 <img src="/assets/defaultSeedmethod.png" width="60%;" height="50px;" style="margin:auto;">
  -->
 
-* Now that we have that done, let's blow away our DeveloperUniveristy database and close connections and run the solution so that the seed method will fire.
+* Now that we have that done, let's blow away our DeveloperUniveristy database and close connections and run the solution 
 
 * To do this right click on "Developer University" in the object explorer and click "Delete". Then make sure to check "Close Existing Connections" then click "Ok".
 
-* Now let's run our solution and log in (to make the seed method fire) and check our database to see if the data was seeded properly.
+<img src="/assets/deleteDatabasePrompt.png" width="60%;" height="50px;" style="margin:auto;">
 
+* Most likely the tables have been generated but are still empty, lets run the **Update-Database** command in the **Package Manager Console**. As shown below, this will cause the seed method to fire immediately.
+
+<img src="/assets/updateDatabaseCommand.png" width="60%;" height="50px;" style="margin:auto;">
+
+**Rest of seed section coming soon!**
+ 
 <!-- TODO:
 
 Web.Config connection strings
