@@ -43,11 +43,11 @@ This is a tutorial series showing how to get up and running with MVC. In this se
 
 #### Connecting to LocalDB in SSMS
 
-<img src="/assets/connectingToLocalDB.png" width="60%;" height="50px;" style="margin:auto;">
+<img src="/assets/connectingToLocalDB.png" width="60%;" height="300px;" style="margin:auto;">
 
 * Once you have connected to LocalDB you can open it in your object exporer and you may see your database
 
-<img src="/assets/localDBObjectExplorer.png" width="60%;" height="50px;" style="margin:auto;">
+<img src="/assets/localDBObjectExplorer.png" width="50%;" height="150px;" style="margin:auto;">
 
 * If you do not see your database in the object explorer this is perfectly normal, remember when we set up the DB context and piggy backed off of the IdentityContext? That context is set to not get initialized until someone tries to register a user or log into the application. 
 
@@ -64,10 +64,10 @@ This is a tutorial series showing how to get up and running with MVC. In this se
 
 * MVC projects automatically scaffold some sample code for you in the Seed() method so where and how to seed the database are already written out for you!
 
-* Default Seed Method
+<!-- * Default Seed Method
 
 <img src="/assets/defaultSeedmethod.png" width="60%;" height="50px;" style="margin:auto;">
-
+ -->
 <!-- * Updated Seed Method
 
 <img src="/assets/defaultSeedmethod.png" width="60%;" height="50px;" style="margin:auto;">
@@ -77,11 +77,11 @@ This is a tutorial series showing how to get up and running with MVC. In this se
 
 * To do this right click on "Developer University" in the object explorer and click "Delete". Then make sure to check "Close Existing Connections" then click "Ok".
 
-<img src="/assets/deleteDatabasePrompt.png" width="60%;" height="50px;" style="margin:auto;">
+<img src="/assets/deleteDatabasePrompt.png" width="100%;" height="500px;" style="margin:auto;">
 
 * Most likely the tables have been generated but are still empty, lets run the **Update-Database** command in the **Package Manager Console**. As shown below, this will cause the seed method to fire immediately.
 
-<img src="/assets/updateDatabaseCommand.png" width="60%;" height="50px;" style="margin:auto;">
+<img src="/assets/updateDatabaseCommand.png" width="80%;" height="100px;" style="margin:auto;">
 
 **Rest of seed section coming soon!**
  
