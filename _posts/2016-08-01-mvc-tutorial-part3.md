@@ -57,21 +57,11 @@ This is a tutorial series showing how to get up and running with MVC. In this se
 
 * Now once your application loads you can go back to SSMS and refresh the object explorer window and you will now see your database, but it will be empty because we haven't configured any seeding of our database. So let's do this now!
 
-
 #### Seeding the Database
 
 * Setting up your project to seed your database for you will help you in your development environment for debugging purposes without having to run through parts of your application manually to get data into your database.
 
 * MVC projects automatically scaffold some sample code for you in the Seed() method so where and how to seed the database are already written out for you!
-
-<!-- * Default Seed Method
-
-<img src="/assets/defaultSeedmethod.png" width="60%;" height="50px;" style="margin:auto;">
- -->
-<!-- * Updated Seed Method
-
-<img src="/assets/defaultSeedmethod.png" width="60%;" height="50px;" style="margin:auto;">
- -->
 
 * Now that we have that done, let's blow away our DeveloperUniveristy database and close connections and run the solution 
 
@@ -84,9 +74,3 @@ This is a tutorial series showing how to get up and running with MVC. In this se
 <img src="/assets/updateDatabaseCommand.png" width="80%;" height="100px;" style="margin:auto;">
 
 * Now your database should be seeded with test data.
-
-
- 
-<!-- TODO:
-Seeding the DB 
--->
