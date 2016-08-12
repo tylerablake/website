@@ -83,10 +83,10 @@ This is a tutorial series showing how to get up and running with MVC. In this se
 
 <img src="/assets/updateDatabaseCommand.png" width="80%;" height="100px;" style="margin:auto;">
 
-**Rest of seed section coming soon!**
+* Now your database should be seeded with test data.
+
+
  
 <!-- TODO:
-
-Web.Config connection strings
-Web.Config transforms
-Seeding the DB -->
+Seeding the DB 
+-->
