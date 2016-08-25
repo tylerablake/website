@@ -25,3 +25,11 @@ title: Helpful Links
 #### Adding File Sharing
 * <a href="http://www.mikesdotnetting.com/article/259/asp-net-mvc-5-with-ef-6-working-with-files">Example 1</a>
 * <a href="https://stackoverflow.com/questions/15106190/uploading-files-into-database-with-asp-net-mvc">Example 2</a>
+
+#### .NET and MySQL
+* <a href="https://blogs.oracle.com/MySqlOnWindows/entry/howto_using_mysql_for_visual">Using MySQL and .NET MVC</a>
+
+### Git
+
+* <a href="https://git-scm.com/book/be/v1/%D0%90%D1%81%D0%BD%D0%BE%D0%B2%D1%8B-Git-Undoing-Things">Undoing Things with Git</a>
+* <a href="https://stackoverflow.com/questions/1090309/git-undo-all-working-dir-changes-including-new-files">Undoing Pending Changes</a>
