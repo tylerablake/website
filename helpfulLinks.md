@@ -11,6 +11,7 @@ title: Helpful Links
 * <a href="http://tylerablake.com/2016/08/01/mvc-tutorial-part3/">Part 3</a>
 
 #### Microsoft Tutorials
+* <a href="https://www.asp.net/mvc/overview/getting-started/mvc-learning-sequence">Recommended Tutorials and Articles</a>
 * <a href="https://www.asp.net/mvc/overview/getting-started/getting-started-with-ef-using-mvc/creating-an-entity-framework-data-model-for-an-asp-net-mvc-application">Getting Started with EF 6 Code First Using MVC</a>
 
 #### Adding Roles in .NET MVC
@@ -25,6 +26,10 @@ title: Helpful Links
 #### Adding File Sharing
 * <a href="http://www.mikesdotnetting.com/article/259/asp-net-mvc-5-with-ef-6-working-with-files">Example 1</a>
 * <a href="https://stackoverflow.com/questions/15106190/uploading-files-into-database-with-asp-net-mvc">Example 2</a>
+
+#### Discussion Board / Forum
+* <a href="https://github.com/YodasMyDad/mvcforum">Adding a Discussion Board to your .NET MVC Project</a>
+* <a href="http://www.mvcforum.com/">MVC Forum</a>
 
 #### .NET and MySQL
 * <a href="https://blogs.oracle.com/MySqlOnWindows/entry/howto_using_mysql_for_visual">Using MySQL and .NET MVC</a>
