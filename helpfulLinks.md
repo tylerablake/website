@@ -12,7 +12,7 @@ title: Helpful Links
 
 #### Microsoft Tutorials
 * <a href="https://www.asp.net/mvc/overview/getting-started/mvc-learning-sequence">Recommended Tutorials and Articles</a>
-* <a href="https://www.asp.net/mvc/overview/getting-started/getting-started-with-ef-using-mvc/creating-an-entity-framework-data-model-for-an-asp-net-mvc-application">Getting Started with EF 6 Code First Using MVC</a>
+* <a href="https://www.asp.net/mvc/overview/getting-started/getting-started-with-ef-using-mvc/creating-an-entity-framework-data-model-for-an-asp-net-mvc-application">Contoso University Tutorial</a>
 
 #### Adding Roles in .NET MVC
 * <a href="http://www.dotnetfunda.com/articles/show/2898/working-with-roles-in-aspnet-identity-for-mvc">Example 1</a>
