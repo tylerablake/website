@@ -27,6 +27,9 @@ title: Helpful Links
 * <a href="http://www.mikesdotnetting.com/article/259/asp-net-mvc-5-with-ef-6-working-with-files">Example 1</a>
 * <a href="https://stackoverflow.com/questions/15106190/uploading-files-into-database-with-asp-net-mvc">Example 2</a>
 
+#### .NET MVC Deployment FAQ's
+* <a href="https://stackoverflow.com/questions/5295231/is-sql-server-express-edition-free">Deploy .NET Applications using SQL Server Express</a>
+
 #### Discussion Board / Forum
 * <a href="https://github.com/YodasMyDad/mvcforum">Adding a Discussion Board to your .NET MVC Project</a>
 * <a href="http://www.mvcforum.com/">MVC Forum</a>
