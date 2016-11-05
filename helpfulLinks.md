@@ -41,7 +41,7 @@ title: Helpful Links
 * <a href="http://vandelayweb.com/sending-asp-net-emails-godaddy-gmail-godaddy-hosted/">Contact form for GoDaddy Deployment</a>
 
 ### Git
-
+* <a href="http://michaelcrump.net/setting-up-github-to-work-with-visual-studio-2013-step-by-step/"> Setting up Visual Studio Project and GitHub Step By Step</a>
 * <a href="https://git-scm.com/book/be/v1/%D0%90%D1%81%D0%BD%D0%BE%D0%B2%D1%8B-Git-Undoing-Things">Undoing Things with Git</a>
 * <a href="https://stackoverflow.com/questions/1090309/git-undo-all-working-dir-changes-including-new-files">Undoing Pending Changes (Stack Overflow)</a>
 
