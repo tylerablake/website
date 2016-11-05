@@ -37,6 +37,9 @@ title: Helpful Links
 #### .NET and MySQL
 * <a href="https://blogs.oracle.com/MySqlOnWindows/entry/howto_using_mysql_for_visual">Using MySQL and .NET MVC</a>
 
+#### .NET Contact Form
+* <a href="http://vandelayweb.com/sending-asp-net-emails-godaddy-gmail-godaddy-hosted/">Contact form for GoDaddy Deployment</a>
+
 ### Git
 
 * <a href="https://git-scm.com/book/be/v1/%D0%90%D1%81%D0%BD%D0%BE%D0%B2%D1%8B-Git-Undoing-Things">Undoing Things with Git</a>
