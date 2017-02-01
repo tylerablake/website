@@ -40,6 +40,9 @@ title: Helpful Links
 #### .NET and MySQL
 * <a href="http://blogs.oracle.com/MySqlOnWindows/entry/howto_using_mysql_for_visual">Using MySQL and .NET MVC</a>
 
+#### .NET Deployment
+* <a href="http://www.asp.net/web-forms/overview/deployment/visual-studio-web-deployment/deploying-to-iis">Using Visual Studio and IIS</a>
+
 #### .NET Contact Form
 * <a href="http://vandelayweb.com/sending-asp-net-emails-godaddy-gmail-godaddy-hosted/">Contact form for GoDaddy Deployment</a>
 
@@ -49,5 +52,4 @@ title: Helpful Links
 * <a href="http://stackoverflow.com/questions/1090309/git-undo-all-working-dir-changes-including-new-files">Undoing Pending Changes (Stack Overflow)</a>
 
 ### Setting up .NET Development Environment on Mac
-
 * <a href="http://tylerablake.com/2016/03/01/.net-development-on-a-mac/">My Notes</a>
