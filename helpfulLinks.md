@@ -21,6 +21,9 @@ title: Helpful Links
 * <a href="http://www.dotnetfunda.com/articles/show/2898/working-with-roles-in-aspnet-identity-for-mvc">Example 1</a>
 * <a href="http://code.msdn.microsoft.com/ASPNET-MVC-5-Security-And-44cbdb97">Example 2</a>
 
+#### Mimicking WordPress functionality in .NET MVC
+* <a href="http://prideparrot.com/blog/archive/2012/12/how_to_create_a_simple_blog_part1">Blog Posts</a>
+
 #### Adding Social Media feeds to .NET MVC Site
 * <a href="https://forums.asp.net/t/1932656.aspx?Get+the+posts+from+a+facebook+public+page+as+a+feed+in+asp+et">Facebook</a>
 
