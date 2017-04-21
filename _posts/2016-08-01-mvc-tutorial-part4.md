@@ -10,7 +10,9 @@ This is a tutorial series showing how to get up and running with MVC. In this se
 * Give it a meaningful name, in this instance, let's say we need to fulfill a business requirement to manage Employees. We should name this class **Employee**.
 
 * Then we want to add a couple of properties to that class. Let's add a couple public properties: Id, FirstName, and LastName.
+
 **Note** Id should be an it, so that line should look like this "public int Id {get;set;}"
+
 **Note** FirstName and LastName should be strings, so they should look like this "public string FirstName {get;set;}"
 
 * Now that we have started the creation of a new table in the database, we must inform EntityFramework about it. We'll look at that next.
