@@ -18,6 +18,7 @@ This is a tutorial series showing how to get up and running with MVC. In this se
 * Now that we have started the creation of a new table in the database, we must inform EntityFramework about it. We'll look at that next.
 
 * Find the IdentityModels.cs file inside of the **Models** folder. And scroll down to where the DbSet declarations for the other models are and add a new one for our **Employee** model.
+
 * **Note:** Refer back to the screen shot under **DbContext and Mapping** section of Part 2 of the mvc tutorial if you need help finding this.
 
 * Add a DbSet for our new **Employee** class.
@@ -26,7 +27,9 @@ This is a tutorial series showing how to get up and running with MVC. In this se
 
 * Open PackageManagerConsole and run **Update-Database**.
 
-* This step is required because when the app runs it tries to connect to the database and EntityFramework compares the models and properties in the solution to the tables and columns in the database. If they **do not** match, then you will receive a "pending model changes error".
+* This step is required because when the app runs it tries to connect to the database and EntityFramework compares the models and properties in the solution to the tables and columns in the database.
+
+* **Note:** If they **do not** match, then you will receive a "pending model changes error".
 
 * Running Update-Database does the same comparison but it updates the database tables and columns to match the model classes and properties inside the solution.
 
