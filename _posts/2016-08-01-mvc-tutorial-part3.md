@@ -61,11 +61,13 @@ This is a tutorial series showing how to get up and running with MVC. In this se
 
 * Setting up your project to seed your database for you will help you in your development environment for debugging purposes without having to run through parts of your application manually to get data into your database.
 
-* MVC projects automatically scaffold some sample code for you in the Seed() method so where and how to seed the database are already written out for you!
+* MVC projects automatically scaffold some sample code for you in the Seed() method so where and how to seed the database are already written out for you! All you have to do is fill in the Seed() method similar to the comments.
 
-* Now that we have that done, let's blow away our DeveloperUniversity database and close connections and run the solution
+* Now that we have that done, let's delete our DeveloperUniversity database and close connections.
 
 * To do this right click on "Developer University" in the object explorer and click "Delete". Then make sure to check "Close Existing Connections" then click "Ok".
+
+**Note**: Do not worry, we will see how to recreate the database and run the Seed() method to insert the seed data into the database next.
 
 <img src="/assets/deleteDatabasePrompt.png" width="100%;" height="500px;" style="margin: auto;">
 
@@ -74,3 +76,5 @@ This is a tutorial series showing how to get up and running with MVC. In this se
 <img src="/assets/updateDatabaseCommand.png" width="80%;" height="100px;" style="margin: auto;">
 
 * Now your database should be seeded with test data.
+
+#### See you in the next part of this tutorial!

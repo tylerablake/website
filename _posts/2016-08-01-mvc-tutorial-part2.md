@@ -93,3 +93,5 @@ Now that you understand routing, let's start writing some code shall we?!
 * Since we inherited from the EntityTypeConfiguration<> class, Entity Framework will look at our mapping files as a reference on how to build the relationships for the tables for us in the database.
 
 * Here you can see that we want a Student to have a primary key of Id, have required fields of FirstName, LastName, and EnrollmentDate, and we specify that a student may have many Enrollments. After all, what type of school only lets a student enroll in 1 course?!
+
+#### See you in the next part of this tutorial!
