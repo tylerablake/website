@@ -53,7 +53,7 @@ This is a tutorial series showing how to get up and running with MVC. In this se
 
 * So let's run the application and register a user
 
-**Note**: you may notice that once you enter credentials the application takes longer than normal to load. This is because the proejct is creating and seeding your database for you.
+**Note**: you may notice that once you enter credentials the application takes longer than normal to load. This is because the project is creating and seeding your database for you.
 
 * Now once your application loads you can go back to SSMS and refresh the object explorer window and you will now see your database, but it will be empty because we haven't configured any seeding of our database. So let's do this now!
 
