@@ -30,6 +30,8 @@ This is a tutorial series showing how to get up and running with MVC. In this se
 
 * Running Update-Database does the same comparison but it updates the database tables and columns to match the model classes and properties inside the solution.
 
+#### Adding a Controller and Views
+
 * Now we can work on scaffolding out the controller with views. Right click on the **Controllers** folder and click **Add > Controller**.
 
 * Select **MVC 5 Controller with views, using EntityFramework**
