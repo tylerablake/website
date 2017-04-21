@@ -7,6 +7,7 @@ This is a tutorial series showing how to get up and running with MVC. In this se
 
 #### Adding a Model
 * Find the **Models** folder in solution explorer and right click on it. Then select Add > Class.
+
 * Give it a meaningful name, in this instance, let's say we need to fulfill a business requirement to manage Employees. We should name this class **Employee**.
 
 * Then we want to add a couple of properties to that class. Let's add a couple public properties: Id, FirstName, and LastName.
