@@ -9,6 +9,7 @@ title: Helpful Links
 * <a href="http://tylerablake.com/2016/08/01/mvc-tutorial-part1/">Part 1</a>
 * <a href="http://tylerablake.com/2016/08/01/mvc-tutorial-part2/">Part 2</a>
 * <a href="http://tylerablake.com/2016/08/01/mvc-tutorial-part3/">Part 3</a>
+* <a href="http://tylerablake.com/2016/08/01/mvc-tutorial-part4/">Part 4</a>
 
 #### Microsoft Tutorials
 * <a href="http://www.asp.net/mvc/overview/getting-started/mvc-learning-sequence">Recommended Tutorials and Articles</a>
