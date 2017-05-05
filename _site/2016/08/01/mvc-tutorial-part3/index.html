@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+  <head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  <!-- Enable responsiveness on mobile devices-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title>
+    
+      ASP .NET MVC Tutorial &#58 Part 3 &middot; Tyler Blake
+    
+  </title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/public/css/poole.css">
+  <link rel="stylesheet" href="/public/css/syntax.css">
+  <link rel="stylesheet" href="/public/css/hyde.css">
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+
+  <!-- Icons -->
+  <!--<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-144-precomposed.png">
+                                 <link rel="shortcut icon" href="/public/favicon.ico">-->
+
+  <!-- RSS -->
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+</head>
+
+
+  <body class="theme-base-0d">
+
+    <div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <h1>
+        <a href="/">
+          Tyler Blake
+        </a>
+      </h1>
+      <p class="lead">Welcome to my website, where we go on quests through software development!</p>
+    </div>
+
+    <nav class="sidebar-nav">
+      <a class="sidebar-nav-item" href="/">Home</a>
+
+      
+
+      
+      
+        
+          
+        
+      
+        
+          
+            <a class="sidebar-nav-item" href="/about/">About</a>
+          
+        
+      
+        
+      
+        
+          
+            <a class="sidebar-nav-item" href="/helpfulLinks/">Helpful Links</a>
+          
+        
+      
+        
+          
+        
+      
+      <a class="sidebar-nav-item" href="http://twitter.com/TylerBlakeLOU">Twitter</a>
+      <a class="sidebar-nav-item" href="https://github.com/tylerablake">GitHub</a>
+      <!--<span class="sidebar-nav-item">Currently v2.1.0</span>-->
+    </nav>
+
+    <p>&copy; 2017. All rights reserved.</p>
+  </div>
+</div>
+
+
+    <div class="content container">
+      <div class="post">
+  <h1 class="post-title">ASP .NET MVC Tutorial &#58 Part 3</h1>
+  <span class="post-date">01 Aug 2016</span>
+  <p>This is a tutorial series showing how to get up and running with MVC. In this section we will set up the web config connection strings and connect to the database! Also, we will work on “seeding” the database.</p>
+
+<h4 id="connection-strings">Connection Strings</h4>
+<ul>
+  <li>If you ran the solution now, by default there would be a database on your machine created with the name of LocalDB. The connection string for that database would look like this</li>
+</ul>
+
+<p><img src="/assets/localDBConnectionString.png" width="100%;" height="50px;" style="margin: auto;" /></p>
+
+<ul>
+  <li>
+    <p>But what does it mean?</p>
+  </li>
+  <li>(LocalDb)\MSSQLLocalDB is the name of the SQL Server Express instance that will be created for you (it is built into Visual Studio). It is used to manage local databases for you.</li>
+  <li>Initial Catalog is the name of our database which is <strong>aspnet-DeveloperUniversity</strong></li>
+</ul>
+
+<h4 id="transforms">Transforms</h4>
+<ul>
+  <li>
+    <p>LocalDB instances of our databases are great for simple practice applications, but are not very practical for real world applications.</p>
+  </li>
+  <li>
+    <p>Sometimes we would like to use LocalDB for debugging in our development environment but connect to a customer’s database in production or release. This is where transforms come to the rescue!</p>
+  </li>
+  <li>
+    <p>Transforms are used in Web.Config files to tell the solution how to act depending on the environment that the solution is deployed.</p>
+  </li>
+  <li>
+    <p>Below you can see that we have set some properties on our <strong>Release</strong> connection string. We gave it an <strong>xdt.Locator</strong> and <strong>xdt.Transform</strong></p>
+  </li>
+</ul>
+
+<p><img src="/assets/transformAttributes.png" width="400px;" height="30px;" style="margin: auto;" /></p>
+
+<ul>
+  <li>The transform property tells the solution that we want to set the attributes.</li>
+  <li>
+    <p>The Locator property tells the solution what part of the web.Config file we are looking to modify.</p>
+  </li>
+  <li>
+    <p>This is all we must do to get the functionality we wanted, but there is 1 thing we must make sure of. The <strong>Name</strong> property of the connection strings <strong>must must</strong>. (Shown below)</p>
+  </li>
+  <li>LocalDB Connection String</li>
+</ul>
+
+<p><img src="/assets/localDBConnectionString.png" width="100%;" height="50px;" style="margin: auto;" /></p>
+
+<ul>
+  <li>Release Connection String</li>
+</ul>
+
+<p><img src="/assets/releaseConnectionString.png" width="100%;" height="50px;" style="margin: auto;" /></p>
+
+<h4 id="connecting-to-localdb-in-ssms">Connecting to LocalDB in SSMS</h4>
+
+<p><img src="/assets/connectingToLocalDB.png" width="60%;" height="300px;" style="margin: auto;" /></p>
+
+<ul>
+  <li>Once you have connected to LocalDB you can open it in your object explorer and you may see your database</li>
+</ul>
+
+<p><img src="/assets/localDBObjectExplorer.png" width="50%;" height="150px;" style="margin: auto;" /></p>
+
+<ul>
+  <li>
+    <p>If you do not see your database in the object explorer this is perfectly normal, remember when we set up the DB context and piggy backed off of the IdentityContext? That context is set to not get initialized until someone tries to register a user or log into the application.</p>
+  </li>
+  <li>
+    <p>So let’s run the application and register a user</p>
+  </li>
+</ul>
+
+<p><strong>Note</strong>: you may notice that once you enter credentials the application takes longer than normal to load. This is because the project is creating and seeding your database for you.</p>
+
+<ul>
+  <li>Now once your application loads you can go back to SSMS and refresh the object explorer window and you will now see your database, but it will be empty because we haven’t configured any seeding of our database. So let’s do this now!</li>
+</ul>
+
+<h4 id="seeding-the-database">Seeding the Database</h4>
+
+<ul>
+  <li>
+    <p>Setting up your project to seed your database for you will help you in your development environment for debugging purposes without having to run through parts of your application manually to get data into your database.</p>
+  </li>
+  <li>
+    <p>MVC projects automatically scaffold some sample code for you in the Seed() method so where and how to seed the database are already written out for you! All you have to do is fill in the Seed() method similar to the comments.</p>
+  </li>
+  <li>
+    <p>Now that we have that done, let’s delete our DeveloperUniversity database and close connections.</p>
+  </li>
+  <li>
+    <p>To do this right click on “Developer University” in the object explorer and click “Delete”. Then make sure to check “Close Existing Connections” then click “Ok”.</p>
+  </li>
+</ul>
+
+<p><strong>Note</strong>: Do not worry, we will see how to recreate the database and run the Seed() method to insert the seed data into the database next.</p>
+
+<p><img src="/assets/deleteDatabasePrompt.png" width="100%;" height="500px;" style="margin: auto;" /></p>
+
+<ul>
+  <li>Most likely the tables have been generated but are still empty, lets run the <strong>Update-Database</strong> command in the <strong>Package Manager Console</strong>. As shown below, this will cause the seed method to fire immediately.</li>
+</ul>
+
+<p><img src="/assets/updateDatabaseCommand.png" width="80%;" height="100px;" style="margin: auto;" /></p>
+
+<ul>
+  <li>Now your database should be seeded with test data.</li>
+</ul>
+
+<h4 id="see-you-in-the-next-part-of-this-tutorial">See you in the next part of this tutorial!</h4>
+
+</div>
+
+<div class="related">
+  <h2>Related Posts</h2>
+  <ul class="related-posts">
+    
+      <li>
+        <h3>
+          <a href="/2016/08/01/mvc-tutorial-part4/">
+            ASP .NET MVC Tutorial &#58 Part 4
+            <small>01 Aug 2016</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/2016/08/01/mvc-tutorial-part2/">
+            ASP .NET MVC Tutorial &#58 Part 2
+            <small>01 Aug 2016</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/2016/08/01/mvc-tutorial-part1/">
+            ASP .NET MVC Tutorial &#58 Part 1
+            <small>01 Aug 2016</small>
+          </a>
+        </h3>
+      </li>
+    
+  </ul>
+</div>
+
+    </div>
+
+  </body>
+</html>
