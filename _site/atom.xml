@@ -89,13 +89,72 @@
  <title>Tyler Blake</title>
  <link href="http://hyde.getpoole.com/atom.xml" rel="self"/>
  <link href="http://hyde.getpoole.com/"/>
- <updated>2017-05-05T16:36:44-04:00</updated>
+ <updated>2017-05-09T10:07:20-04:00</updated>
  <id>http://hyde.getpoole.com</id>
  <author>
    <name>Tyler Blake</name>
    <email></email>
  </author>
 
+ 
+ <entry>
+   <title>ASP .NET MVC Tutorial &#58 Part 4</title>
+   <link href="http://hyde.getpoole.com/2016/08/01/mvc-tutorial-part5/"/>
+   <updated>2016-08-01T00:00:00-04:00</updated>
+   <id>http://hyde.getpoole.com/2016/08/01/mvc-tutorial-part5</id>
+   <content type="html">&lt;p&gt;This is a tutorial series showing how to get up and running with MVC. Now that we have set up our solution and added our first Model, View, and Controller (scaffoleded). Now that we scaffolded the Controller, there is some refactoring we should do by implementing the use of viewmodels into that controller.. we will do that in this section.&lt;/p&gt;
+
+&lt;h5 id=&quot;what-is-a-viewmodel&quot;&gt;What is a viewmodel?&lt;/h5&gt;
+&lt;ul&gt;
+  &lt;li&gt;First lets discuss this… The model you created previously is a domain model, that is the model that gets saved to the database. It is best practice to keep that domain model near the database and that is all. So if we need to access that model in the view then what is the best way to do this?&lt;/li&gt;
+  &lt;li&gt;Viewmodels!&lt;/li&gt;
+  &lt;li&gt;A viewmodel is a class just the same as your domain model, except you &lt;strong&gt;ONLY&lt;/strong&gt; include properties that you want to see if the view, &lt;strong&gt;AND&lt;/strong&gt; you do not have to set up any mapping for it.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;why&quot;&gt;Why?&lt;/h4&gt;
+&lt;ul&gt;
+  &lt;li&gt;The reason you want to use these for a few reasons:&lt;/li&gt;
+  &lt;li&gt;Because it is better practice to keep your domain models away from the end users.&lt;/li&gt;
+  &lt;li&gt;It is better to pass lightweight models to and from the view, rather than passing the entire domain model&lt;/li&gt;
+  &lt;li&gt;And it helps make your application more secure and safe.&lt;/li&gt;
+  &lt;li&gt;Also with a domain model that is responsible for saving to the database and displaying data to the view violates the single responsibility prinicple but those principles are for another day. :)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;creating-a-viewmodel&quot;&gt;Creating a ViewModel&lt;/h4&gt;
+&lt;ul&gt;
+  &lt;li&gt;Lets create a &lt;strong&gt;ViewModels&lt;/strong&gt; folder inside of the &lt;strong&gt;Models&lt;/strong&gt; folder.&lt;/li&gt;
+  &lt;li&gt;Then let’s add a new class and call it &lt;strong&gt;EmployeeIndexViewModel&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;This is a good name because it says that this viewmodel is for the EmployeeIndex view.. which is exactly what it is for.&lt;/li&gt;
+  &lt;li&gt;Now all we have to do is add 3 properties, an integer Id, string FirstName, and string LastName.&lt;/li&gt;
+  &lt;li&gt;Here is a comparison between the Employee class and the EmployeeIndexViewModel:
+&lt;img src=&quot;/assets/employeeAndViewModelComparison.png&quot; width=&quot;400px;&quot; height=&quot;350px;&quot; style=&quot;margin: auto;&quot; /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;the-employeeindex-methodviewmodel&quot;&gt;The Employee/Index Method/ViewModel&lt;/h4&gt;
+&lt;ul&gt;
+  &lt;li&gt;Let’s look at the Employee/Index method.&lt;/li&gt;
+  &lt;li&gt;Right now the method body should look similar to this:&lt;/li&gt;
+  &lt;li&gt;“return View(db.Employees.ToList());”&lt;/li&gt;
+  &lt;li&gt;Let’s say for example purposes that in the Index view, we want to show a list of Employee’s first and last names with a button to edit them.&lt;/li&gt;
+  &lt;li&gt;The current method is passing a list of Employee domain objects to the view, which contians &lt;strong&gt;ALL&lt;/strong&gt; of the employee’s data which might include their address, birthday, SSN, etc. These properties we don’t want to be responsible for hiding in the view and preventing end users from seeing, so lets just not send that data then right?&lt;/li&gt;
+  &lt;li&gt;All we need to do is update this method to map that list of Employees, into a list of EmployeeIndexViewModels, like shown below:
+&lt;img src=&quot;/assets/employeeIndexMethodRefactor.png&quot; width=&quot;400px;&quot; height=&quot;350px;&quot; style=&quot;margin: auto;&quot; /&gt;
+&lt;strong&gt;Note:&lt;/strong&gt; You will notice that red error line under “employeeViewModels.ToList()”. That is because our view is still expecting a list of Employees, but we are sending it a list of EmployeeIndexViewModels, we’ll fix this in the next section.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;the-employeeindex-view&quot;&gt;The Employee/Index View&lt;/h4&gt;
+&lt;ul&gt;
+  &lt;li&gt;All we need to do is open the Views/Employee/Index.cshtml file.&lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Then update the top of the file to be updated like shown below:
+&lt;img src=&quot;/assets/changingViewToUseViewModel.png&quot; width=&quot;400px;&quot; height=&quot;350px;&quot; style=&quot;margin: auto;&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Congrats, you have done your first moderate refactor! Good Job.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;see-you-in-the-next-part-of-this-tutorial&quot;&gt;See you in the next part of this tutorial!&lt;/h4&gt;
+</content>
+ </entry>
  
  <entry>
    <title>ASP .NET MVC Tutorial &#58 Part 4</title>

@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+  <head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  <!-- Enable responsiveness on mobile devices-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title>
+    
+      ASP .NET MVC Tutorial &#58 Part 4 &middot; Tyler Blake
+    
+  </title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/public/css/poole.css">
+  <link rel="stylesheet" href="/public/css/syntax.css">
+  <link rel="stylesheet" href="/public/css/hyde.css">
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+
+  <!-- Icons -->
+  <!--<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-144-precomposed.png">
+                                 <link rel="shortcut icon" href="/public/favicon.ico">-->
+
+  <!-- RSS -->
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+</head>
+
+
+  <body class="theme-base-0d">
+
+    <div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <h1>
+        <a href="/">
+          Tyler Blake
+        </a>
+      </h1>
+      <p class="lead">Welcome to my website, where we go on quests through software development!</p>
+    </div>
+
+    <nav class="sidebar-nav">
+      <a class="sidebar-nav-item" href="/">Home</a>
+
+      
+
+      
+      
+        
+          
+        
+      
+        
+          
+            <a class="sidebar-nav-item" href="/about/">About</a>
+          
+        
+      
+        
+      
+        
+          
+            <a class="sidebar-nav-item" href="/helpfulLinks/">Helpful Links</a>
+          
+        
+      
+        
+          
+        
+      
+      <a class="sidebar-nav-item" href="http://twitter.com/TylerBlakeLOU">Twitter</a>
+      <a class="sidebar-nav-item" href="https://github.com/tylerablake">GitHub</a>
+      <!--<span class="sidebar-nav-item">Currently v2.1.0</span>-->
+    </nav>
+
+    <p>&copy; 2017. All rights reserved.</p>
+  </div>
+</div>
+
+
+    <div class="content container">
+      <div class="post">
+  <h1 class="post-title">ASP .NET MVC Tutorial &#58 Part 4</h1>
+  <span class="post-date">01 Aug 2016</span>
+  <p>This is a tutorial series showing how to get up and running with MVC. Now that we have set up our solution and added our first Model, View, and Controller (scaffoleded). Now that we scaffolded the Controller, there is some refactoring we should do by implementing the use of viewmodels into that controller.. we will do that in this section.</p>
+
+<h5 id="what-is-a-viewmodel">What is a viewmodel?</h5>
+<ul>
+  <li>First lets discuss this… The model you created previously is a domain model, that is the model that gets saved to the database. It is best practice to keep that domain model near the database and that is all. So if we need to access that model in the view then what is the best way to do this?</li>
+  <li>Viewmodels!</li>
+  <li>A viewmodel is a class just the same as your domain model, except you <strong>ONLY</strong> include properties that you want to see if the view, <strong>AND</strong> you do not have to set up any mapping for it.</li>
+</ul>
+
+<h4 id="why">Why?</h4>
+<ul>
+  <li>The reason you want to use these for a few reasons:</li>
+  <li>Because it is better practice to keep your domain models away from the end users.</li>
+  <li>It is better to pass lightweight models to and from the view, rather than passing the entire domain model</li>
+  <li>And it helps make your application more secure and safe.</li>
+  <li>Also with a domain model that is responsible for saving to the database and displaying data to the view violates the single responsibility prinicple but those principles are for another day. :)</li>
+</ul>
+
+<h4 id="creating-a-viewmodel">Creating a ViewModel</h4>
+<ul>
+  <li>Lets create a <strong>ViewModels</strong> folder inside of the <strong>Models</strong> folder.</li>
+  <li>Then let’s add a new class and call it <strong>EmployeeIndexViewModel</strong></li>
+  <li>This is a good name because it says that this viewmodel is for the EmployeeIndex view.. which is exactly what it is for.</li>
+  <li>Now all we have to do is add 3 properties, an integer Id, string FirstName, and string LastName.</li>
+  <li>Here is a comparison between the Employee class and the EmployeeIndexViewModel:
+<img src="/assets/employeeAndViewModelComparison.png" width="400px;" height="350px;" style="margin: auto;" /></li>
+</ul>
+
+<h4 id="the-employeeindex-methodviewmodel">The Employee/Index Method/ViewModel</h4>
+<ul>
+  <li>Let’s look at the Employee/Index method.</li>
+  <li>Right now the method body should look similar to this:</li>
+  <li>“return View(db.Employees.ToList());”</li>
+  <li>Let’s say for example purposes that in the Index view, we want to show a list of Employee’s first and last names with a button to edit them.</li>
+  <li>The current method is passing a list of Employee domain objects to the view, which contians <strong>ALL</strong> of the employee’s data which might include their address, birthday, SSN, etc. These properties we don’t want to be responsible for hiding in the view and preventing end users from seeing, so lets just not send that data then right?</li>
+  <li>All we need to do is update this method to map that list of Employees, into a list of EmployeeIndexViewModels, like shown below:
+<img src="/assets/employeeIndexMethodRefactor.png" width="400px;" height="350px;" style="margin: auto;" />
+<strong>Note:</strong> You will notice that red error line under “employeeViewModels.ToList()”. That is because our view is still expecting a list of Employees, but we are sending it a list of EmployeeIndexViewModels, we’ll fix this in the next section.</li>
+</ul>
+
+<h4 id="the-employeeindex-view">The Employee/Index View</h4>
+<ul>
+  <li>All we need to do is open the Views/Employee/Index.cshtml file.</li>
+  <li>
+    <p>Then update the top of the file to be updated like shown below:
+<img src="/assets/changingViewToUseViewModel.png" width="400px;" height="350px;" style="margin: auto;" /></p>
+  </li>
+  <li>Congrats, you have done your first moderate refactor! Good Job.</li>
+</ul>
+
+<h4 id="see-you-in-the-next-part-of-this-tutorial">See you in the next part of this tutorial!</h4>
+
+</div>
+
+<div class="related">
+  <h2>Related Posts</h2>
+  <ul class="related-posts">
+    
+      <li>
+        <h3>
+          <a href="/2016/08/01/mvc-tutorial-part4/">
+            ASP .NET MVC Tutorial &#58 Part 4
+            <small>01 Aug 2016</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/2016/08/01/mvc-tutorial-part3/">
+            ASP .NET MVC Tutorial &#58 Part 3
+            <small>01 Aug 2016</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/2016/08/01/mvc-tutorial-part2/">
+            ASP .NET MVC Tutorial &#58 Part 2
+            <small>01 Aug 2016</small>
+          </a>
+        </h3>
+      </li>
+    
+  </ul>
+</div>
+
+    </div>
+
+  </body>
+</html>
