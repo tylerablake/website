@@ -1,6 +1,6 @@
 ---
 layout: post
-title: ASP .NET MVC Tutorial &#58 Part 4
+title: ASP .NET MVC Tutorial &#58 Part 5
 ---
 
 This is a tutorial series showing how to get up and running with MVC. Now that we have set up our solution and added our first Model, View, and Controller (scaffoleded). Now that we scaffolded the Controller, there is some refactoring we should do by implementing the use of viewmodels into that controller.. we will do that in this section.
