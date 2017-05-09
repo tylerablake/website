@@ -26,7 +26,7 @@ This is a tutorial series showing how to get up and running with MVC. Now that w
 * This is a good name because it says that this viewmodel is for the EmployeeIndex view.. which is exactly what it is for.
 * Now all we have to do is add 3 properties, an integer Id, string FirstName, and string LastName.
 * Here is a comparison between the Employee class and the EmployeeIndexViewModel:
-<img src="/assets/employeeAndViewModelComparison.png" width="600px;" height="350px;" style="margin: auto;">
+<img src="/assets/employeeAndViewModelComparison.png" width="300px;" height="300px;" style="margin: auto;">
 
 
 #### The Employee/Index Method/ViewModel
@@ -36,14 +36,14 @@ This is a tutorial series showing how to get up and running with MVC. Now that w
 * Let's say for example purposes that in the Index view, we want to show a list of Employee's first and last names with a button to edit them.
 * The current method is passing a list of Employee domain objects to the view, which contians **ALL** of the employee's data which might include their address, birthday, SSN, etc. These properties we don't want to be responsible for hiding in the view and preventing end users from seeing, so lets just not send that data then right?
 * All we need to do is update this method to map that list of Employees, into a list of EmployeeIndexViewModels, like shown below:
-<img src="/assets/employeeIndexMethodRefactor.png" width="600px;" height="350px;" style="margin: auto;">
+<img src="/assets/employeeIndexMethodRefactor.png" width="500px;" height="300px;" style="margin: auto;">
 **Note:** You will notice that red error line under "employeeViewModels.ToList()". That is because our view is still expecting a list of Employees, but we are sending it a list of EmployeeIndexViewModels, we'll fix this in the next section.
 
 
 #### The Employee/Index View
 * All we need to do is open the Views/Employee/Index.cshtml file.
 * Then update the top of the file to be updated like shown below:
-<img src="/assets/changingViewToUseViewModel.png" width="800px;" height="150px;" style="margin: auto;">
+<img src="/assets/changingViewToUseViewModel.png" width="800px;" height="100px;" style="margin: auto;">
 
 * Congrats, you have done your first moderate refactor! Good Job.
 
