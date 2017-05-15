@@ -89,7 +89,7 @@
  <title>Tyler Blake</title>
  <link href="http://hyde.getpoole.com/atom.xml" rel="self"/>
  <link href="http://hyde.getpoole.com/"/>
- <updated>2017-05-09T10:07:20-04:00</updated>
+ <updated>2017-05-15T14:21:25-04:00</updated>
  <id>http://hyde.getpoole.com</id>
  <author>
    <name>Tyler Blake</name>
@@ -98,11 +98,60 @@
 
  
  <entry>
-   <title>ASP .NET MVC Tutorial &#58 Part 4</title>
+   <title>ASP .NET MVC Tutorial &#58 Part 6</title>
+   <link href="http://hyde.getpoole.com/2016/08/01/mvc-tutorial-part6/"/>
+   <updated>2016-08-01T00:00:00-04:00</updated>
+   <id>http://hyde.getpoole.com/2016/08/01/mvc-tutorial-part6</id>
+   <content type="html">&lt;p&gt;This is a tutorial series showing how to get up and running with MVC. 
+Now that we have started a little bit of refactoring in the last section, lets stop and talk about refactoring.
+Specifically we’ll talk about what refactoring is, and different methodologies and techniques for refactoring.&lt;/p&gt;
+
+&lt;h5 id=&quot;what-is-a-refactoring&quot;&gt;What is a refactoring?&lt;/h5&gt;
+&lt;ul&gt;
+  &lt;li&gt;To keep it simple, Refactoring is the process of visiting existing code and improving it.. simple as that. For example whether you are improving it for readability for newer team members, or improving performance of code, both are refactoring.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h5 id=&quot;types-of-refactoring&quot;&gt;Types of Refactoring&lt;/h5&gt;
+&lt;ul&gt;
+  &lt;li&gt;Comprehension - This is when you are refactoring code because it is hard to read or understand.&lt;/li&gt;
+  &lt;li&gt;Prepatory - This is when you are determining on the best way to implement a feature before marking it as “complete”.&lt;/li&gt;
+  &lt;li&gt;Planned - Team refactoring, this &lt;strong&gt;shouldn’t&lt;/strong&gt; happen, refactoring should be continuously done by each developer, so group refactoring shouldn’t be needed.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;refactoring-triggers-and-matching-type-of-refactoring&quot;&gt;Refactoring Triggers and Matching Type of Refactoring&lt;/h4&gt;
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;If you hear or think one of the following when reviewing code then you should probably refactor:&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;“I don’t understand…” - Comprehension Refactoring&lt;/li&gt;
+  &lt;li&gt;“We should have done it this way” - Prepatory Refactoring&lt;/li&gt;
+  &lt;li&gt;To be continued…&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h5 id=&quot;refactoring-methodologiesprinciples&quot;&gt;Refactoring Methodologies/Principles&lt;/h5&gt;
+&lt;ul&gt;
+  &lt;li&gt;Litter Pick Up Refactoring or Boy Scout Principle - Leave code better than when you found it.&lt;/li&gt;
+  &lt;li&gt;To be continued…&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h5 id=&quot;notesreferences&quot;&gt;Notes/References&lt;/h5&gt;
+&lt;ul&gt;
+  &lt;li&gt;Here are a few references for you to look into for more refactoring knowledge.&lt;/li&gt;
+  &lt;li&gt;Martin Fowler - Refactoring (book)&lt;/li&gt;
+  &lt;li&gt;To be continued…&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;see-you-in-the-next-part-of-this-tutorial&quot;&gt;See you in the next part of this tutorial!&lt;/h4&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>ASP .NET MVC Tutorial &#58 Part 5</title>
    <link href="http://hyde.getpoole.com/2016/08/01/mvc-tutorial-part5/"/>
    <updated>2016-08-01T00:00:00-04:00</updated>
    <id>http://hyde.getpoole.com/2016/08/01/mvc-tutorial-part5</id>
-   <content type="html">&lt;p&gt;This is a tutorial series showing how to get up and running with MVC. Now that we have set up our solution and added our first Model, View, and Controller (scaffoleded). Now that we scaffolded the Controller, there is some refactoring we should do by implementing the use of viewmodels into that controller.. we will do that in this section.&lt;/p&gt;
+   <content type="html">&lt;p&gt;This is a tutorial series showing how to get up and running with MVC. 
+Now that we have set up our solution and added our first Model, View, and Controller (scaffoleded). Now that we scaffolded the Controller, there is some refactoring we should do by implementing the use of viewmodels into that controller.. we will do that in this section.&lt;/p&gt;
 
 &lt;h5 id=&quot;what-is-a-viewmodel&quot;&gt;What is a viewmodel?&lt;/h5&gt;
 &lt;ul&gt;
@@ -127,7 +176,7 @@
   &lt;li&gt;This is a good name because it says that this viewmodel is for the EmployeeIndex view.. which is exactly what it is for.&lt;/li&gt;
   &lt;li&gt;Now all we have to do is add 3 properties, an integer Id, string FirstName, and string LastName.&lt;/li&gt;
   &lt;li&gt;Here is a comparison between the Employee class and the EmployeeIndexViewModel:
-&lt;img src=&quot;/assets/employeeAndViewModelComparison.png&quot; width=&quot;400px;&quot; height=&quot;350px;&quot; style=&quot;margin: auto;&quot; /&gt;&lt;/li&gt;
+&lt;img src=&quot;/assets/employeeAndViewModelComparison.png&quot; width=&quot;300px;&quot; height=&quot;300px;&quot; style=&quot;margin: auto;&quot; /&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h4 id=&quot;the-employeeindex-methodviewmodel&quot;&gt;The Employee/Index Method/ViewModel&lt;/h4&gt;
@@ -138,7 +187,7 @@
   &lt;li&gt;Let’s say for example purposes that in the Index view, we want to show a list of Employee’s first and last names with a button to edit them.&lt;/li&gt;
   &lt;li&gt;The current method is passing a list of Employee domain objects to the view, which contians &lt;strong&gt;ALL&lt;/strong&gt; of the employee’s data which might include their address, birthday, SSN, etc. These properties we don’t want to be responsible for hiding in the view and preventing end users from seeing, so lets just not send that data then right?&lt;/li&gt;
   &lt;li&gt;All we need to do is update this method to map that list of Employees, into a list of EmployeeIndexViewModels, like shown below:
-&lt;img src=&quot;/assets/employeeIndexMethodRefactor.png&quot; width=&quot;400px;&quot; height=&quot;350px;&quot; style=&quot;margin: auto;&quot; /&gt;
+&lt;img src=&quot;/assets/employeeIndexMethodRefactor.png&quot; width=&quot;500px;&quot; height=&quot;300px;&quot; style=&quot;margin: auto;&quot; /&gt;
 &lt;strong&gt;Note:&lt;/strong&gt; You will notice that red error line under “employeeViewModels.ToList()”. That is because our view is still expecting a list of Employees, but we are sending it a list of EmployeeIndexViewModels, we’ll fix this in the next section.&lt;/li&gt;
 &lt;/ul&gt;
 
@@ -147,7 +196,7 @@
   &lt;li&gt;All we need to do is open the Views/Employee/Index.cshtml file.&lt;/li&gt;
   &lt;li&gt;
     &lt;p&gt;Then update the top of the file to be updated like shown below:
-&lt;img src=&quot;/assets/changingViewToUseViewModel.png&quot; width=&quot;400px;&quot; height=&quot;350px;&quot; style=&quot;margin: auto;&quot; /&gt;&lt;/p&gt;
+&lt;img src=&quot;/assets/changingViewToUseViewModel.png&quot; width=&quot;800px;&quot; height=&quot;100px;&quot; style=&quot;margin: auto;&quot; /&gt;&lt;/p&gt;
   &lt;/li&gt;
   &lt;li&gt;Congrats, you have done your first moderate refactor! Good Job.&lt;/li&gt;
 &lt;/ul&gt;

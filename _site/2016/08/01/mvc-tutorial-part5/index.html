@@ -11,7 +11,7 @@
 
   <title>
     
-      ASP .NET MVC Tutorial &#58 Part 4 &middot; Tyler Blake
+      ASP .NET MVC Tutorial &#58 Part 5 &middot; Tyler Blake
     
   </title>
 
@@ -84,9 +84,10 @@
 
     <div class="content container">
       <div class="post">
-  <h1 class="post-title">ASP .NET MVC Tutorial &#58 Part 4</h1>
+  <h1 class="post-title">ASP .NET MVC Tutorial &#58 Part 5</h1>
   <span class="post-date">01 Aug 2016</span>
-  <p>This is a tutorial series showing how to get up and running with MVC. Now that we have set up our solution and added our first Model, View, and Controller (scaffoleded). Now that we scaffolded the Controller, there is some refactoring we should do by implementing the use of viewmodels into that controller.. we will do that in this section.</p>
+  <p>This is a tutorial series showing how to get up and running with MVC. 
+Now that we have set up our solution and added our first Model, View, and Controller (scaffoleded). Now that we scaffolded the Controller, there is some refactoring we should do by implementing the use of viewmodels into that controller.. we will do that in this section.</p>
 
 <h5 id="what-is-a-viewmodel">What is a viewmodel?</h5>
 <ul>
@@ -111,7 +112,7 @@
   <li>This is a good name because it says that this viewmodel is for the EmployeeIndex view.. which is exactly what it is for.</li>
   <li>Now all we have to do is add 3 properties, an integer Id, string FirstName, and string LastName.</li>
   <li>Here is a comparison between the Employee class and the EmployeeIndexViewModel:
-<img src="/assets/employeeAndViewModelComparison.png" width="400px;" height="350px;" style="margin: auto;" /></li>
+<img src="/assets/employeeAndViewModelComparison.png" width="300px;" height="300px;" style="margin: auto;" /></li>
 </ul>
 
 <h4 id="the-employeeindex-methodviewmodel">The Employee/Index Method/ViewModel</h4>
@@ -122,7 +123,7 @@
   <li>Let’s say for example purposes that in the Index view, we want to show a list of Employee’s first and last names with a button to edit them.</li>
   <li>The current method is passing a list of Employee domain objects to the view, which contians <strong>ALL</strong> of the employee’s data which might include their address, birthday, SSN, etc. These properties we don’t want to be responsible for hiding in the view and preventing end users from seeing, so lets just not send that data then right?</li>
   <li>All we need to do is update this method to map that list of Employees, into a list of EmployeeIndexViewModels, like shown below:
-<img src="/assets/employeeIndexMethodRefactor.png" width="400px;" height="350px;" style="margin: auto;" />
+<img src="/assets/employeeIndexMethodRefactor.png" width="500px;" height="300px;" style="margin: auto;" />
 <strong>Note:</strong> You will notice that red error line under “employeeViewModels.ToList()”. That is because our view is still expecting a list of Employees, but we are sending it a list of EmployeeIndexViewModels, we’ll fix this in the next section.</li>
 </ul>
 
@@ -131,7 +132,7 @@
   <li>All we need to do is open the Views/Employee/Index.cshtml file.</li>
   <li>
     <p>Then update the top of the file to be updated like shown below:
-<img src="/assets/changingViewToUseViewModel.png" width="400px;" height="350px;" style="margin: auto;" /></p>
+<img src="/assets/changingViewToUseViewModel.png" width="800px;" height="100px;" style="margin: auto;" /></p>
   </li>
   <li>Congrats, you have done your first moderate refactor! Good Job.</li>
 </ul>
@@ -146,6 +147,15 @@
     
       <li>
         <h3>
+          <a href="/2016/08/01/mvc-tutorial-part6/">
+            ASP .NET MVC Tutorial &#58 Part 6
+            <small>01 Aug 2016</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
           <a href="/2016/08/01/mvc-tutorial-part4/">
             ASP .NET MVC Tutorial &#58 Part 4
             <small>01 Aug 2016</small>
@@ -157,15 +167,6 @@
         <h3>
           <a href="/2016/08/01/mvc-tutorial-part3/">
             ASP .NET MVC Tutorial &#58 Part 3
-            <small>01 Aug 2016</small>
-          </a>
-        </h3>
-      </li>
-    
-      <li>
-        <h3>
-          <a href="/2016/08/01/mvc-tutorial-part2/">
-            ASP .NET MVC Tutorial &#58 Part 2
             <small>01 Aug 2016</small>
           </a>
         </h3>
