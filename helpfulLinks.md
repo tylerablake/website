@@ -18,7 +18,7 @@ title: Helpful Links
 * <a href="http://www.asp.net/mvc/overview/getting-started/getting-started-with-ef-using-mvc/creating-an-entity-framework-data-model-for-an-asp-net-mvc-application">Contoso University Tutorial</a>
 
 #### Why .NET MVC?
-*<a href="http://www.codeproject.com/Articles/528117/WebForms-vs-MVC">.NET MVC vs WebForms</a>
+* <a href="http://www.codeproject.com/Articles/528117/WebForms-vs-MVC">.NET MVC vs WebForms</a>
 
 #### Adding Bootstrap Theme to .NET MVC Project
 * <a href="http://stackoverflow.com/questions/21839351/how-can-i-implement-a-theme-from-bootswatch-or-wrapbootstrap-in-an-mvc-5-project">Stack Overflow Link</a>
