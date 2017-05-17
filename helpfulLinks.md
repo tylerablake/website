@@ -54,6 +54,7 @@ title: Helpful Links
 
 #### .NET Deployment
 * <a href="http://www.asp.net/web-forms/overview/deployment/visual-studio-web-deployment/deploying-to-iis">Using Visual Studio and IIS</a>
+* <a href="http://tylerablake.com/2017/05/17/encrypting-web-config-file/">Encrypting Web.Config File</a>
 
 #### .NET Contact Form
 * <a href="http://vandelayweb.com/sending-asp-net-emails-godaddy-gmail-godaddy-hosted/">Contact form for GoDaddy Deployment</a>
