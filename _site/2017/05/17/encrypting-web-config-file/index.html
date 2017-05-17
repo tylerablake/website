@@ -11,7 +11,7 @@
 
   <title>
     
-      ASP .NET MVC Tutorial &#58 Part 6 &middot; Tyler Blake
+      Encrypting Web Config &middot; Tyler Blake
     
   </title>
 
@@ -84,48 +84,36 @@
 
     <div class="content container">
       <div class="post">
-  <h1 class="post-title">ASP .NET MVC Tutorial &#58 Part 6</h1>
-  <span class="post-date">01 Aug 2016</span>
-  <p>This is a tutorial series showing how to get up and running with MVC. 
-Now that we have started a little bit of refactoring in the last section, lets stop and talk about refactoring.
-Specifically we’ll talk about what refactoring is, and different methodologies and techniques for refactoring.</p>
+  <h1 class="post-title">Encrypting Web Config</h1>
+  <span class="post-date">17 May 2017</span>
+  <p>Welcome! In this blog post we’ll discuss how to encrypt and decrypt your web.config file.</p>
 
-<h5 id="what-is-a-refactoring">What is a refactoring?</h5>
+<h4 id="why-encrypt">Why encrypt?</h4>
 <ul>
-  <li>To keep it simple, Refactoring is the process of visiting existing code and improving it.. simple as that. For example whether you are improving it for readability for newer team members, or improving performance of code, both are refactoring.</li>
+  <li>First lets talk about what a web.config file is and why we might want to encrypt it.</li>
+  <li>A web.config file is a file that stored configuration details about your application.</li>
+  <li>This may include session configurations, application keys (if using third party software), and database connection strings (one of the biggest reasons you want to encrypt the config file)</li>
 </ul>
 
-<h5 id="types-of-refactoring">Types of Refactoring</h5>
+<h4 id="encrypting">Encrypting</h4>
 <ul>
-  <li>Comprehension - This is when you are refactoring code because it is hard to read or understand.</li>
-  <li>Prepatory - This is when you are determining on the best way to implement a feature before marking it as “complete”.</li>
-  <li>Planned - Team refactoring, this <strong>shouldn’t</strong> happen, refactoring should be continuously done by each developer, so group refactoring shouldn’t be needed.</li>
+  <li>Once you publish your solution to the server it will be deployed on, open command prompt and navigate to the following path.</li>
+  <li><strong>Note:</strong> This uses the regiis utility and the machine key in order to encrypt the web.config file. This prevents someone from being able to copy the web.config file to their own machine and run the command to decrypt or encrypt the file.</li>
+  <li>c:/Windows/Microsoft .NET/Frameworks/(highest version) (currently 4.0.30319)</li>
+  <li>Then run this command : “aspnet_regiis.exe -pd “appSettings” -app “appName” -site “siteName”</li>
+  <li>In this example I’m encrypting the app settings section of the web.config file, if you wanted to encrypt the connection strings you just need to enter “connectionStrings” <strong>it is case sensitive</strong>, instead.</li>
+  <li><strong>Note:</strong> If your site is the default site then you only need to include the app name.</li>
 </ul>
 
-<h4 id="refactoring-triggers-and-matching-type-of-refactoring">Refactoring Triggers and Matching Type of Refactoring</h4>
+<h4 id="decrypting">Decrypting</h4>
 <ul>
-  <li>
-    <p>If you hear or think one of the following when reviewing code then you should probably refactor:</p>
-  </li>
-  <li>“I don’t understand…” - Comprehension Refactoring</li>
-  <li>“We should have done it this way” - Prepatory Refactoring</li>
-  <li>To be continued…</li>
+  <li>Now, maybe something in the web.config needs to be updated on the server, all you have to do is similar to the above but use <strong>-pd</strong> instead of <strong>-pe</strong></li>
+  <li>Once you publish your solution to the server it will be deployed on, open command prompt and navigate to the following path.</li>
+  <li>c:/Windows/Microsoft .NET/Frameworks/(highest version) (currently 4.0.30319)</li>
+  <li>Then run this command : “aspnet_regiis.exe -pd “appSettings” -app “appName” -site “siteName”</li>
+  <li><strong>Note:</strong> If your site is the default site then you only need to include the app name.</li>
 </ul>
 
-<h5 id="refactoring-methodologiesprinciples">Refactoring Methodologies/Principles</h5>
-<ul>
-  <li>Litter Pick Up Refactoring or Boy Scout Principle - Leave code better than when you found it.</li>
-  <li>To be continued…</li>
-</ul>
-
-<h5 id="notesreferences">Notes/References</h5>
-<ul>
-  <li>Here are a few references for you to look into for more refactoring knowledge.</li>
-  <li>Martin Fowler - Refactoring (book)</li>
-  <li>To be continued…</li>
-</ul>
-
-<h4 id="see-you-in-the-next-part-of-this-tutorial">See you in the next part of this tutorial!</h4>
 
 </div>
 
@@ -135,9 +123,9 @@ Specifically we’ll talk about what refactoring is, and different methodologies
     
       <li>
         <h3>
-          <a href="/2017/05/17/encrypting-web-config-file/">
-            Encrypting Web Config
-            <small>17 May 2017</small>
+          <a href="/2016/08/01/mvc-tutorial-part6/">
+            ASP .NET MVC Tutorial &#58 Part 6
+            <small>01 Aug 2016</small>
           </a>
         </h3>
       </li>
