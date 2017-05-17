@@ -6,12 +6,12 @@ title: Helpful Links
 ### .NET MVC
 
 #### My Tutorials
-* <a href="http://tylerablake.com/2016/08/01/mvc-tutorial-part1/">Part 1</a>
-* <a href="http://tylerablake.com/2016/08/01/mvc-tutorial-part2/">Part 2</a>
-* <a href="http://tylerablake.com/2016/08/01/mvc-tutorial-part3/">Part 3</a>
-* <a href="http://tylerablake.com/2016/08/01/mvc-tutorial-part4/">Part 4</a>
-* <a href="http://tylerablake.com/2016/08/01/mvc-tutorial-part5/">Part 5</a>
-* <a href="http://tylerablake.com/2016/08/01/mvc-tutorial-part6/">Part 6</a>
+* <a href="http://tylerablake.com/2016/08/01/mvc-tutorial-part1/">Part 1 -  Into to MVC</a>
+* <a href="http://tylerablake.com/2016/08/01/mvc-tutorial-part2/">Part 2 - Overview of Models, Views, and Controllers</a>
+* <a href="http://tylerablake.com/2016/08/01/mvc-tutorial-part3/">Part 3 - Setting up the Database</a>
+* <a href="http://tylerablake.com/2016/08/01/mvc-tutorial-part4/">Part 4 - Adding Models, Views, and Controllers</a>
+* <a href="http://tylerablake.com/2016/08/01/mvc-tutorial-part5/">Part 5 - ViewModels!</a>
+* <a href="http://tylerablake.com/2016/08/01/mvc-tutorial-part6/">Part 6 - Refactoring</a>
 
 #### Microsoft Tutorials
 * <a href="http://www.asp.net/mvc/overview/getting-started/mvc-learning-sequence">Recommended Tutorials and Articles</a>
