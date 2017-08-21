@@ -74,6 +74,7 @@
       
       <a class="sidebar-nav-item" href="http://twitter.com/TylerBlakeLOU">Twitter</a>
       <a class="sidebar-nav-item" href="https://github.com/tylerablake">GitHub</a>
+      <a class="sidebar-nav-item" href="http://tyler-mentoring.slack.com">Slack</a>
       <!--<span class="sidebar-nav-item">Currently v2.1.0</span>-->
     </nav>
 
@@ -89,7 +90,7 @@
  <title>Tyler Blake</title>
  <link href="http://hyde.getpoole.com/atom.xml" rel="self"/>
  <link href="http://hyde.getpoole.com/"/>
- <updated>2017-08-21T14:14:06-04:00</updated>
+ <updated>2017-08-21T14:55:02-04:00</updated>
  <id>http://hyde.getpoole.com</id>
  <author>
    <name>Tyler Blake</name>
