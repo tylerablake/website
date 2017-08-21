@@ -10,9 +10,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
 
   <title>
-
+    
        &middot; Tyler Blake
-
+    
   </title>
 
   <!-- CSS -->
@@ -46,32 +46,32 @@
     <nav class="sidebar-nav">
       <a class="sidebar-nav-item" href="/">Home</a>
 
+      
 
-
-
-
-
-
-
-
-
-
+      
+      
+        
+          
+        
+      
+        
+          
             <a class="sidebar-nav-item" href="/about/">About</a>
-
-
-
-
-
-
-
+          
+        
+      
+        
+      
+        
+          
             <a class="sidebar-nav-item" href="/helpfulLinks/">Helpful Links</a>
-
-
-
-
-
-
-
+          
+        
+      
+        
+          
+        
+      
       <a class="sidebar-nav-item" href="http://twitter.com/TylerBlakeLOU">Twitter</a>
       <a class="sidebar-nav-item" href="https://github.com/tylerablake">GitHub</a>
       <a class="sidebar-nav-item" href="http://tyler-mentoring.slack.com">Slack</a>
@@ -90,14 +90,14 @@
  <title>Tyler Blake</title>
  <link href="http://hyde.getpoole.com/atom.xml" rel="self"/>
  <link href="http://hyde.getpoole.com/"/>
- <updated>2017-08-21T14:46:11-04:00</updated>
+ <updated>2017-08-21T15:03:49-04:00</updated>
  <id>http://hyde.getpoole.com</id>
  <author>
    <name>Tyler Blake</name>
    <email></email>
  </author>
 
-
+ 
  <entry>
    <title>Encrypting Web Config</title>
    <link href="http://hyde.getpoole.com/2017/05/17/encrypting-web-config-file/"/>
@@ -133,13 +133,13 @@
 
 </content>
  </entry>
-
+ 
  <entry>
    <title>ASP .NET MVC Tutorial &#58 Part 6</title>
    <link href="http://hyde.getpoole.com/2016/08/01/mvc-tutorial-part6/"/>
    <updated>2016-08-01T00:00:00-04:00</updated>
    <id>http://hyde.getpoole.com/2016/08/01/mvc-tutorial-part6</id>
-   <content type="html">&lt;p&gt;This is a tutorial series showing how to get up and running with MVC.
+   <content type="html">&lt;p&gt;This is a tutorial series showing how to get up and running with MVC. 
 Now that we have started a little bit of refactoring in the last section, lets stop and talk about refactoring.
 Specifically we’ll talk about what refactoring is, and different methodologies and techniques for refactoring.&lt;/p&gt;
 
@@ -181,13 +181,13 @@ Specifically we’ll talk about what refactoring is, and different methodologies
 &lt;h4 id=&quot;see-you-in-the-next-part-of-this-tutorial&quot;&gt;See you in the next part of this tutorial!&lt;/h4&gt;
 </content>
  </entry>
-
+ 
  <entry>
    <title>ASP .NET MVC Tutorial &#58 Part 5</title>
    <link href="http://hyde.getpoole.com/2016/08/01/mvc-tutorial-part5/"/>
    <updated>2016-08-01T00:00:00-04:00</updated>
    <id>http://hyde.getpoole.com/2016/08/01/mvc-tutorial-part5</id>
-   <content type="html">&lt;p&gt;This is a tutorial series showing how to get up and running with MVC.
+   <content type="html">&lt;p&gt;This is a tutorial series showing how to get up and running with MVC. 
 Now that we have set up our solution and added our first Model, View, and Controller (scaffoleded). Now that we scaffolded the Controller, there is some refactoring we should do by implementing the use of viewmodels into that controller.. we will do that in this section.&lt;/p&gt;
 
 &lt;h5 id=&quot;what-is-a-viewmodel&quot;&gt;What is a viewmodel?&lt;/h5&gt;
@@ -241,7 +241,7 @@ Now that we have set up our solution and added our first Model, View, and Contro
 &lt;h4 id=&quot;see-you-in-the-next-part-of-this-tutorial&quot;&gt;See you in the next part of this tutorial!&lt;/h4&gt;
 </content>
  </entry>
-
+ 
  <entry>
    <title>ASP .NET MVC Tutorial &#58 Part 4</title>
    <link href="http://hyde.getpoole.com/2016/08/01/mvc-tutorial-part4/"/>
@@ -330,7 +330,7 @@ Now that we have set up our solution and added our first Model, View, and Contro
 &lt;h4 id=&quot;see-you-in-the-next-part-of-this-tutorial&quot;&gt;See you in the next part of this tutorial!&lt;/h4&gt;
 </content>
  </entry>
-
+ 
  <entry>
    <title>ASP .NET MVC Tutorial &#58 Part 3</title>
    <link href="http://hyde.getpoole.com/2016/08/01/mvc-tutorial-part3/"/>
@@ -449,7 +449,7 @@ Now that we have set up our solution and added our first Model, View, and Contro
 &lt;h4 id=&quot;see-you-in-the-next-part-of-this-tutorial&quot;&gt;See you in the next part of this tutorial!&lt;/h4&gt;
 </content>
  </entry>
-
+ 
  <entry>
    <title>ASP .NET MVC Tutorial &#58 Part 2</title>
    <link href="http://hyde.getpoole.com/2016/08/01/mvc-tutorial-part2/"/>
@@ -586,7 +586,7 @@ how an MVC application works, and start writing some code!&lt;/p&gt;
 &lt;h4 id=&quot;see-you-in-the-next-part-of-this-tutorial&quot;&gt;See you in the next part of this tutorial!&lt;/h4&gt;
 </content>
  </entry>
-
+ 
  <entry>
    <title>ASP .NET MVC Tutorial &#58 Part 1</title>
    <link href="http://hyde.getpoole.com/2016/08/01/mvc-tutorial-part1/"/>
@@ -677,7 +677,7 @@ MVC means and take a look at some of the files that get created for us when we c
 &lt;h4 id=&quot;see-you-in-the-next-part-of-this-tutorial&quot;&gt;See you in the next part of this tutorial!&lt;/h4&gt;
 </content>
  </entry>
-
+ 
  <entry>
    <title>Introducing Jekyll and Hyde!</title>
    <link href="http://hyde.getpoole.com/2016/03/06/jekyll-and-hyde-blog/"/>
@@ -686,7 +686,7 @@ MVC means and take a look at some of the files that get created for us when we c
    <content type="html">&lt;p&gt;Welcome! I am currently migrating my site to more of a blog site thanks to Jekyll and Hyde!&lt;/p&gt;
 </content>
  </entry>
-
+ 
  <entry>
    <title>Lessons Learned Along the Way (Episode 1)</title>
    <link href="http://hyde.getpoole.com/2016/03/02/lessons-learned-along-the-way/"/>
@@ -695,7 +695,7 @@ MVC means and take a look at some of the files that get created for us when we c
    <content type="html">&lt;p&gt;This is placeholder text for a blog series covering lessons I have learned along the way.&lt;/p&gt;
 </content>
  </entry>
-
+ 
  <entry>
    <title>Setting Up Your Mac for .NET Development</title>
    <link href="http://hyde.getpoole.com/2016/03/01/.net-development-on-a-mac/"/>
@@ -781,7 +781,7 @@ MVC means and take a look at some of the files that get created for us when we c
 &lt;p&gt;&lt;a href=&quot;http://mspi.es/blog/5-Performance-Tweaks-for-Visual-Studio-2015-and-large-solutions&quot;&gt;5 Performance Tweaks for VS 2015 and Large Solutions&lt;/a&gt;&lt;/p&gt;
 </content>
  </entry>
-
+ 
 
 </feed>
 
