@@ -4,10 +4,11 @@ title: About
 sidebar_link: true
 ---
 
-<p class="message">
-  Hey there! This page is included as an example. Feel free to customize it
-  for your own use upon downloading. Carry on!
+<div class="message">
+<p>
+  Hey there! Thanks for stopping by my blog, my name is Tyler Blake and I am a software developer from Louisville, KY. I love mentoring, teaching, and learning most things development, but primarily C#, .NET, JavaScript, Angular, and NativeScript. If you would like to know more about me feel free to follow me on Twitter and/or message me. 
 </p>
 
-To make pages show up in the sidebar, add `sidebar_link: true` to the front
-matter.
+
+<p>Thank you and enjoy your stay! :)</p>
+</div>
