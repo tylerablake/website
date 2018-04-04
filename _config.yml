@@ -16,6 +16,7 @@ baseurl:          # the optional subpath of your site, e.g. "/blog"
 author:
   name:           'Tyler Blake'
   url:            https://twitter.com/TylerBlakeLOU
+  twitterUrl:            https://twitter.com/TylerBlakeLOU  
 
 paginate:         5
 # paginate_path:    '/page:num'
@@ -35,6 +36,9 @@ sidebar_home_link:  true
                                 # to enable a separate blog link.
 github:
   repo:             https://github.com/tylerablake
+
+twitter:
+    url:            http://twitter.com/TylerBlakeLOU
 
 # Disqus Comments
 disqus:
