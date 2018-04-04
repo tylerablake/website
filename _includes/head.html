@@ -7,8 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
 
   <title>
-    {% if page.title == "Home" %}
-    <!-- Hide the dot if there isn't a tagline set -->
+    {% if page.title == "Home" %}    
       {% if site.tagline == "" %}
         {{ site.title }}{% if site.tagline %}
       {% endif %}
