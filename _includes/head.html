@@ -8,7 +8,14 @@
 
   <title>
     {% if page.title == "Home" %}
-      {{ site.title }}{% if site.tagline %} &middot; {{ site.tagline }}{% endif %}
+    <!-- Hide the dot if there isn't a tagline set -->
+      {% if site.tagline == "" %}
+        {{ site.title }}{% if site.tagline %}
+      {% endif %}
+      {% else %}    
+        {{ site.title }}{% if site.tagline %} &middot; {{ site.tagline }}
+      {% endif %}
+    {% endif %}
     {% else %}
       {{ page.title }} &middot; {{ site.title }}
     {% endif %}
