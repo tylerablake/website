@@ -1,4 +1,4 @@
----
+<!-- ---
 layout: category
 title: Edge Case
 ---
@@ -24,4 +24,4 @@ category: My Category
 ---
 ```
 
-Posts get listed below here.
+Posts get listed below here. -->
