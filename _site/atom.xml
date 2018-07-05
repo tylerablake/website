@@ -271,7 +271,7 @@
  <title>Tyler Blake</title>
  <link href="http://localhost:4000/atom.xml" rel="self"/>
  <link href="http://localhost:4000/"/>
- <updated>2018-07-03T12:58:18-04:00</updated>
+ <updated>2018-07-05T10:33:16-04:00</updated>
  <id>http://localhost:4000</id>
  <author>
    <name>Tyler Blake</name>
@@ -299,9 +299,9 @@
 
 &lt;h3 id=&quot;recap&quot;&gt;Recap:&lt;/h3&gt;
 
-&lt;p&gt;A &lt;strong&gt;GridLayout&lt;/strong&gt; is just that, you have columns and rows. In the 2x3 grid layout, we are telling NativeScript that we want it to generate a grid that has 2 columns and 3 rows. After you populate the &lt;strong&gt;rows&lt;/strong&gt; and &lt;strong&gt;columns&lt;/strong&gt; attributes of the GridLayout, you have to tell the elements within the GridLayout where they should be positioned within the grid through the &lt;strong&gt;col&lt;/strong&gt; and &lt;strong&gt;row&lt;/strong&gt; attributes.&lt;/p&gt;
+&lt;p&gt;A &lt;strong&gt;GridLayout&lt;/strong&gt; is just that, you have columns and rows. In the 2x3 grid layout, we are telling NativeScript that we want it to generate a grid that has 2 columns and 3 rows. After you populate the &lt;code class=&quot;highlighter-rouge&quot;&gt;rows&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;columns&lt;/code&gt; attributes of the GridLayout, you have to tell the elements within the GridLayout where they should be positioned within the grid through the &lt;code class=&quot;highlighter-rouge&quot;&gt;col&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;row&lt;/code&gt; attributes.&lt;/p&gt;
 
-&lt;p&gt;GridLayout row and column definitions are &lt;strong&gt;zero based&lt;/strong&gt;. This means row=”0” actually refers to the first row in the grid.&lt;/p&gt;
+&lt;p&gt;GridLayout row and column definitions are &lt;strong&gt;zero based&lt;/strong&gt;. This means &lt;code class=&quot;highlighter-rouge&quot;&gt;row=&quot;0&quot;&lt;/code&gt; actually refers to the first row in the grid.&lt;/p&gt;
 
 &lt;p&gt;You can make a GridLayout have as many rows/columns as you like/need.&lt;/p&gt;
 
@@ -322,16 +322,16 @@
 
 &lt;h2 id=&quot;what-does--do&quot;&gt;What does * do?&lt;/h2&gt;
 
-&lt;p&gt;Setting a row or column to * makes it take up the rest of the space available. If you use row=”&lt;em&gt;,&lt;/em&gt;” then you will get 2 rows, 1 takes up the top 50% of the space available, the other takes up the bottom 50%. Here is an example:&lt;/p&gt;
+&lt;p&gt;Setting a row or column to &lt;code class=&quot;highlighter-rouge&quot;&gt;*&lt;/code&gt; makes it take up the rest of the space available. If you use &lt;code class=&quot;highlighter-rouge&quot;&gt;rows=&quot;*,*&quot;&lt;/code&gt; then you will get 2 rows, 1 takes up the top 50% of the space available, the other takes up the bottom 50%. Here is an example:&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/images/usingStars.png&quot; alt=&quot;Example Grid using stars&quot; class=&quot;img-responsive&quot; /&gt;&lt;/p&gt;
 
 &lt;h3 id=&quot;recap-2&quot;&gt;Recap:&lt;/h3&gt;
-&lt;p&gt;In this example we made a grid with 2 columns, one with a defined size of 50, the other is *. We have 3 rows, two with a defined size of 100, and the last is *. We can see that the manual defined size rows/columns are generated and the row and column with * size stretch the rest of the space available.&lt;/p&gt;
+&lt;p&gt;In this example we made a grid with 2 columns, one with a defined size of 50, the other is &lt;code class=&quot;highlighter-rouge&quot;&gt;*&lt;/code&gt;. We have 3 rows, two with a defined size of 100, and the last is &lt;code class=&quot;highlighter-rouge&quot;&gt;*&lt;/code&gt;. We can see that the manually defined size rows/columns are generated and the row and column with &lt;code class=&quot;highlighter-rouge&quot;&gt;*&lt;/code&gt; size stretch the rest of the space available.&lt;/p&gt;
 
 &lt;h2 id=&quot;explicit-row-and-column-sizes&quot;&gt;Explicit Row and Column Sizes&lt;/h2&gt;
 
-&lt;p&gt;In the last example we manually defined some column and row sizes in the GridLayout instead of just using *. Here is another example of that:&lt;/p&gt;
+&lt;p&gt;In the last example we manually defined some column and row sizes in the GridLayout instead of just using &lt;code class=&quot;highlighter-rouge&quot;&gt;*&lt;/code&gt;. Here is another example of that:&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/images/usingManualWidths.png&quot; alt=&quot;Example RowSpan and ColSpan Grid&quot; class=&quot;img-responsive&quot; /&gt;&lt;/p&gt;
 
@@ -345,7 +345,7 @@
 &lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/images/autoAndStar.png&quot; alt=&quot;Example Auto and Star Grid&quot; class=&quot;img-responsive&quot; /&gt;&lt;/p&gt;
 
 &lt;h3 id=&quot;recap-4&quot;&gt;Recap:&lt;/h3&gt;
-&lt;p&gt;Here we have a GridLayout with 1 row and 2 columns. The columns are defined with columns=”auto,*” inside the GridLayout. We know that the * means the second column will stretch the rest of the space available. The auto value means that the first column will use as much space as it needs. Since we gave that StackLayout a width of 50 pixels, the first column will only take up 50 pixels.&lt;/p&gt;
+&lt;p&gt;Here we have a GridLayout with 1 row and 2 columns. The columns are defined with &lt;code class=&quot;highlighter-rouge&quot;&gt;columns=&quot;auto,*&quot;&lt;/code&gt; inside the GridLayout. We know that the &lt;code class=&quot;highlighter-rouge&quot;&gt;*&lt;/code&gt; means the second column will stretch the rest of the space available. The auto value means that the first column will use as much space as it needs. Since we gave that StackLayout a width of 50 pixels, the first column will only take up 50 pixels.&lt;/p&gt;
 
 &lt;p&gt;Now you can go create all kinds of cool GridLayouts!&lt;/p&gt;
 

@@ -29,10 +29,10 @@ Here is an example of a **2x3**  grid layout:
 
 ### Recap:
 
-A **GridLayout** is just that, you have columns and rows. In the 2x3 grid layout, we are telling NativeScript that we want it to generate a grid that has 2 columns and 3 rows. After you populate the **rows** and **columns** attributes of the GridLayout, you have to tell the elements within the GridLayout where they should be positioned within the grid through the **col** and **row** attributes.
+A **GridLayout** is just that, you have columns and rows. In the 2x3 grid layout, we are telling NativeScript that we want it to generate a grid that has 2 columns and 3 rows. After you populate the `rows` and `columns` attributes of the GridLayout, you have to tell the elements within the GridLayout where they should be positioned within the grid through the `col` and `row` attributes.
 
 
-GridLayout row and column definitions are **zero based**. This means row="0" actually refers to the first row in the grid.
+GridLayout row and column definitions are **zero based**. This means `row="0"` actually refers to the first row in the grid.
 
 You can make a GridLayout have as many rows/columns as you like/need.
 
@@ -56,16 +56,16 @@ In this example we told the orange StackLayout to span 2 rows instead of 3 which
 
 ## What does * do?
 
-Setting a row or column to * makes it take up the rest of the space available. If you use row="*,*" then you will get 2 rows, 1 takes up the top 50% of the space available, the other takes up the bottom 50%. Here is an example:
+Setting a row or column to `*` makes it take up the rest of the space available. If you use `rows="*,*"` then you will get 2 rows, 1 takes up the top 50% of the space available, the other takes up the bottom 50%. Here is an example:
 
 ![Example Grid using stars]({{site.url}}/assets/images/usingStars.png){:class="img-responsive"}
 
 ### Recap:
-In this example we made a grid with 2 columns, one with a defined size of 50, the other is *. We have 3 rows, two with a defined size of 100, and the last is *. We can see that the manual defined size rows/columns are generated and the row and column with * size stretch the rest of the space available.
+In this example we made a grid with 2 columns, one with a defined size of 50, the other is `*`. We have 3 rows, two with a defined size of 100, and the last is `*`. We can see that the manually defined size rows/columns are generated and the row and column with `*` size stretch the rest of the space available.
 
 ## Explicit Row and Column Sizes
 
-In the last example we manually defined some column and row sizes in the GridLayout instead of just using *. Here is another example of that:
+In the last example we manually defined some column and row sizes in the GridLayout instead of just using `*`. Here is another example of that:
 
 ![Example RowSpan and ColSpan Grid]({{site.url}}/assets/images/usingManualWidths.png){:class="img-responsive"}
 
@@ -80,7 +80,7 @@ Using the auto value for a column or width will have the row or column take up a
 ![Example Auto and Star Grid]({{site.url}}/assets/images/autoAndStar.png){:class="img-responsive"}
 
 ### Recap:
-Here we have a GridLayout with 1 row and 2 columns. The columns are defined with columns="auto,*" inside the GridLayout. We know that the * means the second column will stretch the rest of the space available. The auto value means that the first column will use as much space as it needs. Since we gave that StackLayout a width of 50 pixels, the first column will only take up 50 pixels.
+Here we have a GridLayout with 1 row and 2 columns. The columns are defined with `columns="auto,*"` inside the GridLayout. We know that the `*` means the second column will stretch the rest of the space available. The auto value means that the first column will use as much space as it needs. Since we gave that StackLayout a width of 50 pixels, the first column will only take up 50 pixels.
 
 
 Now you can go create all kinds of cool GridLayouts!
