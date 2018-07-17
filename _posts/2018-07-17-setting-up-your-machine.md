@@ -14,9 +14,9 @@ last_modified_at: 2018-07-17T10:30:00-00:00
 There are many different ways to set up your development environment for NativeScript. Here I'll show you mine.
 <!--more-->
 
-The following shows the list I use to set up my development environment for NativeScript development on my Mac.
+The following shows the list I use to set up my machine for NativeScript development on my Mac.
 
-If you are not recovering from a computer crash like me, then the first 2 steps are optional :)
+If you are not recovering from a computer crash like me, then you can ignore reformatting your Mac :)
 
 **Note: Replace iTerm2 with your preferred terminal and VSCode with your preferred IDE**
 
