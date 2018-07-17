@@ -1,290 +1,4 @@
-<!DOCTYPE html>
-<html lang="en-us">
-
-  <head>
-  <link href="http://gmpg.org/xfn/11" rel="profile" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-
-  <!-- Enable responsiveness on mobile devices-->
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
-
-  <title>
-    
-       &middot; Tyler Blake
-    
-  </title>
-
-  
-
-
-  <!-- CSS -->
-  <link rel="stylesheet" href="/assets/css/main.css" />
-  
-
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface" />
-
-  <!-- Icons -->
-  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/favicon.png" />
-<link rel="shortcut icon" href="/favicon.ico" />
-
-  <!-- RSS -->
-  <link rel="alternate" type="application/rss+xml" title="RSS" href="/feed.xml" />
-
-  <!-- Additional head bits without overriding original head -->
-</head>
-
-
-  <body class="default">
-
-    <div id="sidebar">
-  <header>
-    <div class="site-title">
-      <a href="/">
-        
-          <span class="back-arrow icon"><svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-  <path d="M0 0h24v24H0z" fill="none"/>
-  <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/>
-</svg></span>
-        
-        Tyler Blake
-      </a>
-    </div>
-    <p class="lead">Stay a while and listen.</p>
-  </header>
-  <nav id="sidebar-nav-links">
-  
-    <a class="home-link "
-        href="/">Home</a>
-  
-  
-
-  
-
-  
-
-
-  
-    
-  
-
-  
-    
-      <a class="page-link "
-          href="/about.html">About</a>
-    
-  
-
-  
-
-  
-    
-  
-
-  
-    
-  
-
-  
-
-  
-    
-  
-
-  
-    
-  
-
-  
-    
-  
-
-  
-
-
-  
-
-
-  
-    
-  
-
-  
-    
-  
-
-  
-
-  
-    
-  
-
-  
-    
-  
-
-  
-
-  
-    
-      <a class="category-link "
-          href="/category/nativescript.html">NativeScript</a>
-    
-  
-
-  
-    
-  
-
-  
-    
-  
-
-  
-
-
-  <!-- Optional additional links to insert in sidebar nav -->
-</nav>
-
-
-  <!-- 
-    <span class="site-version">Currently v3.5.3</span>
-   -->
-
-  <nav id="sidebar-icon-links">
-  
-    <a id="github-link"
-       class="icon" title="Github Project" aria-label="Github Project"
-       href="https://github.com/tylerablake">
-      <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 28"><path d="M12 2c6.625 0 12 5.375 12 12 0 5.297-3.437 9.797-8.203 11.391-0.609 0.109-0.828-0.266-0.828-0.578 0-0.391 0.016-1.687 0.016-3.297 0-1.125-0.375-1.844-0.812-2.219 2.672-0.297 5.484-1.313 5.484-5.922 0-1.313-0.469-2.375-1.234-3.219 0.125-0.313 0.531-1.531-0.125-3.187-1-0.313-3.297 1.234-3.297 1.234-0.953-0.266-1.984-0.406-3-0.406s-2.047 0.141-3 0.406c0 0-2.297-1.547-3.297-1.234-0.656 1.656-0.25 2.875-0.125 3.187-0.766 0.844-1.234 1.906-1.234 3.219 0 4.594 2.797 5.625 5.469 5.922-0.344 0.313-0.656 0.844-0.766 1.609-0.688 0.313-2.438 0.844-3.484-1-0.656-1.141-1.844-1.234-1.844-1.234-1.172-0.016-0.078 0.734-0.078 0.734 0.781 0.359 1.328 1.75 1.328 1.75 0.703 2.141 4.047 1.422 4.047 1.422 0 1 0.016 1.937 0.016 2.234 0 0.313-0.219 0.688-0.828 0.578-4.766-1.594-8.203-6.094-8.203-11.391 0-6.625 5.375-12 12-12zM4.547 19.234c0.031-0.063-0.016-0.141-0.109-0.187-0.094-0.031-0.172-0.016-0.203 0.031-0.031 0.063 0.016 0.141 0.109 0.187 0.078 0.047 0.172 0.031 0.203-0.031zM5.031 19.766c0.063-0.047 0.047-0.156-0.031-0.25-0.078-0.078-0.187-0.109-0.25-0.047-0.063 0.047-0.047 0.156 0.031 0.25 0.078 0.078 0.187 0.109 0.25 0.047zM5.5 20.469c0.078-0.063 0.078-0.187 0-0.297-0.063-0.109-0.187-0.156-0.266-0.094-0.078 0.047-0.078 0.172 0 0.281s0.203 0.156 0.266 0.109zM6.156 21.125c0.063-0.063 0.031-0.203-0.063-0.297-0.109-0.109-0.25-0.125-0.313-0.047-0.078 0.063-0.047 0.203 0.063 0.297 0.109 0.109 0.25 0.125 0.313 0.047zM7.047 21.516c0.031-0.094-0.063-0.203-0.203-0.25-0.125-0.031-0.266 0.016-0.297 0.109s0.063 0.203 0.203 0.234c0.125 0.047 0.266 0 0.297-0.094zM8.031 21.594c0-0.109-0.125-0.187-0.266-0.172-0.141 0-0.25 0.078-0.25 0.172 0 0.109 0.109 0.187 0.266 0.172 0.141 0 0.25-0.078 0.25-0.172zM8.937 21.438c-0.016-0.094-0.141-0.156-0.281-0.141-0.141 0.031-0.234 0.125-0.219 0.234 0.016 0.094 0.141 0.156 0.281 0.125s0.234-0.125 0.219-0.219z"></path>
-</svg>
-
-    </a>
-  
-  
-    <a id="github-link"
-      class="icon" title="Twitter Profile" aria-label="Twitter Profile"
-      href="https://twitter.com/TylerBlakeLOU">
-      <?xml version="1.0" encoding="iso-8859-1"?>
-<!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
-<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 width="512px" height="512px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
-<g>
-	<path d="M256,0C114.615,0,0,114.615,0,256s114.615,256,256,256s256-114.615,256-256S397.385,0,256,0z M403.121,180.544
-		c0.146,3.254,0.221,6.528,0.221,9.819c0,100.311-76.354,215.982-215.979,215.982c-42.868,0-82.768-12.568-116.363-34.106
-		c5.938,0.702,11.981,1.062,18.108,1.062c35.565,0,68.295-12.138,94.275-32.496c-33.217-0.611-61.25-22.562-70.912-52.717
-		c4.637,0.885,9.392,1.361,14.283,1.361c6.923,0,13.629-0.928,19.999-2.662c-34.726-6.977-60.893-37.656-60.893-74.434
-		c0-0.32,0-0.639,0.008-0.955c10.235,5.685,21.939,9.1,34.382,9.494c-20.37-13.611-33.77-36.846-33.77-63.184
-		c0-13.911,3.744-26.952,10.278-38.162c37.439,45.927,93.374,76.146,156.462,79.314c-1.294-5.559-1.965-11.351-1.965-17.302
-		c0-41.92,33.99-75.906,75.909-75.906c21.832,0,41.562,9.218,55.408,23.97c17.291-3.404,33.537-9.721,48.207-18.42
-		c-5.668,17.727-17.705,32.603-33.377,41.997c15.355-1.834,29.984-5.916,43.598-11.952
-		C430.824,156.471,417.955,169.84,403.121,180.544z"/>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-</svg>
-
-    </a>
-
-  <a id="subscribe-link"
-     class="icon" title="Subscribe" aria-label="Subscribe"
-     href="/feed.xml">
-    <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-    <path d="M0 0h24v24H0z" fill="none"/>
-    <circle cx="6.18" cy="17.82" r="2.18"/>
-    <path d="M4 4.44v2.83c7.03 0 12.73 5.7 12.73 12.73h2.83c0-8.59-6.97-15.56-15.56-15.56zm0 5.66v2.83c3.9 0 7.07 3.17 7.07 7.07h2.83c0-5.47-4.43-9.9-9.9-9.9z"/>
-</svg>
-  </a>
-
-  
-  
-  
-  
-
-  
-    <a id="tags-link"
-       class="icon"
-       title="Tags" aria-label="Tags"
-       href="/tags.html">
-      <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-    <path d="M0 0h24v24H0z" fill="none"/>
-    <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
-</svg>
-    </a>
-  
-
-  
-    <a id="search-link"
-       class="icon"
-       title="Search" aria-label="Search"
-       href="/search.html">
-      <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-    <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
-    <path d="M0 0h24v24H0z" fill="none"/>
-</svg>
-    </a>
-  
-
-  <!-- Optional additional links to insert for icons links -->
-</nav>
-  <p>
-  &copy; 2018.
-  <a href="/LICENSE.md">MIT License.</a>
-</p>
-
-</div>
-
-
-    <main class="container">
-      <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom">
-
- <title>Tyler Blake</title>
- <link href="http://localhost:4000/atom.xml" rel="self"/>
- <link href="http://localhost:4000/"/>
- <updated>2018-07-17T11:26:32-04:00</updated>
- <id>http://localhost:4000</id>
- <author>
-   <name>Tyler Blake</name>
-   <email></email>
- </author>
-
- 
- <entry>
-   <title>Setting Up Your Machine</title>
-   <link href="http://localhost:4000/environment/2018/07/17/setting-up-your-machine.html"/>
-   <updated>2018-07-17T00:00:00-04:00</updated>
-   <id>http://localhost:4000/environment/2018/07/17/setting-up-your-machine</id>
-   <content type="html">&lt;p&gt;There are many different ways to set up your development environment for NativeScript. Here I’ll show you mine.
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.3">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2018-07-17T11:26:32-04:00</updated><id>http://localhost:4000/</id><title type="html">Tyler Blake</title><subtitle>Stay a while and listen.</subtitle><author><name>Tyler Blake</name></author><entry><title type="html">Setting Up Your Machine</title><link href="http://localhost:4000/environment/2018/07/17/setting-up-your-machine.html" rel="alternate" type="text/html" title="Setting Up Your Machine" /><published>2018-07-17T00:00:00-04:00</published><updated>2018-07-17T06:30:00-04:00</updated><id>http://localhost:4000/environment/2018/07/17/setting-up-your-machine</id><content type="html" xml:base="http://localhost:4000/environment/2018/07/17/setting-up-your-machine.html">&lt;p&gt;There are many different ways to set up your development environment for NativeScript. Here I’ll show you mine.
 &lt;!--more--&gt;&lt;/p&gt;
 
 &lt;p&gt;The following shows the list I use to set up my development environment for NativeScript development on my Mac.&lt;/p&gt;
@@ -417,16 +131,7 @@
   &lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;If you run into any issues I didn’t, stop by the &lt;a href=&quot;http://docs.nativescript.org/start/quick-setup&quot; title=&quot;NativeScript Setup Link&quot;&gt;NativeScript Setup Docs&lt;/a&gt; for a more in depth setup guide.&lt;/p&gt;
-</content>
- </entry>
- 
- <entry>
-   <title>Understanding Grid Layouts</title>
-   <link href="http://localhost:4000/nativescript/2018/07/03/understanding-grid-layouts.html"/>
-   <updated>2018-07-03T00:00:00-04:00</updated>
-   <id>http://localhost:4000/nativescript/2018/07/03/understanding-grid-layouts</id>
-   <content type="html">&lt;p&gt;NativeScript has many different layouts, let’s dig into grid layouts for a few.
+&lt;p&gt;If you run into any issues I didn’t, stop by the &lt;a href=&quot;http://docs.nativescript.org/start/quick-setup&quot; title=&quot;NativeScript Setup Link&quot;&gt;NativeScript Setup Docs&lt;/a&gt; for a more in depth setup guide.&lt;/p&gt;</content><author><name>Tyler Blake</name></author><category term="Setup" /><category term="Environment" /><category term="NativeScript" /><summary type="html">There are many different ways to set up your development environment for NativeScript. Here I’ll show you mine.</summary></entry><entry><title type="html">Understanding Grid Layouts</title><link href="http://localhost:4000/nativescript/2018/07/03/understanding-grid-layouts.html" rel="alternate" type="text/html" title="Understanding Grid Layouts" /><published>2018-07-03T00:00:00-04:00</published><updated>2018-07-03T08:43:00-04:00</updated><id>http://localhost:4000/nativescript/2018/07/03/understanding-grid-layouts</id><content type="html" xml:base="http://localhost:4000/nativescript/2018/07/03/understanding-grid-layouts.html">&lt;p&gt;NativeScript has many different layouts, let’s dig into grid layouts for a few.
 &lt;!--more--&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;basic-grids&quot;&gt;Basic Grids&lt;/h2&gt;
@@ -491,16 +196,7 @@
 
 &lt;p&gt;Now you can go create all kinds of cool GridLayouts!&lt;/p&gt;
 
-&lt;p&gt;More blog posts &lt;strong&gt;are coming&lt;/strong&gt; but in the meantime, stop by the &lt;a href=&quot;http://docs.nativescript.org&quot; title=&quot;NativeScript Docs Link&quot;&gt;NativeScript Docs&lt;/a&gt; to learn more!&lt;/p&gt;
-</content>
- </entry>
- 
- <entry>
-   <title>What Is NativeScript?</title>
-   <link href="http://localhost:4000/nativescript/2018/07/01/what-is-nativescript.html"/>
-   <updated>2018-07-01T00:00:00-04:00</updated>
-   <id>http://localhost:4000/nativescript/2018/07/01/what-is-nativescript</id>
-   <content type="html">&lt;p&gt;NativeScript is how you build cross-platform, native iOS and Android apps with JavaScript, but what does that really mean?
+&lt;p&gt;More blog posts &lt;strong&gt;are coming&lt;/strong&gt; but in the meantime, stop by the &lt;a href=&quot;http://docs.nativescript.org&quot; title=&quot;NativeScript Docs Link&quot;&gt;NativeScript Docs&lt;/a&gt; to learn more!&lt;/p&gt;</content><author><name>Tyler Blake</name></author><category term="Intro" /><category term="Overview" /><category term="NativeScript" /><summary type="html">NativeScript has many different layouts, let’s dig into grid layouts for a few.</summary></entry><entry><title type="html">What Is NativeScript?</title><link href="http://localhost:4000/nativescript/2018/07/01/what-is-nativescript.html" rel="alternate" type="text/html" title="What Is NativeScript?" /><published>2018-07-01T00:00:00-04:00</published><updated>2018-04-11T23:13:00-04:00</updated><id>http://localhost:4000/nativescript/2018/07/01/what-is-nativescript</id><content type="html" xml:base="http://localhost:4000/nativescript/2018/07/01/what-is-nativescript.html">&lt;p&gt;NativeScript is how you build cross-platform, native iOS and Android apps with JavaScript, but what does that really mean?
 &lt;!--more--&gt;&lt;/p&gt;
 
 &lt;p&gt;It means:&lt;/p&gt;
@@ -515,16 +211,7 @@
   &lt;li&gt;It is backed by Progress&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;Blog posts &lt;strong&gt;are coming&lt;/strong&gt; but in the meantime, stop by the &lt;a href=&quot;http://docs.nativescript.org&quot; title=&quot;NativeScript Docs Link&quot;&gt;NativeScript Docs&lt;/a&gt; to learn more!&lt;/p&gt;
-</content>
- </entry>
- 
- <entry>
-   <title>Hello Hydeout</title>
-   <link href="http://localhost:4000/2018/04/05/hello-hydeout.html"/>
-   <updated>2018-04-05T00:00:00-04:00</updated>
-   <id>http://localhost:4000/2018/04/05/hello-hydeout</id>
-   <content type="html">&lt;p&gt;Hydeout updates the original &lt;a href=&quot;https://github.com/poole/hyde&quot;&gt;Hyde&lt;/a&gt;
+&lt;p&gt;Blog posts &lt;strong&gt;are coming&lt;/strong&gt; but in the meantime, stop by the &lt;a href=&quot;http://docs.nativescript.org&quot; title=&quot;NativeScript Docs Link&quot;&gt;NativeScript Docs&lt;/a&gt; to learn more!&lt;/p&gt;</content><author><name>Tyler Blake</name></author><category term="Intro" /><category term="Overview" /><category term="NativeScript" /><summary type="html">NativeScript is how you build cross-platform, native iOS and Android apps with JavaScript, but what does that really mean?</summary></entry><entry><title type="html">Hello Hydeout</title><link href="http://localhost:4000/2018/04/05/hello-hydeout.html" rel="alternate" type="text/html" title="Hello Hydeout" /><published>2018-04-05T00:00:00-04:00</published><updated>2018-04-05T00:00:00-04:00</updated><id>http://localhost:4000/2018/04/05/hello-hydeout</id><content type="html" xml:base="http://localhost:4000/2018/04/05/hello-hydeout.html">&lt;p&gt;Hydeout updates the original &lt;a href=&quot;https://github.com/poole/hyde&quot;&gt;Hyde&lt;/a&gt;
 theme for &lt;a href=&quot;http://jekyllrb.com&quot;&gt;Jekyll&lt;/a&gt; 3.x and adds new functionality.&lt;/p&gt;
 
 &lt;h3 id=&quot;keep-it-simple&quot;&gt;Keep It Simple&lt;/h3&gt;
@@ -604,16 +291,7 @@ your property ID in your config file.&lt;/p&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;There’s also a bunch of minor tweaks and adjustments throughout the
-theme. Hope this works for you!&lt;/p&gt;
-</content>
- </entry>
- 
- <entry>
-   <title>Introducing Hyde</title>
-   <link href="http://localhost:4000/2018/04/02/introducing-hyde.html"/>
-   <updated>2018-04-02T00:00:00-04:00</updated>
-   <id>http://localhost:4000/2018/04/02/introducing-hyde</id>
-   <content type="html">&lt;p&gt;Hyde is a brazen two-column &lt;a href=&quot;http://jekyllrb.com&quot;&gt;Jekyll&lt;/a&gt; theme that pairs a prominent sidebar with uncomplicated content. It’s based on &lt;a href=&quot;http://getpoole.com&quot;&gt;Poole&lt;/a&gt;, the Jekyll butler.&lt;/p&gt;
+theme. Hope this works for you!&lt;/p&gt;</content><author><name>Tyler Blake</name></author><summary type="html">Hydeout updates the original Hyde theme for Jekyll 3.x and adds new functionality. Keep It Simple In keeping with the original Hyde theme, Hydeout aims to keep the overall design lightweight and plugin-free. JavaScript is currently limited only to Disqus and Google Analytics (and is only loaded if you provide configuration variables). Hydeout makes heavy use of Flexbox in its CSS. If Flexbox is not available, the CSS degrades into a single column layout. Customization Hydeout replaces Hyde’s class-based theming with the use of the following SASS variables: $sidebar-bg-color: #202020 !default; $sidebar-sticky: true !default; $layout-reverse: false !default; $link-color: #268bd2 !default; To override these variables, create your own assets/css/main.scss file. Define your own variables, then import in Hydeout’s SCSS, like so: --- # Jekyll needs front matter for SCSS files --- $sidebar-bg-color: #ac4142; $link-color: #ac4142; $sidebar-sticky: false; @import &quot;hydeout&quot;; See the _variables file for other variables you can override. You can also insert custom head tags (e.g. to load your own stylesheets) by defining your own _includes/custom-head.html or insert tags at the end of the body (e.g. for custom JS) by defining your own _includes/custom-foot.html. New Features Hydeout also adds a new tags page (accessible in the sidebar) and a new “category” layout for dedicated category pages. Category pages are automatically added to the sidebar. All other pages must have sidebar_link: true in their front matter to show up in the sidebar. A simple redirect-to-Google search is available. If you want to use Google Custom Search or Algolia or something with more involved, override the search.html. Disqus integration is ready out of the box. Just add the following to your config file: disqus: shortname: my-disqus-shortname If you don’t want Disqus or want to use something else, override comments.html. For Google Analytics support, define a google_analytics variable with your property ID in your config file. There’s also a bunch of minor tweaks and adjustments throughout the theme. Hope this works for you!</summary></entry><entry><title type="html">Introducing Hyde</title><link href="http://localhost:4000/2018/04/02/introducing-hyde.html" rel="alternate" type="text/html" title="Introducing Hyde" /><published>2018-04-02T00:00:00-04:00</published><updated>2018-04-02T00:00:00-04:00</updated><id>http://localhost:4000/2018/04/02/introducing-hyde</id><content type="html" xml:base="http://localhost:4000/2018/04/02/introducing-hyde.html">&lt;p&gt;Hyde is a brazen two-column &lt;a href=&quot;http://jekyllrb.com&quot;&gt;Jekyll&lt;/a&gt; theme that pairs a prominent sidebar with uncomplicated content. It’s based on &lt;a href=&quot;http://getpoole.com&quot;&gt;Poole&lt;/a&gt;, the Jekyll butler.&lt;/p&gt;
 
 &lt;h3 id=&quot;built-on-poole&quot;&gt;Built on Poole&lt;/h3&gt;
 
@@ -648,16 +326,4 @@ theme. Hope this works for you!&lt;/p&gt;
 
 &lt;p&gt;Hyde is developed on and hosted with GitHub. Head to the &lt;a href=&quot;https://github.com/poole/hyde&quot;&gt;GitHub repository&lt;/a&gt; for downloads, bug reports, and features requests.&lt;/p&gt;
 
-&lt;p&gt;Thanks!&lt;/p&gt;
-</content>
- </entry>
- 
-
-</feed>
-
-    </main>
-
-    <!-- Optional footer content -->
-
-  </body>
-</html>
+&lt;p&gt;Thanks!&lt;/p&gt;</content><author><name>Tyler Blake</name></author><summary type="html">Hyde is a brazen two-column Jekyll theme that pairs a prominent sidebar with uncomplicated content. It’s based on Poole, the Jekyll butler. Built on Poole Poole is the Jekyll Butler, serving as an upstanding and effective foundation for Jekyll themes by @mdo. Poole, and every theme built on it (like Hyde here) includes the following: Complete Jekyll setup included (layouts, config, 404, RSS feed, posts, and example page) Mobile friendly design and development Easily scalable text and component sizing with rem units in the CSS Support for a wide gamut of HTML elements Related posts (time-based, because Jekyll) below each post Syntax highlighting, courtesy Pygments (the Python-based code snippet highlighter) Hyde features In addition to the features of Poole, Hyde adds the following: Sidebar includes support for textual modules and a dynamically generated navigation with active link support Two orientations for content and sidebar, default (left sidebar) and reverse (right sidebar), available via &amp;lt;body&amp;gt; classes Eight optional color schemes, available via &amp;lt;body&amp;gt; classes Head to the readme to learn more. Browser support Hyde is by preference a forward-thinking project. In addition to the latest versions of Chrome, Safari (mobile and desktop), and Firefox, it is only compatible with Internet Explorer 9 and above. Download Hyde is developed on and hosted with GitHub. Head to the GitHub repository for downloads, bug reports, and features requests. Thanks!</summary></entry></feed>
