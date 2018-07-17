@@ -1,9 +1,9 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.3">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2018-07-17T11:26:32-04:00</updated><id>http://localhost:4000/</id><title type="html">Tyler Blake</title><subtitle>Stay a while and listen.</subtitle><author><name>Tyler Blake</name></author><entry><title type="html">Setting Up Your Machine</title><link href="http://localhost:4000/environment/2018/07/17/setting-up-your-machine.html" rel="alternate" type="text/html" title="Setting Up Your Machine" /><published>2018-07-17T00:00:00-04:00</published><updated>2018-07-17T06:30:00-04:00</updated><id>http://localhost:4000/environment/2018/07/17/setting-up-your-machine</id><content type="html" xml:base="http://localhost:4000/environment/2018/07/17/setting-up-your-machine.html">&lt;p&gt;There are many different ways to set up your development environment for NativeScript. Here I’ll show you mine.
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.3">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2018-07-17T11:32:59-04:00</updated><id>http://localhost:4000/</id><title type="html">Tyler Blake</title><subtitle>Stay a while and listen.</subtitle><author><name>Tyler Blake</name></author><entry><title type="html">Setting Up Your Machine</title><link href="http://localhost:4000/environment/2018/07/17/setting-up-your-machine.html" rel="alternate" type="text/html" title="Setting Up Your Machine" /><published>2018-07-17T00:00:00-04:00</published><updated>2018-07-17T06:30:00-04:00</updated><id>http://localhost:4000/environment/2018/07/17/setting-up-your-machine</id><content type="html" xml:base="http://localhost:4000/environment/2018/07/17/setting-up-your-machine.html">&lt;p&gt;There are many different ways to set up your development environment for NativeScript. Here I’ll show you mine.
 &lt;!--more--&gt;&lt;/p&gt;
 
-&lt;p&gt;The following shows the list I use to set up my development environment for NativeScript development on my Mac.&lt;/p&gt;
+&lt;p&gt;The following shows the list I use to set up my machine for NativeScript development on my Mac.&lt;/p&gt;
 
-&lt;p&gt;If you are not recovering from a computer crash like me, then the first 2 steps are optional :)&lt;/p&gt;
+&lt;p&gt;If you are not recovering from a computer crash like me, then you can ignore reformatting your Mac :)&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;Note: Replace iTerm2 with your preferred terminal and VSCode with your preferred IDE&lt;/strong&gt;&lt;/p&gt;
 
@@ -17,10 +17,27 @@
 &lt;ul&gt;
   &lt;li&gt;Install Chrome&lt;/li&gt;
   &lt;li&gt;Install iTerm2&lt;/li&gt;
-  &lt;li&gt;Create/Import .bash_prompt&lt;/li&gt;
-  &lt;li&gt;Create/Import .bash_profile&lt;/li&gt;
-  &lt;li&gt;Create/Import .git_completion.sh&lt;/li&gt;
-  &lt;li&gt;Create/Import .git_prompt.sh&lt;/li&gt;
+  &lt;li&gt;Open iTerm2&lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Create/Import .bash_prompt&lt;/p&gt;
+
+    &lt;p&gt;Run &lt;code class=&quot;highlighter-rouge&quot;&gt;touch .bash_prompt&lt;/code&gt; in iTerm2&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Create/Import .bash_profile&lt;/p&gt;
+
+    &lt;p&gt;Run &lt;code class=&quot;highlighter-rouge&quot;&gt;touch .bash_profile&lt;/code&gt; in iTerm2&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Create/Import .git_completion.sh&lt;/p&gt;
+
+    &lt;p&gt;Run &lt;code class=&quot;highlighter-rouge&quot;&gt;touch .git_completion.sh&lt;/code&gt; in iTerm2&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Create/Import .git_prompt.sh&lt;/p&gt;
+
+    &lt;p&gt;Run &lt;code class=&quot;highlighter-rouge&quot;&gt;touch .git_prompt.sh&lt;/code&gt; in iTerm2&lt;/p&gt;
+  &lt;/li&gt;
   &lt;li&gt;
     &lt;p&gt;Install Homebrew&lt;/p&gt;
 

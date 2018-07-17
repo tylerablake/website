@@ -28,10 +28,19 @@ If you are not recovering from a computer crash like me, then you can ignore ref
 ## Basics
 * Install Chrome
 * Install iTerm2
+* Open iTerm2
 * Create/Import .bash_prompt
+
+    Run `touch .bash_prompt` in iTerm2
 * Create/Import .bash_profile
+
+    Run `touch .bash_profile` in iTerm2
 * Create/Import .git_completion.sh
+
+    Run `touch .git_completion.sh` in iTerm2
 * Create/Import .git_prompt.sh
+
+    Run `touch .git_prompt.sh` in iTerm2
 * Install Homebrew
 
     Run `/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"` in iTerm2
