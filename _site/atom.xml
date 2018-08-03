@@ -101,6 +101,10 @@
 
   
 
+  
+    
+  
+
 
   
 
@@ -140,6 +144,10 @@
     
   
 
+  
+
+  
+    
   
 
 
@@ -271,13 +279,95 @@
  <title>Tyler Blake</title>
  <link href="http://localhost:4000/atom.xml" rel="self"/>
  <link href="http://localhost:4000/"/>
- <updated>2018-07-17T11:32:59-04:00</updated>
+ <updated>2018-08-03T16:27:43-04:00</updated>
  <id>http://localhost:4000</id>
  <author>
    <name>Tyler Blake</name>
    <email></email>
  </author>
 
+ 
+ <entry>
+   <title>Accessing Native APIs with NativeScript</title>
+   <link href="http://localhost:4000/nativescript/2018/08/03/accessing-native-apis.html"/>
+   <updated>2018-08-03T00:00:00-04:00</updated>
+   <id>http://localhost:4000/nativescript/2018/08/03/accessing-native-apis</id>
+   <content type="html">&lt;p&gt;One of the biggest advantages of NativeScript is the ability to access native device API’s. In this post I’ll show you how.
+&lt;!--more--&gt;&lt;/p&gt;
+
+&lt;p&gt;Many other hybrid frameworks don’t allow you to access device API’s which causes limitations to app capability and performance. At first it sounds intimidating especially if you haven’t written any Swift/Java code before but it will be a lot less scary after this post.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;First let’s navigate to the app root directory and run this command to add TNS Platform Delcarations&lt;/p&gt;
+
+    &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;npm install tns-platform-declarations --save-dev&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Now, let’s run the following command to create an empty reference.d.ts file&lt;/p&gt;
+
+    &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;touch reference.d.ts&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Open the reference.d.ts file inside of your preferred IDE and add the following lines.&lt;/p&gt;
+
+    &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;/// &amp;lt;reference path=&quot;./node_modules/tns-platform-declarations/ios/ios.d.ts&quot; /&amp;gt;&lt;/code&gt;      &lt;br /&gt;
+ &lt;code class=&quot;highlighter-rouge&quot;&gt;/// &amp;lt;reference path=&quot;./node_modules/tns-platform-declarations/android/android.d.ts&quot; /&amp;gt;&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;strong&gt;Note: If only developing for iOS or Android and not both, comment out the reference path for the platform you are not developing for, this helps speed up your development experience greatly!&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Save the file and now you are ready to start accessing native device API’s!&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;In steps 1-4 we basically added intellisense for native API’s, without doing that it is very painful to develop using native API’s if you don’t know the API’s by memory.&lt;/p&gt;
+
+&lt;p&gt;Let’s look at how to use this new knowledge to do some cool stuff!&lt;/p&gt;
+
+&lt;p&gt;First let’s add an element to the page, in this case a button.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/images/viewChildButton.png&quot; alt=&quot;ViewChild Button&quot; class=&quot;img-responsive&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Then let’s retrieve access to that element (in this case it is a button) inside of our component using the &lt;code class=&quot;highlighter-rouge&quot;&gt;@ViewChild&lt;/code&gt; directive.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/images/viewChildReference.png&quot; alt=&quot;ViewChild Reference&quot; class=&quot;img-responsive&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;That gives us a reference to the element, but since we are using NativeScript that element reference isn’t quite the “Native” access we are looking for, in order to do that we need to drill into the exampleButton.&lt;/p&gt;
+
+&lt;p&gt;Here is an example of how to do that in iOS:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/images/nativeIosButtonReference.png&quot; alt=&quot;Native iOS Element Reference&quot; class=&quot;img-responsive&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Perfect! We have a button, and a reference to the Native element, in this case since we are building for iOS we have a reference to a &lt;code class=&quot;highlighter-rouge&quot;&gt;UIButton&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Unfortunately, I have no idea about all of the possibilities that come with a UIButton….but this is where steps 1-4 from earlier come in. What happens if we type &lt;code class=&quot;highlighter-rouge&quot;&gt;iosButton.&lt;/code&gt;?&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/images/nativeApiIntellisense.png&quot; alt=&quot;Native iOS API Intellisense&quot; class=&quot;img-responsive&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;So many APIs!!!!!!&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/images/soManyApis.png&quot; class=&quot;img-responsive&quot; height=&quot;250&quot; width=&quot;250&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Luckily since we added TNS Platform Declarations earlier, we now have access to “Go To Definition” on these native classes.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/images/goToDefinition.png&quot; alt=&quot;Go To Definition&quot; class=&quot;img-responsive&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Now you can drill into the &lt;code class=&quot;highlighter-rouge&quot;&gt;userInteractionEnabled&lt;/code&gt; property and see all 15,000+ lines of properties and methods we have access to within &lt;code class=&quot;highlighter-rouge&quot;&gt;UIKit&lt;/code&gt;, and that is just 1 of the many files for native iOS API’s!&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/images/apiReferenceFile.png&quot; alt=&quot;API Reference File&quot; class=&quot;img-responsive&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Now you can do all sorts of extra customizations to your apps. These steps can be replicated on all UI controls, including ListViews, Layouts, etc.&lt;/p&gt;
+
+&lt;p&gt;If you have any questions or comments feel free to leave them below. If you would like more info on this topic check out some of the following resources:&lt;/p&gt;
+
+&lt;p&gt;A presentation by Robert Laverty: &lt;a href=&quot;http://www.youtube.com/watch?v=zCdbrkmvdVI&quot; title=&quot;Robert Laverty Presentation Link&quot;&gt;Robert Laverty Presentation&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;And as always, the NativeScript docs :) &lt;a href=&quot;http://docs.nativescript.org&quot; title=&quot;NativeScript Docs Link&quot;&gt;NativeScript Docs&lt;/a&gt;&lt;/p&gt;
+
+</content>
+ </entry>
  
  <entry>
    <title>Setting Up Your Machine</title>

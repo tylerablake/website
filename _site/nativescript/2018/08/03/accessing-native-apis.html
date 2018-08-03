@@ -11,7 +11,7 @@
 
   <title>
     
-      Introducing Hyde &middot; Tyler Blake
+      Accessing Native APIs with NativeScript &middot; Tyler Blake
     
   </title>
 
@@ -274,59 +274,142 @@
 
     <main class="container">
       <header>
-  <h1 class="post-title">Introducing Hyde</h1>
+  <h1 class="post-title">Accessing Native APIs with NativeScript</h1>
 </header>
 <div class="content">
   <div class="post-meta">
-  <span class="post-date">02 Apr 2018</span>
+  <span class="post-date">03 Aug 2018</span>
   <span class="post-categories">
+    
+      &bull;
+
+      
+      
+      
+
+      
+        <a href="/category/nativescript.html">
+          NativeScript
+        </a>
+      
     
   </span>
 </div>
 
   <div class="post-body">
-    <p>Hyde is a brazen two-column <a href="http://jekyllrb.com">Jekyll</a> theme that pairs a prominent sidebar with uncomplicated content. It’s based on <a href="http://getpoole.com">Poole</a>, the Jekyll butler.</p>
+    <p>One of the biggest advantages of NativeScript is the ability to access native device API’s. In this post I’ll show you how.
+<!--more--></p>
 
-<h3 id="built-on-poole">Built on Poole</h3>
+<p>Many other hybrid frameworks don’t allow you to access device API’s which causes limitations to app capability and performance. At first it sounds intimidating especially if you haven’t written any Swift/Java code before but it will be a lot less scary after this post.</p>
 
-<p>Poole is the Jekyll Butler, serving as an upstanding and effective foundation for Jekyll themes by <a href="https://twitter.com/mdo">@mdo</a>. Poole, and every theme built on it (like Hyde here) includes the following:</p>
+<ol>
+  <li>
+    <p>First let’s navigate to the app root directory and run this command to add TNS Platform Delcarations</p>
 
-<ul>
-  <li>Complete Jekyll setup included (layouts, config, <a href="/404">404</a>, <a href="/feed.xml">RSS feed</a>, posts, and <a href="/about">example page</a>)</li>
-  <li>Mobile friendly design and development</li>
-  <li>Easily scalable text and component sizing with <code class="highlighter-rouge">rem</code> units in the CSS</li>
-  <li>Support for a wide gamut of HTML elements</li>
-  <li>Related posts (time-based, because Jekyll) below each post</li>
-  <li>Syntax highlighting, courtesy Pygments (the Python-based code snippet highlighter)</li>
-</ul>
+    <p><code class="highlighter-rouge">npm install tns-platform-declarations --save-dev</code></p>
+  </li>
+  <li>
+    <p>Now, let’s run the following command to create an empty reference.d.ts file</p>
 
-<h3 id="hyde-features">Hyde features</h3>
+    <p><code class="highlighter-rouge">touch reference.d.ts</code></p>
+  </li>
+  <li>
+    <p>Open the reference.d.ts file inside of your preferred IDE and add the following lines.</p>
 
-<p>In addition to the features of Poole, Hyde adds the following:</p>
+    <p><code class="highlighter-rouge">/// &lt;reference path="./node_modules/tns-platform-declarations/ios/ios.d.ts" /&gt;</code>      <br />
+ <code class="highlighter-rouge">/// &lt;reference path="./node_modules/tns-platform-declarations/android/android.d.ts" /&gt;</code></p>
+  </li>
+</ol>
 
-<ul>
-  <li>Sidebar includes support for textual modules and a dynamically generated navigation with active link support</li>
-  <li>Two orientations for content and sidebar, default (left sidebar) and <a href="https://github.com/poole/lanyon#reverse-layout">reverse</a> (right sidebar), available via <code class="highlighter-rouge">&lt;body&gt;</code> classes</li>
-  <li><a href="https://github.com/poole/hyde#themes">Eight optional color schemes</a>, available via <code class="highlighter-rouge">&lt;body&gt;</code> classes</li>
-</ul>
+<p><strong>Note: If only developing for iOS or Android and not both, comment out the reference path for the platform you are not developing for, this helps speed up your development experience greatly!</strong></p>
 
-<p><a href="https://github.com/poole/hyde#readme">Head to the readme</a> to learn more.</p>
+<ol>
+  <li>Save the file and now you are ready to start accessing native device API’s!</li>
+</ol>
 
-<h3 id="browser-support">Browser support</h3>
+<p>In steps 1-4 we basically added intellisense for native API’s, without doing that it is very painful to develop using native API’s if you don’t know the API’s by memory.</p>
 
-<p>Hyde is by preference a forward-thinking project. In addition to the latest versions of Chrome, Safari (mobile and desktop), and Firefox, it is only compatible with Internet Explorer 9 and above.</p>
+<p>Let’s look at how to use this new knowledge to do some cool stuff!</p>
 
-<h3 id="download">Download</h3>
+<p>First let’s add an element to the page, in this case a button.</p>
 
-<p>Hyde is developed on and hosted with GitHub. Head to the <a href="https://github.com/poole/hyde">GitHub repository</a> for downloads, bug reports, and features requests.</p>
+<p><img src="http://localhost:4000/assets/images/viewChildButton.png" alt="ViewChild Button" class="img-responsive" /></p>
 
-<p>Thanks!</p>
+<p>Then let’s retrieve access to that element (in this case it is a button) inside of our component using the <code class="highlighter-rouge">@ViewChild</code> directive.</p>
+
+<p><img src="http://localhost:4000/assets/images/viewChildReference.png" alt="ViewChild Reference" class="img-responsive" /></p>
+
+<p>That gives us a reference to the element, but since we are using NativeScript that element reference isn’t quite the “Native” access we are looking for, in order to do that we need to drill into the exampleButton.</p>
+
+<p>Here is an example of how to do that in iOS:</p>
+
+<p><img src="http://localhost:4000/assets/images/nativeIosButtonReference.png" alt="Native iOS Element Reference" class="img-responsive" /></p>
+
+<p>Perfect! We have a button, and a reference to the Native element, in this case since we are building for iOS we have a reference to a <code class="highlighter-rouge">UIButton</code>.</p>
+
+<p>Unfortunately, I have no idea about all of the possibilities that come with a UIButton….but this is where steps 1-4 from earlier come in. What happens if we type <code class="highlighter-rouge">iosButton.</code>?</p>
+
+<p><img src="http://localhost:4000/assets/images/nativeApiIntellisense.png" alt="Native iOS API Intellisense" class="img-responsive" /></p>
+
+<p><strong>So many APIs!!!!!!</strong></p>
+
+<p><img src="http://localhost:4000/assets/images/soManyApis.png" class="img-responsive" height="250" width="250" /></p>
+
+<p>Luckily since we added TNS Platform Declarations earlier, we now have access to “Go To Definition” on these native classes.</p>
+
+<p><img src="http://localhost:4000/assets/images/goToDefinition.png" alt="Go To Definition" class="img-responsive" /></p>
+
+<p>Now you can drill into the <code class="highlighter-rouge">userInteractionEnabled</code> property and see all 15,000+ lines of properties and methods we have access to within <code class="highlighter-rouge">UIKit</code>, and that is just 1 of the many files for native iOS API’s!</p>
+
+<p><img src="http://localhost:4000/assets/images/apiReferenceFile.png" alt="API Reference File" class="img-responsive" /></p>
+
+<p>Now you can do all sorts of extra customizations to your apps. These steps can be replicated on all UI controls, including ListViews, Layouts, etc.</p>
+
+<p>If you have any questions or comments feel free to leave them below. If you would like more info on this topic check out some of the following resources:</p>
+
+<p>A presentation by Robert Laverty: <a href="http://www.youtube.com/watch?v=zCdbrkmvdVI" title="Robert Laverty Presentation Link">Robert Laverty Presentation</a></p>
+
+<p>And as always, the NativeScript docs :) <a href="http://docs.nativescript.org" title="NativeScript Docs Link">NativeScript Docs</a></p>
+
 
     
 
 
 
 <div class="post-tags">
+  
+    
+    <a href="/tags.html#intro">
+    
+      <span class="icon">
+        <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
+</svg>
+      </span>&nbsp;<span class="tag-name">Intro</span>
+    </a>
+  
+    
+    <a href="/tags.html#overview">
+    
+      <span class="icon">
+        <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
+</svg>
+      </span>&nbsp;<span class="tag-name">Overview</span>
+    </a>
+  
+    
+    <a href="/tags.html#nativescript">
+    
+      <span class="icon">
+        <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
+</svg>
+      </span>&nbsp;<span class="tag-name">NativeScript</span>
+    </a>
   
 </div>
   </div>
@@ -349,9 +432,9 @@
   *  https://disqus.com/admin/universalcode/#configuration-variables
   */
   var disqus_config = function () {
-    this.page.url = "http://localhost:4000/2018/04/02/introducing-hyde.html";
+    this.page.url = "http://localhost:4000/nativescript/2018/08/03/accessing-native-apis.html";
     this.page.identifier = "" ||
-                           "http://localhost:4000/2018/04/02/introducing-hyde.html";
+                           "http://localhost:4000/nativescript/2018/08/03/accessing-native-apis.html";
   }
   function loadDisqusComments() { // DON'T EDIT BELOW THIS LINE
     var d = document, s = d.createElement('script');
@@ -375,15 +458,6 @@
     
       <li>
         <h3>
-          <a href="/nativescript/2018/08/03/accessing-native-apis.html">
-            Accessing Native APIs with NativeScript
-            <small>03 Aug 2018</small>
-          </a>
-        </h3>
-      </li>
-    
-      <li>
-        <h3>
           <a href="/environment/2018/07/17/setting-up-your-machine.html">
             Setting Up Your Machine
             <small>17 Jul 2018</small>
@@ -396,6 +470,15 @@
           <a href="/nativescript/2018/07/03/understanding-grid-layouts.html">
             Understanding Grid Layouts
             <small>03 Jul 2018</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/nativescript/2018/07/01/what-is-nativescript.html">
+            What Is NativeScript?
+            <small>01 Jul 2018</small>
           </a>
         </h3>
       </li>
