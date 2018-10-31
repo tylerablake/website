@@ -1,4 +1,85 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.3">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2018-08-03T16:27:43-04:00</updated><id>http://localhost:4000/</id><title type="html">Tyler Blake</title><subtitle>Stay a while and listen.</subtitle><author><name>Tyler Blake</name></author><entry><title type="html">Accessing Native APIs with NativeScript</title><link href="http://localhost:4000/nativescript/2018/08/03/accessing-native-apis.html" rel="alternate" type="text/html" title="Accessing Native APIs with NativeScript" /><published>2018-08-03T00:00:00-04:00</published><updated>2018-08-03T09:30:00-04:00</updated><id>http://localhost:4000/nativescript/2018/08/03/accessing-native-apis</id><content type="html" xml:base="http://localhost:4000/nativescript/2018/08/03/accessing-native-apis.html">&lt;p&gt;One of the biggest advantages of NativeScript is the ability to access native device API’s. In this post I’ll show you how.
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.3">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2018-10-31T11:36:14-04:00</updated><id>http://localhost:4000/</id><title type="html">Tyler Blake</title><subtitle>Stay a while and listen.</subtitle><author><name>Tyler Blake</name></author><entry><title type="html">Creating Modals</title><link href="http://localhost:4000/nativescript/2018/10/31/creating-modals.html" rel="alternate" type="text/html" title="Creating Modals" /><published>2018-10-31T00:00:00-04:00</published><updated>2018-08-03T09:30:00-04:00</updated><id>http://localhost:4000/nativescript/2018/10/31/creating-modals</id><content type="html" xml:base="http://localhost:4000/nativescript/2018/10/31/creating-modals.html">&lt;p&gt;Sometimes you don’t want to clutter a single page with a bunch of inputs, lets see how to use modals to help with this!
+&lt;!--more--&gt;&lt;/p&gt;
+
+&lt;p&gt;One of the primary focuses for software is to collect user data, on mobile devices we have to be considerate of our users and make data entry easier for them.&lt;/p&gt;
+
+&lt;p&gt;Sometimes we have to collect a lot of data so a common way to make this more pleasant for the user is to use modals.&lt;/p&gt;
+
+&lt;p&gt;In this example I want to collect a date input from a user but I want to use a modal to show the DatePicker component.&lt;/p&gt;
+
+&lt;h2 id=&quot;first-we-need-to-create-our-initial-form&quot;&gt;First we need to create our initial form&lt;/h2&gt;
+
+&lt;p&gt;This is the page that will trigger the modal form and where we will return to after the modal action has completed.&lt;/p&gt;
+
+&lt;p&gt;For this I have a basic &lt;code class=&quot;highlighter-rouge&quot;&gt;Label&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;TextField&lt;/code&gt; which contains an tap event like so &lt;code class=&quot;highlighter-rouge&quot;&gt;(tap)=&quot;onDateTap()&quot;&lt;/code&gt;&lt;/p&gt;
+
+&lt;!-- ![Base Modal Form](http://localhost:4000/assets/images/base-modal-form.png){:class=&quot;img-responsive&quot;} --&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/images/base-modal-form.png&quot; class=&quot;img-responsive&quot; height=&quot;300&quot; width=&quot;300&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;now-we-have-to-create-that-ondatetap-function&quot;&gt;Now we have to create that &lt;code class=&quot;highlighter-rouge&quot;&gt;onDateTap()&lt;/code&gt; function&lt;/h2&gt;
+
+&lt;p&gt;Here is all of the code for the base form. I have highlighted the &lt;code class=&quot;highlighter-rouge&quot;&gt;onDateTap()&lt;/code&gt; function.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/images/base-form-code.png&quot; alt=&quot;Base Form Code&quot; class=&quot;img-responsive&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;The most important part here is:&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;context: this.date == null ? new Date() : this.date,&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;This means we are going to pass &lt;code class=&quot;highlighter-rouge&quot;&gt;this.date&lt;/code&gt; to the modal to be set inside of the modal view.&lt;/p&gt;
+
+&lt;p&gt;This is primarily for when a user wants to update the date, when we display the modal we want to display the value previously set for that field.&lt;/p&gt;
+
+&lt;p&gt;Then when the modal is closed, the value isreturned to us as &lt;code class=&quot;highlighter-rouge&quot;&gt;dialogResult&lt;/code&gt; later in this function.&lt;/p&gt;
+
+&lt;h2 id=&quot;now-we-have-to-create-the-modal&quot;&gt;Now we have to create the modal&lt;/h2&gt;
+
+&lt;p&gt;Modals are nothing more than just another page with a form, the only trick is that we have to pass the data between the initial form and the modal form, and visa versa. Let’s look at how that happens.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/images/modal-example.png&quot; class=&quot;img-responsive&quot; height=&quot;300&quot; width=&quot;300&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Right now the modal is nothing more than a &lt;code class=&quot;highlighter-rouge&quot;&gt;StackLayout&lt;/code&gt; with a &lt;code class=&quot;highlighter-rouge&quot;&gt;DatePicker&lt;/code&gt; and a &lt;code class=&quot;highlighter-rouge&quot;&gt;Button&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/images/modal-view-code.png&quot; alt=&quot;Modal View Code&quot; class=&quot;img-responsive&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Now let’s look at the component code for this modal.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/images/modal-component-code.png&quot; alt=&quot;Modal Component Code&quot; class=&quot;img-responsive&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;The important line in this component is this:&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;this.date = params.context;&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;That line sets the DatepickerModalComponent’s &lt;code class=&quot;highlighter-rouge&quot;&gt;date&lt;/code&gt; property to the date we passed through the &lt;code class=&quot;highlighter-rouge&quot;&gt;context&lt;/code&gt; property previously.&lt;/p&gt;
+
+&lt;p&gt;After you set the date, we need to return to the intial form, all we have to do is set up the &lt;code class=&quot;highlighter-rouge&quot;&gt;onDoneTap()&lt;/code&gt; function which has the following code:&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;this.params.closeCallback(this.date);&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;All that does is close the modal dialog and returns &lt;code class=&quot;highlighter-rouge&quot;&gt;this.date&lt;/code&gt; which is the updated value&lt;/p&gt;
+
+&lt;h2 id=&quot;retrieving-the-modal-data&quot;&gt;Retrieving the modal data&lt;/h2&gt;
+
+&lt;p&gt;Now we need to return to the initial form and update the date &lt;code class=&quot;highlighter-rouge&quot;&gt;TextField&lt;/code&gt; we had there&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/images/returning-data-from-modal.png&quot; alt=&quot;Returning Data From Modal&quot; class=&quot;img-responsive&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;And since we had the &lt;code class=&quot;highlighter-rouge&quot;&gt;TextField&lt;/code&gt; one way binded to the date property on the component like so:&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;[text]=&quot;date | date:'shortDate'&quot;&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;We see this after hitting done on the modal page&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/images/updated-base-modal-form.png&quot; class=&quot;img-responsive&quot; height=&quot;300&quot; width=&quot;300&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Now you know to to create modals to make user input more pleasant.&lt;/p&gt;
+
+&lt;p&gt;Don’t forget that you can use a modal for any data entry, it doesn’t have to be a &lt;code class=&quot;highlighter-rouge&quot;&gt;DatePicker&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Note: You can only have 1 modal open at a time. You can not open 1 modal which opens a 2nd modal, you must close each modal before opening another one.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;If you have any questions or comments feel free to leave them below and as always, stop by and check out the NativeScript docs :) &lt;a href=&quot;http://docs.nativescript.org&quot; title=&quot;NativeScript Docs Link&quot;&gt;NativeScript Docs&lt;/a&gt;&lt;/p&gt;</content><author><name>Tyler Blake</name></author><category term="Intro" /><category term="Overview" /><category term="NativeScript" /><summary type="html">Sometimes you don’t want to clutter a single page with a bunch of inputs, lets see how to use modals to help with this!</summary></entry><entry><title type="html">Accessing Native APIs with NativeScript</title><link href="http://localhost:4000/nativescript/2018/08/03/accessing-native-apis.html" rel="alternate" type="text/html" title="Accessing Native APIs with NativeScript" /><published>2018-08-03T00:00:00-04:00</published><updated>2018-08-03T09:30:00-04:00</updated><id>http://localhost:4000/nativescript/2018/08/03/accessing-native-apis</id><content type="html" xml:base="http://localhost:4000/nativescript/2018/08/03/accessing-native-apis.html">&lt;p&gt;One of the biggest advantages of NativeScript is the ability to access native device API’s. In this post I’ll show you how.
 &lt;!--more--&gt;&lt;/p&gt;
 
 &lt;p&gt;Many other hybrid frameworks don’t allow you to access device API’s which causes limitations to app capability and performance. At first it sounds intimidating especially if you haven’t written any Swift/Java code before but it will be a lot less scary after this post.&lt;/p&gt;

@@ -11,7 +11,7 @@
 
   <title>
     
-      Setting Up Your Machine &middot; Tyler Blake
+      Creating Modals &middot; Tyler Blake
     
   </title>
 
@@ -274,11 +274,11 @@
 
     <main class="container">
       <header>
-  <h1 class="post-title">Setting Up Your Machine</h1>
+  <h1 class="post-title">Creating Modals</h1>
 </header>
 <div class="content">
   <div class="post-meta">
-  <span class="post-date">17 Jul 2018</span>
+  <span class="post-date">31 Oct 2018</span>
   <span class="post-categories">
     
       &bull;
@@ -288,164 +288,97 @@
       
 
       
-        Environment
+        <a href="/category/nativescript.html">
+          NativeScript
+        </a>
       
     
   </span>
 </div>
 
   <div class="post-body">
-    <p>There are many different ways to set up your development environment for NativeScript. Here I’ll show you mine.
+    <p>Sometimes you don’t want to clutter a single page with a bunch of inputs, lets see how to use modals to help with this!
 <!--more--></p>
 
-<p>The following shows the list I use to set up my machine for NativeScript development on my Mac.</p>
+<p>One of the primary focuses for software is to collect user data, on mobile devices we have to be considerate of our users and make data entry easier for them.</p>
 
-<p>If you are not recovering from a computer crash like me, then you can ignore reformatting your Mac :)</p>
+<p>Sometimes we have to collect a lot of data so a common way to make this more pleasant for the user is to use modals.</p>
 
-<p><strong>Note: Replace iTerm2 with your preferred terminal and VSCode with your preferred IDE</strong></p>
+<p>In this example I want to collect a date input from a user but I want to use a modal to show the DatePicker component.</p>
 
-<h2 id="optional">Optional</h2>
-<ul>
-  <li>Open Disk Utility and Reformat “Macintosh HD”</li>
-  <li>Reinstall Mac OS</li>
-</ul>
+<h2 id="first-we-need-to-create-our-initial-form">First we need to create our initial form</h2>
 
-<h2 id="basics">Basics</h2>
-<ul>
-  <li>Install Chrome</li>
-  <li>Install iTerm2</li>
-  <li>Open iTerm2</li>
-  <li>
-    <p>Create/Import .bash_prompt</p>
+<p>This is the page that will trigger the modal form and where we will return to after the modal action has completed.</p>
 
-    <p>Run <code class="highlighter-rouge">touch .bash_prompt</code> in iTerm2</p>
-  </li>
-  <li>
-    <p>Create/Import .bash_profile</p>
+<p>For this I have a basic <code class="highlighter-rouge">Label</code> and <code class="highlighter-rouge">TextField</code> which contains an tap event like so <code class="highlighter-rouge">(tap)="onDateTap()"</code></p>
 
-    <p>Run <code class="highlighter-rouge">touch .bash_profile</code> in iTerm2</p>
-  </li>
-  <li>
-    <p>Create/Import .git_completion.sh</p>
+<!-- ![Base Modal Form](http://localhost:4000/assets/images/base-modal-form.png){:class="img-responsive"} -->
 
-    <p>Run <code class="highlighter-rouge">touch .git_completion.sh</code> in iTerm2</p>
-  </li>
-  <li>
-    <p>Create/Import .git_prompt.sh</p>
+<p><img src="http://localhost:4000/assets/images/base-modal-form.png" class="img-responsive" height="300" width="300" /></p>
 
-    <p>Run <code class="highlighter-rouge">touch .git_prompt.sh</code> in iTerm2</p>
-  </li>
-  <li>
-    <p>Install Homebrew</p>
+<h2 id="now-we-have-to-create-that-ondatetap-function">Now we have to create that <code class="highlighter-rouge">onDateTap()</code> function</h2>
 
-    <p>Run <code class="highlighter-rouge">/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"</code> in iTerm2</p>
-  </li>
-  <li>
-    <p>Install nvm</p>
+<p>Here is all of the code for the base form. I have highlighted the <code class="highlighter-rouge">onDateTap()</code> function.</p>
 
-    <p>Run <code class="highlighter-rouge">curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash</code> in iTerm2</p>
-  </li>
-  <li>
-    <p>Install the latest version of Node via nvm</p>
+<p><img src="http://localhost:4000/assets/images/base-form-code.png" alt="Base Form Code" class="img-responsive" /></p>
 
-    <p>Run <code class="highlighter-rouge">nvm install node</code> in iTerm2</p>
-  </li>
-  <li>
-    <p>Install NativeScript CLI</p>
+<p>The most important part here is:</p>
 
-    <p>Run <code class="highlighter-rouge">npm install -g nativescript</code> in iTerm2</p>
-  </li>
-  <li>Install Xcode</li>
-  <li>Open Xcode (Accept the prompt to install tools)</li>
-  <li>Go to Xcode/Preferences/Locations and Select “Xcode x.x.x” in the Command Line Tools dropdown</li>
-  <li>Install Android Studio</li>
-  <li>
-    <p>Run the ruby NativeScript setup command in iTerm2</p>
+<p><code class="highlighter-rouge">context: this.date == null ? new Date() : this.date,</code></p>
 
-    <p><code class="highlighter-rouge">ruby -e "$(curl -fsSL https://www.nativescript.org/setup/mac)"</code></p>
-  </li>
-  <li>Run <code class="highlighter-rouge">tns doctor</code> in iTerm2</li>
-  <li>Follow the prompts and allow it to set up iOS and Android requirements for you</li>
-  <li><em>Fix any issues found by the doctor</em> :)</li>
-</ul>
+<p>This means we are going to pass <code class="highlighter-rouge">this.date</code> to the modal to be set inside of the modal view.</p>
 
-<p><strong>Note: See the Common Issues and Fixes section below for solutions I found that might help you</strong></p>
+<p>This is primarily for when a user wants to update the date, when we display the modal we want to display the value previously set for that field.</p>
 
-<ul>
-  <li>Run <code class="highlighter-rouge">tns doctor</code> in iTerm2 to see if you fixed all issues</li>
-  <li>Open Android Virtual Device Manager and Create an Android emulator</li>
-  <li>Start the emulator manually to make sure it was set up correctly</li>
-  <li>Install VS Code</li>
-  <li>Run <code class="highlighter-rouge">tns create testApp --template tns-template-blank-ng</code> in iTerm2</li>
-  <li>Run <code class="highlighter-rouge">cd testApp</code> in iTerm2</li>
-  <li>Run <code class="highlighter-rouge">cd app</code> in iTerm2</li>
-  <li>Run <code class="highlighter-rouge">tns run ios --emulator</code> in iTerm2</li>
-  <li>Once the iOS simulator loads the app press <code class="highlighter-rouge">ctrl</code> + <code class="highlighter-rouge">c</code> in iTerm2</li>
-  <li>Run <code class="highlighter-rouge">tns run android</code> in iTerm2</li>
-  <li>Once the Android simulator loads the app press <code class="highlighter-rouge">ctrl</code> + <code class="highlighter-rouge">c</code> in iTerm2</li>
-</ul>
+<p>Then when the modal is closed, the value isreturned to us as <code class="highlighter-rouge">dialogResult</code> later in this function.</p>
 
-<p>If you were able to get the iOS simulator and Android emulator to load the blank template app then you are done.</p>
+<h2 id="now-we-have-to-create-the-modal">Now we have to create the modal</h2>
 
-<p><strong>Still having issues? Here is what you can do</strong></p>
+<p>Modals are nothing more than just another page with a form, the only trick is that we have to pass the data between the initial form and the modal form, and visa versa. Let’s look at how that happens.</p>
 
-<ul>
-  <li>Refer to the NativeScript Documentation on installation</li>
-  <li>Google your specific error message, someone likely has seen and fixed your exact error</li>
-</ul>
+<p><img src="http://localhost:4000/assets/images/modal-example.png" class="img-responsive" height="300" width="300" /></p>
 
-<h2 id="additional-apps">Additional Apps</h2>
-<ul>
-  <li><strong>f.lux</strong>: Helps reduce eye strain</li>
-  <li><strong>BetterSnapTool</strong>: Makes window management a breeze</li>
-  <li><strong>Tunnelbear</strong>: My preferred VPN client</li>
-  <li><strong>Charles</strong>: Proxy to help debug network calls on mobile device and inside of iOS simulator</li>
-  <li><strong>Spotify</strong>: Music is good for the soul!</li>
-</ul>
+<p>Right now the modal is nothing more than a <code class="highlighter-rouge">StackLayout</code> with a <code class="highlighter-rouge">DatePicker</code> and a <code class="highlighter-rouge">Button</code>.</p>
 
-<h2 id="additional-osx-setup">Additional OSX Setup</h2>
+<p><img src="http://localhost:4000/assets/images/modal-view-code.png" alt="Modal View Code" class="img-responsive" /></p>
 
-<p><em>Just a few things I like to do as well</em></p>
+<p>Now let’s look at the component code for this modal.</p>
 
-<ul>
-  <li>
-    <p>Preferences/Accessibility/Keyboard/Keyboard Preferences/Shortcuts Select “All Controls” at the bottom</p>
+<p><img src="http://localhost:4000/assets/images/modal-component-code.png" alt="Modal Component Code" class="img-responsive" /></p>
 
-    <p>Allows you to tab through buttons/options in OSX dialogs</p>
-  </li>
-  <li>
-    <p>Preferences/Displays Uncheck “Automatically Adjust Brightness”</p>
+<p>The important line in this component is this:</p>
 
-    <p>I find this annoying</p>
-  </li>
-  <li>
-    <p>Preferences/Energy Saver Increase threshold for turning off display</p>
+<p><code class="highlighter-rouge">this.date = params.context;</code></p>
 
-    <p>I also find this annoying</p>
-  </li>
-</ul>
+<p>That line sets the DatepickerModalComponent’s <code class="highlighter-rouge">date</code> property to the date we passed through the <code class="highlighter-rouge">context</code> property previously.</p>
 
-<h2 id="common-issues-and-fixes">Common Issues and Fixes</h2>
+<p>After you set the date, we need to return to the intial form, all we have to do is set up the <code class="highlighter-rouge">onDoneTap()</code> function which has the following code:</p>
 
-<ul>
-  <li>
-    <p>Missing/Unable to find ANDROID_HOME variable</p>
+<p><code class="highlighter-rouge">this.params.closeCallback(this.date);</code></p>
 
-    <p>To fix run <code class="highlighter-rouge">export ANDROID_HOME=/Users/$(whoami)/Library/Android/sdk</code> in iTerm2`</p>
-  </li>
-  <li>
-    <p>Missing Android SDK version 23&lt;= and &gt;=27</p>
+<p>All that does is close the modal dialog and returns <code class="highlighter-rouge">this.date</code> which is the updated value</p>
 
-    <ol>
-      <li>Open Android Studio</li>
-      <li>Open SDK Manager</li>
-      <li>Check the checkbox next to a version between 23 and 27.</li>
-      <li>Click Accept/Install</li>
-    </ol>
-  </li>
-</ul>
+<h2 id="retrieving-the-modal-data">Retrieving the modal data</h2>
 
-<p>If you run into any issues I didn’t, stop by the <a href="http://docs.nativescript.org/start/quick-setup" title="NativeScript Setup Link">NativeScript Setup Docs</a> for a more in depth setup guide.</p>
+<p>Now we need to return to the initial form and update the date <code class="highlighter-rouge">TextField</code> we had there</p>
+
+<p><img src="http://localhost:4000/assets/images/returning-data-from-modal.png" alt="Returning Data From Modal" class="img-responsive" /></p>
+
+<p>And since we had the <code class="highlighter-rouge">TextField</code> one way binded to the date property on the component like so:</p>
+
+<p><code class="highlighter-rouge">[text]="date | date:'shortDate'"</code></p>
+
+<p>We see this after hitting done on the modal page</p>
+
+<p><img src="http://localhost:4000/assets/images/updated-base-modal-form.png" class="img-responsive" height="300" width="300" /></p>
+
+<p>Now you know to to create modals to make user input more pleasant.</p>
+
+<p>Don’t forget that you can use a modal for any data entry, it doesn’t have to be a <code class="highlighter-rouge">DatePicker</code>.</p>
+
+<p><strong>Note: You can only have 1 modal open at a time. You can not open 1 modal which opens a 2nd modal, you must close each modal before opening another one.</strong></p>
+
+<p>If you have any questions or comments feel free to leave them below and as always, stop by and check out the NativeScript docs :) <a href="http://docs.nativescript.org" title="NativeScript Docs Link">NativeScript Docs</a></p>
 
     
 
@@ -454,25 +387,25 @@
 <div class="post-tags">
   
     
-    <a href="/tags.html#setup">
+    <a href="/tags.html#intro">
     
       <span class="icon">
         <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
     <path d="M0 0h24v24H0z" fill="none"/>
     <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
 </svg>
-      </span>&nbsp;<span class="tag-name">Setup</span>
+      </span>&nbsp;<span class="tag-name">Intro</span>
     </a>
   
     
-    <a href="/tags.html#environment">
+    <a href="/tags.html#overview">
     
       <span class="icon">
         <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
     <path d="M0 0h24v24H0z" fill="none"/>
     <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
 </svg>
-      </span>&nbsp;<span class="tag-name">Environment</span>
+      </span>&nbsp;<span class="tag-name">Overview</span>
     </a>
   
     
@@ -507,9 +440,9 @@
   *  https://disqus.com/admin/universalcode/#configuration-variables
   */
   var disqus_config = function () {
-    this.page.url = "http://localhost:4000/environment/2018/07/17/setting-up-your-machine.html";
+    this.page.url = "http://localhost:4000/nativescript/2018/10/31/creating-modals.html";
     this.page.identifier = "" ||
-                           "http://localhost:4000/environment/2018/07/17/setting-up-your-machine.html";
+                           "http://localhost:4000/nativescript/2018/10/31/creating-modals.html";
   }
   function loadDisqusComments() { // DON'T EDIT BELOW THIS LINE
     var d = document, s = d.createElement('script');
@@ -533,18 +466,18 @@
     
       <li>
         <h3>
-          <a href="/nativescript/2018/10/31/creating-modals.html">
-            Creating Modals
-            <small>31 Oct 2018</small>
+          <a href="/nativescript/2018/08/03/accessing-native-apis.html">
+            Accessing Native APIs with NativeScript
+            <small>03 Aug 2018</small>
           </a>
         </h3>
       </li>
     
       <li>
         <h3>
-          <a href="/nativescript/2018/08/03/accessing-native-apis.html">
-            Accessing Native APIs with NativeScript
-            <small>03 Aug 2018</small>
+          <a href="/environment/2018/07/17/setting-up-your-machine.html">
+            Setting Up Your Machine
+            <small>17 Jul 2018</small>
           </a>
         </h3>
       </li>
