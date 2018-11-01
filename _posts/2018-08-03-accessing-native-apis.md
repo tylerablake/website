@@ -89,6 +89,5 @@ If you have any questions or comments feel free to leave them below. If you woul
 
 A presentation by Robert Laverty: [Robert Laverty Presentation](http://www.youtube.com/watch?v=zCdbrkmvdVI "Robert Laverty Presentation Link")
 
-And as always, the NativeScript docs :) [NativeScript Docs](http://docs.nativescript.org "NativeScript Docs Link")
-
+And as always, stop by and check out the [NativeScript Docs](http://docs.nativescript.org "NativeScript Docs Link") :)
 

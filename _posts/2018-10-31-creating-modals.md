@@ -8,7 +8,7 @@ tags:
   - Intro
   - Overview 
   - NativeScript 
-last_modified_at: 2018-08-03T13:30:00-00:00
+last_modified_at: 2018-10-31T11:30:00-00:00
 ---
 
 
@@ -93,4 +93,4 @@ Don't forget that you can use a modal for any data entry, it doesn't have to be 
 
 **Note: You can only have 1 modal open at a time. You can not open 1 modal which opens a 2nd modal, you must close each modal before opening another one.**
 
-If you have any questions or comments feel free to leave them below and as always, stop by and check out the NativeScript docs :) [NativeScript Docs](http://docs.nativescript.org "NativeScript Docs Link")
+If you have any questions or comments feel free to leave them below and as always, stop by and check out the [NativeScript Docs](http://docs.nativescript.org "NativeScript Docs Link") :)

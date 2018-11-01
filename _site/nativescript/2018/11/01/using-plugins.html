@@ -11,7 +11,7 @@
 
   <title>
     
-      What Is NativeScript? &middot; Tyler Blake
+      Using Plugins &middot; Tyler Blake
     
   </title>
 
@@ -274,11 +274,11 @@
 
     <main class="container">
       <header>
-  <h1 class="post-title">What Is NativeScript?</h1>
+  <h1 class="post-title">Using Plugins</h1>
 </header>
 <div class="content">
   <div class="post-meta">
-  <span class="post-date">01 Jul 2018</span>
+  <span class="post-date">01 Nov 2018</span>
   <span class="post-categories">
     
       &bull;
@@ -297,22 +297,101 @@
 </div>
 
   <div class="post-body">
-    <p>NativeScript is how you build cross-platform, native iOS and Android apps with JavaScript, but what does that really mean?
+    <p>What are plugins? How can they help us? How do we use them? Let’s see how to install and use plugins with NativeScript
 <!--more--></p>
 
-<p>It means:</p>
+<h2 id="what-is-a-plugin">What is a plugin?</h2>
 
+<p>A plugin is basically a package that someone has created that we can use in our NativeScript apps</p>
+
+<p>Common plugins are basically wrapper code around native components like the <a href="https://github.com/NativeScript/nativescript-camera" title="nativescript-camera link">nativescript-camera</a> plugin</p>
+
+<p>Plugins are NOT required but they do help</p>
+
+<h2 id="how-do-they-help">How do they help?</h2>
+
+<p>Most plugin creators have already written the code that you would use anyway.</p>
+
+<p>Typically they are just wrappers around native code</p>
+
+<p>For example in the <code class="highlighter-rouge">nativescript-camera</code> plugin, they have exposed a <code class="highlighter-rouge">camera.isAvailable()</code> method that we can use to check if a device camera is available</p>
+
+<p>This means we can just install the plugin and use this method without having to manually check if the device has a camera and if it is working</p>
+
+<h2 id="how-do-we-use-them">How do we use them?</h2>
+
+<p>Most NativeScript plugins have good documentation, at the very least they have installation notes</p>
+
+<p>Typically you can install NativeScript plugins with this command</p>
+
+<p><code class="highlighter-rouge">tns plugin add pluginName</code></p>
+
+<p>For example</p>
+
+<p><code class="highlighter-rouge">tns plugin add nativescript-camera</code></p>
+
+<p>would install the <code class="highlighter-rouge">nativescript-camera</code> plugin in your app</p>
+
+<h2 id="which-plugins-should-we-use">Which plugins should we use?</h2>
+
+<p>The best place to look for plugins is on the <a href="https://market.nativescript.org/" title="nativescript marketplace link">NativeScript Marketplace</a></p>
+
+<p>This is where you will find plugins for your NativeScript apps</p>
+
+<p>Use <strong>verified</strong> plugins when you can as these have been reviewed by the NativeScript team and supported by the team</p>
+
+<p>The criteria to be a <strong>verified</strong> plugin is the following:</p>
 <ul>
-  <li>You get to use Angular, TypeScript or JavaScript</li>
-  <li>You get truly native UI performance</li>
-  <li>You can reuse skills and code from your web projects</li>
-  <li>You also get 100% access to native device API’s via JavaScript</li>
-  <li>You get reuse of packages from npm, CocoaPods, and Gradle</li>
-  <li>It is open source</li>
-  <li>It is backed by Progress</li>
+  <li>Must be transpiled correctly (tsc) and pass tslint checks</li>
+  <li>Must have a demo app</li>
+  <li>Should be eligable for Angular and non-Angular apps</li>
+  <li>Must build successfully on the latest iOS version of NS</li>
+  <li>Must build successfully on the latest Android version of NS</li>
+  <li>Must be bundled with webpack and built successfully for the latest iOS version</li>
+  <li>Must be bundled with webpack and built successfully for the latest Android version</li>
+  <li>Weekly builds with Travis CI must pass</li>
+  <li>README must clearly explain limitations and features</li>
+  <li>There is a license file</li>
+  <li>Reviewed by NS team</li>
 </ul>
 
-<p>Blog posts <strong>are coming</strong> but in the meantime, stop by the <a href="http://docs.nativescript.org" title="NativeScript Docs Link">NativeScript Docs</a> to learn more!</p>
+<p>As we can see, verified plugins are definitely the most stable plugins, that is why we should use a verified plugin when we can</p>
+
+<p>Non-verified plugins can be just as good though so check them out too but be careful</p>
+
+<p>It is also a good idea to look at how many downloads the plugin has, if it has a lot of total downloads and a lot of weekly downloads, it is probably a good plugin</p>
+
+<p>Verified plugins can be found with a verified icon next to their name</p>
+
+<p>This is the <code class="highlighter-rouge">nativescript-imagepicker</code> plugin, I’ll show you what questions I ask myself when I think about using a plugin</p>
+
+<ul>
+  <li><strong>Is it verified?</strong>
+It has the verified icon, so it is</li>
+  <li><strong>Is it popular/ does it have a lot of downloads?</strong>
+It has 3.3k/month, 689 last week, and 151 yesterday</li>
+  <li><strong>Is it currently passing all builds?</strong>
+The build stats near the bottom tell us if it is passing, it is</li>
+  <li><strong>Does it have the functionality I need?</strong>
+Yes</li>
+  <li><strong>Does it have any limitations?</strong>
+I don’t see any limitations listed for the plugin currently</li>
+</ul>
+
+<p><img src="http://localhost:4000/assets/images/verified-plugin-page.png" alt="Verified Plugin Page" class="img-responsive" /></p>
+
+<p>If the plugin has the answers to those questions that I am looking for then I will try it</p>
+
+<p>Not to worry, if you find a plugin doesn’t work for you, you can easily uninstall it with the following command and start over with a new plugin</p>
+
+<p><code class="highlighter-rouge">tns remove plugin pluginName</code></p>
+
+<p>Now we know how to find a plugin, check if we should use it, install it, and remove it if we need to.</p>
+
+<p>Swing by the <a href="https://market.nativescript.org/" title="nativescript marketplace link">NativeScript Marketplace</a> and start adding plugins to your NativeScript app!</p>
+
+<p>If you have any questions or comments feel free to leave them below and as always, stop by and check out the <a href="http://docs.nativescript.org" title="NativeScript Docs Link">NativeScript Docs</a> :)</p>
+
 
     
 
@@ -374,9 +453,9 @@
   *  https://disqus.com/admin/universalcode/#configuration-variables
   */
   var disqus_config = function () {
-    this.page.url = "http://localhost:4000/nativescript/2018/07/01/what-is-nativescript.html";
+    this.page.url = "http://localhost:4000/nativescript/2018/11/01/using-plugins.html";
     this.page.identifier = "" ||
-                           "http://localhost:4000/nativescript/2018/07/01/what-is-nativescript.html";
+                           "http://localhost:4000/nativescript/2018/11/01/using-plugins.html";
   }
   function loadDisqusComments() { // DON'T EDIT BELOW THIS LINE
     var d = document, s = d.createElement('script');
@@ -400,15 +479,6 @@
     
       <li>
         <h3>
-          <a href="/nativescript/2018/11/01/using-plugins.html">
-            Using Plugins
-            <small>01 Nov 2018</small>
-          </a>
-        </h3>
-      </li>
-    
-      <li>
-        <h3>
           <a href="/nativescript/2018/10/31/creating-modals.html">
             Creating Modals
             <small>31 Oct 2018</small>
@@ -421,6 +491,15 @@
           <a href="/nativescript/2018/08/03/accessing-native-apis.html">
             Accessing Native APIs with NativeScript
             <small>03 Aug 2018</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/environment/2018/07/17/setting-up-your-machine.html">
+            Setting Up Your Machine
+            <small>17 Jul 2018</small>
           </a>
         </h3>
       </li>

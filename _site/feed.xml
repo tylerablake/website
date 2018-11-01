@@ -1,4 +1,97 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.3">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2018-11-01T11:20:23-04:00</updated><id>http://localhost:4000/</id><title type="html">Tyler Blake</title><subtitle>Stay a while and listen.</subtitle><author><name>Tyler Blake</name></author><entry><title type="html">Creating Modals</title><link href="http://localhost:4000/nativescript/2018/10/31/creating-modals.html" rel="alternate" type="text/html" title="Creating Modals" /><published>2018-10-31T00:00:00-04:00</published><updated>2018-08-03T09:30:00-04:00</updated><id>http://localhost:4000/nativescript/2018/10/31/creating-modals</id><content type="html" xml:base="http://localhost:4000/nativescript/2018/10/31/creating-modals.html">&lt;p&gt;Sometimes you don’t want to clutter a single page with a bunch of inputs, lets see how to use modals to help with this!
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.3">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2018-11-01T14:02:07-04:00</updated><id>http://localhost:4000/</id><title type="html">Tyler Blake</title><subtitle>Stay a while and listen.</subtitle><author><name>Tyler Blake</name></author><entry><title type="html">Using Plugins</title><link href="http://localhost:4000/nativescript/2018/11/01/using-plugins.html" rel="alternate" type="text/html" title="Using Plugins" /><published>2018-11-01T00:00:00-04:00</published><updated>2018-11-01T06:30:00-04:00</updated><id>http://localhost:4000/nativescript/2018/11/01/using-plugins</id><content type="html" xml:base="http://localhost:4000/nativescript/2018/11/01/using-plugins.html">&lt;p&gt;What are plugins? How can they help us? How do we use them? Let’s see how to install and use plugins with NativeScript
+&lt;!--more--&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;what-is-a-plugin&quot;&gt;What is a plugin?&lt;/h2&gt;
+
+&lt;p&gt;A plugin is basically a package that someone has created that we can use in our NativeScript apps&lt;/p&gt;
+
+&lt;p&gt;Common plugins are basically wrapper code around native components like the &lt;a href=&quot;https://github.com/NativeScript/nativescript-camera&quot; title=&quot;nativescript-camera link&quot;&gt;nativescript-camera&lt;/a&gt; plugin&lt;/p&gt;
+
+&lt;p&gt;Plugins are NOT required but they do help&lt;/p&gt;
+
+&lt;h2 id=&quot;how-do-they-help&quot;&gt;How do they help?&lt;/h2&gt;
+
+&lt;p&gt;Most plugin creators have already written the code that you would use anyway.&lt;/p&gt;
+
+&lt;p&gt;Typically they are just wrappers around native code&lt;/p&gt;
+
+&lt;p&gt;For example in the &lt;code class=&quot;highlighter-rouge&quot;&gt;nativescript-camera&lt;/code&gt; plugin, they have exposed a &lt;code class=&quot;highlighter-rouge&quot;&gt;camera.isAvailable()&lt;/code&gt; method that we can use to check if a device camera is available&lt;/p&gt;
+
+&lt;p&gt;This means we can just install the plugin and use this method without having to manually check if the device has a camera and if it is working&lt;/p&gt;
+
+&lt;h2 id=&quot;how-do-we-use-them&quot;&gt;How do we use them?&lt;/h2&gt;
+
+&lt;p&gt;Most NativeScript plugins have good documentation, at the very least they have installation notes&lt;/p&gt;
+
+&lt;p&gt;Typically you can install NativeScript plugins with this command&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;tns plugin add pluginName&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;For example&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;tns plugin add nativescript-camera&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;would install the &lt;code class=&quot;highlighter-rouge&quot;&gt;nativescript-camera&lt;/code&gt; plugin in your app&lt;/p&gt;
+
+&lt;h2 id=&quot;which-plugins-should-we-use&quot;&gt;Which plugins should we use?&lt;/h2&gt;
+
+&lt;p&gt;The best place to look for plugins is on the &lt;a href=&quot;https://market.nativescript.org/&quot; title=&quot;nativescript marketplace link&quot;&gt;NativeScript Marketplace&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;This is where you will find plugins for your NativeScript apps&lt;/p&gt;
+
+&lt;p&gt;Use &lt;strong&gt;verified&lt;/strong&gt; plugins when you can as these have been reviewed by the NativeScript team and supported by the team&lt;/p&gt;
+
+&lt;p&gt;The criteria to be a &lt;strong&gt;verified&lt;/strong&gt; plugin is the following:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Must be transpiled correctly (tsc) and pass tslint checks&lt;/li&gt;
+  &lt;li&gt;Must have a demo app&lt;/li&gt;
+  &lt;li&gt;Should be eligable for Angular and non-Angular apps&lt;/li&gt;
+  &lt;li&gt;Must build successfully on the latest iOS version of NS&lt;/li&gt;
+  &lt;li&gt;Must build successfully on the latest Android version of NS&lt;/li&gt;
+  &lt;li&gt;Must be bundled with webpack and built successfully for the latest iOS version&lt;/li&gt;
+  &lt;li&gt;Must be bundled with webpack and built successfully for the latest Android version&lt;/li&gt;
+  &lt;li&gt;Weekly builds with Travis CI must pass&lt;/li&gt;
+  &lt;li&gt;README must clearly explain limitations and features&lt;/li&gt;
+  &lt;li&gt;There is a license file&lt;/li&gt;
+  &lt;li&gt;Reviewed by NS team&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;As we can see, verified plugins are definitely the most stable plugins, that is why we should use a verified plugin when we can&lt;/p&gt;
+
+&lt;p&gt;Non-verified plugins can be just as good though so check them out too but be careful&lt;/p&gt;
+
+&lt;p&gt;It is also a good idea to look at how many downloads the plugin has, if it has a lot of total downloads and a lot of weekly downloads, it is probably a good plugin&lt;/p&gt;
+
+&lt;p&gt;Verified plugins can be found with a verified icon next to their name&lt;/p&gt;
+
+&lt;p&gt;This is the &lt;code class=&quot;highlighter-rouge&quot;&gt;nativescript-imagepicker&lt;/code&gt; plugin, I’ll show you what questions I ask myself when I think about using a plugin&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Is it verified?&lt;/strong&gt;
+It has the verified icon, so it is&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Is it popular/ does it have a lot of downloads?&lt;/strong&gt;
+It has 3.3k/month, 689 last week, and 151 yesterday&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Is it currently passing all builds?&lt;/strong&gt;
+The build stats near the bottom tell us if it is passing, it is&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Does it have the functionality I need?&lt;/strong&gt;
+Yes&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Does it have any limitations?&lt;/strong&gt;
+I don’t see any limitations listed for the plugin currently&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/images/verified-plugin-page.png&quot; alt=&quot;Verified Plugin Page&quot; class=&quot;img-responsive&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;If the plugin has the answers to those questions that I am looking for then I will try it&lt;/p&gt;
+
+&lt;p&gt;Not to worry, if you find a plugin doesn’t work for you, you can easily uninstall it with the following command and start over with a new plugin&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;tns remove plugin pluginName&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Now we know how to find a plugin, check if we should use it, install it, and remove it if we need to.&lt;/p&gt;
+
+&lt;p&gt;Swing by the &lt;a href=&quot;https://market.nativescript.org/&quot; title=&quot;nativescript marketplace link&quot;&gt;NativeScript Marketplace&lt;/a&gt; and start adding plugins to your NativeScript app!&lt;/p&gt;
+
+&lt;p&gt;If you have any questions or comments feel free to leave them below and as always, stop by and check out the &lt;a href=&quot;http://docs.nativescript.org&quot; title=&quot;NativeScript Docs Link&quot;&gt;NativeScript Docs&lt;/a&gt; :)&lt;/p&gt;</content><author><name>Tyler Blake</name></author><category term="Intro" /><category term="Overview" /><category term="NativeScript" /><summary type="html">What are plugins? How can they help us? How do we use them? Let’s see how to install and use plugins with NativeScript</summary></entry><entry><title type="html">Creating Modals</title><link href="http://localhost:4000/nativescript/2018/10/31/creating-modals.html" rel="alternate" type="text/html" title="Creating Modals" /><published>2018-10-31T00:00:00-04:00</published><updated>2018-10-31T07:30:00-04:00</updated><id>http://localhost:4000/nativescript/2018/10/31/creating-modals</id><content type="html" xml:base="http://localhost:4000/nativescript/2018/10/31/creating-modals.html">&lt;p&gt;Sometimes you don’t want to clutter a single page with a bunch of inputs, lets see how to use modals to help with this!
 &lt;!--more--&gt;&lt;/p&gt;
 
 &lt;p&gt;One of the primary focuses for software is to collect user data, on mobile devices we have to be considerate of our users and make data entry easier for them.&lt;/p&gt;
@@ -79,7 +172,7 @@
 
 &lt;p&gt;&lt;strong&gt;Note: You can only have 1 modal open at a time. You can not open 1 modal which opens a 2nd modal, you must close each modal before opening another one.&lt;/strong&gt;&lt;/p&gt;
 
-&lt;p&gt;If you have any questions or comments feel free to leave them below and as always, stop by and check out the NativeScript docs :) &lt;a href=&quot;http://docs.nativescript.org&quot; title=&quot;NativeScript Docs Link&quot;&gt;NativeScript Docs&lt;/a&gt;&lt;/p&gt;</content><author><name>Tyler Blake</name></author><category term="Intro" /><category term="Overview" /><category term="NativeScript" /><summary type="html">Sometimes you don’t want to clutter a single page with a bunch of inputs, lets see how to use modals to help with this!</summary></entry><entry><title type="html">Accessing Native APIs with NativeScript</title><link href="http://localhost:4000/nativescript/2018/08/03/accessing-native-apis.html" rel="alternate" type="text/html" title="Accessing Native APIs with NativeScript" /><published>2018-08-03T00:00:00-04:00</published><updated>2018-08-03T09:30:00-04:00</updated><id>http://localhost:4000/nativescript/2018/08/03/accessing-native-apis</id><content type="html" xml:base="http://localhost:4000/nativescript/2018/08/03/accessing-native-apis.html">&lt;p&gt;One of the biggest advantages of NativeScript is the ability to access native device API’s. In this post I’ll show you how.
+&lt;p&gt;If you have any questions or comments feel free to leave them below and as always, stop by and check out the &lt;a href=&quot;http://docs.nativescript.org&quot; title=&quot;NativeScript Docs Link&quot;&gt;NativeScript Docs&lt;/a&gt; :)&lt;/p&gt;</content><author><name>Tyler Blake</name></author><category term="Intro" /><category term="Overview" /><category term="NativeScript" /><summary type="html">Sometimes you don’t want to clutter a single page with a bunch of inputs, lets see how to use modals to help with this!</summary></entry><entry><title type="html">Accessing Native APIs with NativeScript</title><link href="http://localhost:4000/nativescript/2018/08/03/accessing-native-apis.html" rel="alternate" type="text/html" title="Accessing Native APIs with NativeScript" /><published>2018-08-03T00:00:00-04:00</published><updated>2018-08-03T09:30:00-04:00</updated><id>http://localhost:4000/nativescript/2018/08/03/accessing-native-apis</id><content type="html" xml:base="http://localhost:4000/nativescript/2018/08/03/accessing-native-apis.html">&lt;p&gt;One of the biggest advantages of NativeScript is the ability to access native device API’s. In this post I’ll show you how.
 &lt;!--more--&gt;&lt;/p&gt;
 
 &lt;p&gt;Many other hybrid frameworks don’t allow you to access device API’s which causes limitations to app capability and performance. At first it sounds intimidating especially if you haven’t written any Swift/Java code before but it will be a lot less scary after this post.&lt;/p&gt;
@@ -151,7 +244,7 @@
 
 &lt;p&gt;A presentation by Robert Laverty: &lt;a href=&quot;http://www.youtube.com/watch?v=zCdbrkmvdVI&quot; title=&quot;Robert Laverty Presentation Link&quot;&gt;Robert Laverty Presentation&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;And as always, the NativeScript docs :) &lt;a href=&quot;http://docs.nativescript.org&quot; title=&quot;NativeScript Docs Link&quot;&gt;NativeScript Docs&lt;/a&gt;&lt;/p&gt;</content><author><name>Tyler Blake</name></author><category term="Intro" /><category term="Overview" /><category term="NativeScript" /><summary type="html">One of the biggest advantages of NativeScript is the ability to access native device API’s. In this post I’ll show you how.</summary></entry><entry><title type="html">Setting Up Your Machine</title><link href="http://localhost:4000/environment/2018/07/17/setting-up-your-machine.html" rel="alternate" type="text/html" title="Setting Up Your Machine" /><published>2018-07-17T00:00:00-04:00</published><updated>2018-07-17T06:30:00-04:00</updated><id>http://localhost:4000/environment/2018/07/17/setting-up-your-machine</id><content type="html" xml:base="http://localhost:4000/environment/2018/07/17/setting-up-your-machine.html">&lt;p&gt;There are many different ways to set up your development environment for NativeScript. Here I’ll show you mine.
+&lt;p&gt;And as always, stop by and check out the &lt;a href=&quot;http://docs.nativescript.org&quot; title=&quot;NativeScript Docs Link&quot;&gt;NativeScript Docs&lt;/a&gt; :)&lt;/p&gt;</content><author><name>Tyler Blake</name></author><category term="Intro" /><category term="Overview" /><category term="NativeScript" /><summary type="html">One of the biggest advantages of NativeScript is the ability to access native device API’s. In this post I’ll show you how.</summary></entry><entry><title type="html">Setting Up Your Machine</title><link href="http://localhost:4000/environment/2018/07/17/setting-up-your-machine.html" rel="alternate" type="text/html" title="Setting Up Your Machine" /><published>2018-07-17T00:00:00-04:00</published><updated>2018-07-17T06:30:00-04:00</updated><id>http://localhost:4000/environment/2018/07/17/setting-up-your-machine</id><content type="html" xml:base="http://localhost:4000/environment/2018/07/17/setting-up-your-machine.html">&lt;p&gt;There are many different ways to set up your development environment for NativeScript. Here I’ll show you mine.
 &lt;!--more--&gt;&lt;/p&gt;
 
 &lt;p&gt;The following shows the list I use to set up my machine for NativeScript development on my Mac.&lt;/p&gt;
