@@ -11,7 +11,7 @@
 
   <title>
     
-      Understanding Grid Layouts &middot; Tyler Blake
+      Creating Dynamic Font Awesome Icons &middot; Tyler Blake
     
   </title>
 
@@ -274,11 +274,11 @@
 
     <main class="container">
       <header>
-  <h1 class="post-title">Understanding Grid Layouts</h1>
+  <h1 class="post-title">Creating Dynamic Font Awesome Icons</h1>
 </header>
 <div class="content">
   <div class="post-meta">
-  <span class="post-date">03 Jul 2018</span>
+  <span class="post-date">14 Dec 2018</span>
   <span class="post-categories">
     
       &bull;
@@ -297,72 +297,55 @@
 </div>
 
   <div class="post-body">
-    <p>NativeScript has many different layouts, let’s dig into grid layouts for a few.
+    <p>Font Awesome icons are great, but sometimes we want to change them, their color, or size dynamically. Let’s see how to do that with NativeScript
 <!--more--></p>
 
-<h2 id="basic-grids">Basic Grids</h2>
+<p>For this example let’s say we have a list that we want to show battery life of items.</p>
 
-<p>Here is an example of a <strong>1x3</strong>  grid layout:</p>
+<p>Here is what we want the finished product to look like:</p>
 
-<p><img src="http://localhost:4000/assets/images/example1x3Grid.png" alt="Example 1x3 Grid" class="img-responsive" /></p>
+<p><img src="http://localhost:4000/assets/images/batteryIndicatorAppScreenShot.png" alt="Battery Indicator Screenshot" class="img-responsive" /></p>
 
-<p>Here is an example of a <strong>2x3</strong>  grid layout:</p>
+<h3 id="pick-your-icons">Pick your icons</h3>
+<p>Here are the unicode for each of the icons we want to use</p>
 
-<p><img src="http://localhost:4000/assets/images/example2x3Grid.png" alt="Example 2x3 Grid" class="img-responsive" /></p>
+<ul>
+  <li>0% - 0xf244</li>
+  <li>25% - 0xf243</li>
+  <li>50% - 0xf242</li>
+  <li>75% - 0xf241</li>
+  <li>100% - 0xf240</li>
+</ul>
 
-<h3 id="recap">Recap:</h3>
+<h3 id="build-out-your-ui">Build out your UI</h3>
 
-<p>A <strong>GridLayout</strong> is just that, you have columns and rows. In the 2x3 grid layout, we are telling NativeScript that we want it to generate a grid that has 2 columns and 3 rows. After you populate the <code class="highlighter-rouge">rows</code> and <code class="highlighter-rouge">columns</code> attributes of the GridLayout, you have to tell the elements within the GridLayout where they should be positioned within the grid through the <code class="highlighter-rouge">col</code> and <code class="highlighter-rouge">row</code> attributes.</p>
+<p><img src="http://localhost:4000/assets/images/batteryIndicatorViewScreenShot.png" alt="Battery Indicator View Code Screenshot" class="img-responsive" /></p>
 
-<p>GridLayout row and column definitions are <strong>zero based</strong>. This means <code class="highlighter-rouge">row="0"</code> actually refers to the first row in the grid.</p>
+<ul>
+  <li>Notice the <strong>getBatteryColor()</strong> and <strong>getBatteryCode()</strong> methods which are bound using 1 way binding with <code class="highlighter-rouge">[]</code> to our component.</li>
+</ul>
 
-<p>You can make a GridLayout have as many rows/columns as you like/need.</p>
+<h3 id="hook-up-your-component">Hook up your component</h3>
 
-<h2 id="rowspan-and-colspan">RowSpan and ColSpan</h2>
+<ul>
+  <li><strong>DISCLAIMER</strong>
+Please don’t hate on my <code class="highlighter-rouge">if</code> and <code class="highlighter-rouge">else if</code> lines, I thought that format would be easiest to follow :)</li>
+</ul>
 
-<p>Here is an example using the rowSpan attribute:</p>
+<p><img src="http://localhost:4000/assets/images/batteryIndicatorComponentScreenShot.png" alt="Battery Indicator Component Code Screenshot" class="img-responsive" /></p>
 
-<p><img src="http://localhost:4000/assets/images/rowSpan.png" alt="Example RowSpan Grid" class="img-responsive" /></p>
+<ul>
+  <li>
+    <p>In the component we just need to determine which color hex or unicode to return for each item in the <code class="highlighter-rouge">ListView</code></p>
+  </li>
+  <li>
+    <p>This shows some <strong>short circuit</strong> evaluation, which means exit the code the moment a condition is met, instead of testing a bunch of conditions then exit.</p>
+  </li>
+</ul>
 
-<p>Notice how we told it to make the orange StackLayout in column 1 row 0 to span 3 rows, in this instance it will span the entire grid since it only has 3 rows.</p>
+<p>Feel free to try and implement something similar into some of your own apps!</p>
 
-<p>Now lets see what happens when you use both the rowSpan and colSpan attributes:</p>
-
-<p><img src="http://localhost:4000/assets/images/colSpanAndRowSpan.png" alt="Example RowSpan and ColSpan Grid" class="img-responsive" /></p>
-
-<h3 id="recap-1">Recap:</h3>
-<p>In this example we told the orange StackLayout to span 2 rows instead of 3 which will make it span 2 out of 3 rows in the GridLayout this time. We also made the green StackLayout span 2 columns which will make it span the entire width.</p>
-
-<h2 id="what-does--do">What does * do?</h2>
-
-<p>Setting a row or column to <code class="highlighter-rouge">*</code> makes it take up the rest of the space available. If you use <code class="highlighter-rouge">rows="*,*"</code> then you will get 2 rows, 1 takes up the top 50% of the space available, the other takes up the bottom 50%. Here is an example:</p>
-
-<p><img src="http://localhost:4000/assets/images/usingStars.png" alt="Example Grid using stars" class="img-responsive" /></p>
-
-<h3 id="recap-2">Recap:</h3>
-<p>In this example we made a grid with 2 columns, one with a defined size of 50, the other is <code class="highlighter-rouge">*</code>. We have 3 rows, two with a defined size of 100, and the last is <code class="highlighter-rouge">*</code>. We can see that the manually defined size rows/columns are generated and the row and column with <code class="highlighter-rouge">*</code> size stretch the rest of the space available.</p>
-
-<h2 id="explicit-row-and-column-sizes">Explicit Row and Column Sizes</h2>
-
-<p>In the last example we manually defined some column and row sizes in the GridLayout instead of just using <code class="highlighter-rouge">*</code>. Here is another example of that:</p>
-
-<p><img src="http://localhost:4000/assets/images/usingManualWidths.png" alt="Example RowSpan and ColSpan Grid" class="img-responsive" /></p>
-
-<h3 id="recap-3">Recap:</h3>
-<p>Here we can see that the rows are evenly divideded upon the space available. However, the columns are not. The first column is 100 pixels wide, and the second is 300 pixels wide. This can come in handy when you have very specific requirements or needs for your GridLayout.</p>
-
-<h2 id="what-about-auto">What about Auto?</h2>
-
-<p>Using the auto value for a column or width will have the row or column take up as much space is needed. Lets see that in action:</p>
-
-<p><img src="http://localhost:4000/assets/images/autoAndStar.png" alt="Example Auto and Star Grid" class="img-responsive" /></p>
-
-<h3 id="recap-4">Recap:</h3>
-<p>Here we have a GridLayout with 1 row and 2 columns. The columns are defined with <code class="highlighter-rouge">columns="auto,*"</code> inside the GridLayout. We know that the <code class="highlighter-rouge">*</code> means the second column will stretch the rest of the space available. The auto value means that the first column will use as much space as it needs. Since we gave that StackLayout a width of 50 pixels, the first column will only take up 50 pixels.</p>
-
-<p>Now you can go create all kinds of cool GridLayouts!</p>
-
-<p>More blog posts <strong>are coming</strong> but in the meantime, stop by the <a href="http://docs.nativescript.org" title="NativeScript Docs Link">NativeScript Docs</a> to learn more!</p>
+<p>If you have any questions or comments feel free to leave them below and as always, stop by and check out the <a href="http://docs.nativescript.org" title="NativeScript Docs Link">NativeScript Docs</a> :)</p>
 
     
 
@@ -424,9 +407,9 @@
   *  https://disqus.com/admin/universalcode/#configuration-variables
   */
   var disqus_config = function () {
-    this.page.url = "http://localhost:4000/nativescript/2018/07/03/understanding-grid-layouts.html";
+    this.page.url = "http://localhost:4000/nativescript/2018/12/14/creating-dynamic-font-awesome-icons.html";
     this.page.identifier = "" ||
-                           "http://localhost:4000/nativescript/2018/07/03/understanding-grid-layouts.html";
+                           "http://localhost:4000/nativescript/2018/12/14/creating-dynamic-font-awesome-icons.html";
   }
   function loadDisqusComments() { // DON'T EDIT BELOW THIS LINE
     var d = document, s = d.createElement('script');
@@ -450,15 +433,6 @@
     
       <li>
         <h3>
-          <a href="/nativescript/2018/12/14/creating-dynamic-font-awesome-icons.html">
-            Creating Dynamic Font Awesome Icons
-            <small>14 Dec 2018</small>
-          </a>
-        </h3>
-      </li>
-    
-      <li>
-        <h3>
           <a href="/nativescript/2018/11/01/using-plugins.html">
             Using Plugins
             <small>01 Nov 2018</small>
@@ -471,6 +445,15 @@
           <a href="/nativescript/2018/10/31/creating-modals.html">
             Creating Modals
             <small>31 Oct 2018</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/nativescript/2018/08/03/accessing-native-apis.html">
+            Accessing Native APIs with NativeScript
+            <small>03 Aug 2018</small>
           </a>
         </h3>
       </li>

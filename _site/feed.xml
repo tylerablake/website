@@ -1,4 +1,52 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.3">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2018-11-01T14:02:07-04:00</updated><id>http://localhost:4000/</id><title type="html">Tyler Blake</title><subtitle>Stay a while and listen.</subtitle><author><name>Tyler Blake</name></author><entry><title type="html">Using Plugins</title><link href="http://localhost:4000/nativescript/2018/11/01/using-plugins.html" rel="alternate" type="text/html" title="Using Plugins" /><published>2018-11-01T00:00:00-04:00</published><updated>2018-11-01T06:30:00-04:00</updated><id>http://localhost:4000/nativescript/2018/11/01/using-plugins</id><content type="html" xml:base="http://localhost:4000/nativescript/2018/11/01/using-plugins.html">&lt;p&gt;What are plugins? How can they help us? How do we use them? Let’s see how to install and use plugins with NativeScript
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.3">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2018-12-14T18:17:49-05:00</updated><id>http://localhost:4000/</id><title type="html">Tyler Blake</title><subtitle>Stay a while and listen.</subtitle><author><name>Tyler Blake</name></author><entry><title type="html">Creating Dynamic Font Awesome Icons</title><link href="http://localhost:4000/nativescript/2018/12/14/creating-dynamic-font-awesome-icons.html" rel="alternate" type="text/html" title="Creating Dynamic Font Awesome Icons" /><published>2018-12-14T00:00:00-05:00</published><updated>2018-12-14T08:30:00-05:00</updated><id>http://localhost:4000/nativescript/2018/12/14/creating-dynamic-font-awesome-icons</id><content type="html" xml:base="http://localhost:4000/nativescript/2018/12/14/creating-dynamic-font-awesome-icons.html">&lt;p&gt;Font Awesome icons are great, but sometimes we want to change them, their color, or size dynamically. Let’s see how to do that with NativeScript
+&lt;!--more--&gt;&lt;/p&gt;
+
+&lt;p&gt;For this example let’s say we have a list that we want to show battery life of items.&lt;/p&gt;
+
+&lt;p&gt;Here is what we want the finished product to look like:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/images/batteryIndicatorAppScreenShot.png&quot; alt=&quot;Battery Indicator Screenshot&quot; class=&quot;img-responsive&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;pick-your-icons&quot;&gt;Pick your icons&lt;/h3&gt;
+&lt;p&gt;Here are the unicode for each of the icons we want to use&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;0% - 0xf244&lt;/li&gt;
+  &lt;li&gt;25% - 0xf243&lt;/li&gt;
+  &lt;li&gt;50% - 0xf242&lt;/li&gt;
+  &lt;li&gt;75% - 0xf241&lt;/li&gt;
+  &lt;li&gt;100% - 0xf240&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;build-out-your-ui&quot;&gt;Build out your UI&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/images/batteryIndicatorViewScreenShot.png&quot; alt=&quot;Battery Indicator View Code Screenshot&quot; class=&quot;img-responsive&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Notice the &lt;strong&gt;getBatteryColor()&lt;/strong&gt; and &lt;strong&gt;getBatteryCode()&lt;/strong&gt; methods which are bound using 1 way binding with &lt;code class=&quot;highlighter-rouge&quot;&gt;[]&lt;/code&gt; to our component.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;hook-up-your-component&quot;&gt;Hook up your component&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;DISCLAIMER&lt;/strong&gt;
+Please don’t hate on my &lt;code class=&quot;highlighter-rouge&quot;&gt;if&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;else if&lt;/code&gt; lines, I thought that format would be easiest to follow :)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/images/batteryIndicatorComponentScreenShot.png&quot; alt=&quot;Battery Indicator Component Code Screenshot&quot; class=&quot;img-responsive&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;In the component we just need to determine which color hex or unicode to return for each item in the &lt;code class=&quot;highlighter-rouge&quot;&gt;ListView&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;This shows some &lt;strong&gt;short circuit&lt;/strong&gt; evaluation, which means exit the code the moment a condition is met, instead of testing a bunch of conditions then exit.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Feel free to try and implement something similar into some of your own apps!&lt;/p&gt;
+
+&lt;p&gt;If you have any questions or comments feel free to leave them below and as always, stop by and check out the &lt;a href=&quot;http://docs.nativescript.org&quot; title=&quot;NativeScript Docs Link&quot;&gt;NativeScript Docs&lt;/a&gt; :)&lt;/p&gt;</content><author><name>Tyler Blake</name></author><category term="Intro" /><category term="Overview" /><category term="NativeScript" /><summary type="html">Font Awesome icons are great, but sometimes we want to change them, their color, or size dynamically. Let’s see how to do that with NativeScript</summary></entry><entry><title type="html">Using Plugins</title><link href="http://localhost:4000/nativescript/2018/11/01/using-plugins.html" rel="alternate" type="text/html" title="Using Plugins" /><published>2018-11-01T00:00:00-04:00</published><updated>2018-11-01T06:30:00-04:00</updated><id>http://localhost:4000/nativescript/2018/11/01/using-plugins</id><content type="html" xml:base="http://localhost:4000/nativescript/2018/11/01/using-plugins.html">&lt;p&gt;What are plugins? How can they help us? How do we use them? Let’s see how to install and use plugins with NativeScript
 &lt;!--more--&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;what-is-a-plugin&quot;&gt;What is a plugin?&lt;/h2&gt;
