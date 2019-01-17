@@ -265,7 +265,7 @@
   <!-- Optional additional links to insert for icons links -->
 </nav>
   <p>
-  &copy; 2018.
+  &copy; 2019.
   <a href="/LICENSE.md">MIT License.</a>
 </p>
 
@@ -279,13 +279,75 @@
  <title>Tyler Blake</title>
  <link href="http://localhost:4000/atom.xml" rel="self"/>
  <link href="http://localhost:4000/"/>
- <updated>2018-12-14T18:17:49-05:00</updated>
+ <updated>2019-01-17T18:09:29-05:00</updated>
  <id>http://localhost:4000</id>
  <author>
    <name>Tyler Blake</name>
    <email></email>
  </author>
 
+ 
+ <entry>
+   <title>Managing App Versioning on iOS</title>
+   <link href="http://localhost:4000/nativescript/2019/01/17/managing-app-versioning.html"/>
+   <updated>2019-01-17T00:00:00-05:00</updated>
+   <id>http://localhost:4000/nativescript/2019/01/17/managing-app-versioning</id>
+   <content type="html">&lt;p&gt;Versioning your app’s builds is great but managing that versioning can be a pain, in this post I’m going to show you how I manage versioning and hopefully help you out.
+&lt;!--more--&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;what-is-versioning&quot;&gt;What is “versioning”?&lt;/h3&gt;
+
+&lt;p&gt;“Versioning” in this context, means seeing a little &lt;code class=&quot;highlighter-rouge&quot;&gt;v 1.0&lt;/code&gt; at the bottom of the page that your users land on when opening your app, which is typically the login page or home page.&lt;/p&gt;
+
+&lt;h3 id=&quot;whats-the-problem&quot;&gt;What’s the problem?&lt;/h3&gt;
+
+&lt;p&gt;When I first started developing NativeScript apps I manually updated the version on that landing page before each publish.&lt;/p&gt;
+
+&lt;!-- Sometimes I would forget to update it completely, or sometimes I would forget to update it in the middle of the build process. Then I would update it inside of XCode, which would increment the build number inside of HockeyApp, but not inside of my app. --&gt;
+
+&lt;p&gt;Sometimes I would forget to update it, so a user might report a bug on build 35, but in reality they are on build 36, which makes finding and fixing that bug much harder.&lt;/p&gt;
+
+&lt;p&gt;Enough of that boring stuff, let’s talk about how to “automate” it.&lt;/p&gt;
+
+&lt;p&gt;Something awesome I found is that you can actually pull data from your plist file, so you don’t have to update your html file each time you update your plist file, here’s how!&lt;/p&gt;
+
+&lt;h3 id=&quot;set-the-app-version&quot;&gt;Set the App Version&lt;/h3&gt;
+
+&lt;p&gt;Given you set your version inside of your plist file like this:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/images/plistVersionNumber.png&quot; alt=&quot;plist version number&quot; class=&quot;img-responsive&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;pull-the-app-version&quot;&gt;Pull the App Version&lt;/h3&gt;
+
+&lt;p&gt;Pulling the version is simple, first you need to add the NativeScript utils into your component.&lt;/p&gt;
+
+&lt;p&gt;Add this line just below all of your imports for your component.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/images/utilsScreenShot.png&quot; alt=&quot;import utils&quot; class=&quot;img-responsive&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Then inside of your component you can use this to pull that version number.&lt;/p&gt;
+
+&lt;p&gt;In this case I’m setting a &lt;code class=&quot;highlighter-rouge&quot;&gt;version&lt;/code&gt;, a component property, to the version number&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/images/settingAppVersion.png&quot; alt=&quot;setting app version&quot; class=&quot;img-responsive&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Notice how you use the &lt;code class=&quot;highlighter-rouge&quot;&gt;key&lt;/code&gt; to retreieve the value from your plist file&lt;/p&gt;
+
+&lt;h3 id=&quot;display-the-app-version&quot;&gt;Display the App Version&lt;/h3&gt;
+
+&lt;p&gt;Now all you need to do is update your html to dispay that &lt;code class=&quot;highlighter-rouge&quot;&gt;version&lt;/code&gt; property with data binding like so:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/images/settingAppVersionUICode.png&quot; alt=&quot;setting app version ui code&quot; class=&quot;img-responsive&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Which looks like this on a login page:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/images/settingAppVersionUI.png&quot; alt=&quot;setting app version ui&quot; class=&quot;img-responsive&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Feel free to try and implement something similar into some of your own apps!&lt;/p&gt;
+
+&lt;p&gt;If you have any questions or comments feel free to leave them below, or reach out to me. As always, stop by and check out the &lt;a href=&quot;http://docs.nativescript.org&quot; title=&quot;NativeScript Docs Link&quot;&gt;NativeScript Docs&lt;/a&gt; :)&lt;/p&gt;
+</content>
+ </entry>
  
  <entry>
    <title>Creating Dynamic Font Awesome Icons</title>

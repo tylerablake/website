@@ -10,10 +10,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
 
   <title>
-        
-      
-        Tyler Blake
-      
+    
+      Managing App Versioning on iOS &middot; Tyler Blake
     
   </title>
 
@@ -37,21 +35,26 @@
 </head>
 
 
-  <body class="index home">
+  <body class="post">
 
     <div id="sidebar">
   <header>
-    <h1 class="site-title">
+    <div class="site-title">
       <a href="/">
+        
+          <span class="back-arrow icon"><svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+  <path d="M0 0h24v24H0z" fill="none"/>
+  <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/>
+</svg></span>
         
         Tyler Blake
       </a>
-    </h1>
+    </div>
     <p class="lead">Stay a while and listen.</p>
   </header>
   <nav id="sidebar-nav-links">
   
-    <a class="home-link  active"
+    <a class="home-link "
         href="/">Home</a>
   
   
@@ -270,20 +273,11 @@
 
 
     <main class="container">
-      <div class="content">
-  
-
-
-  
-
-  
-  <article class="post-body">
-    <h2 class="post-title">
-      <a href="/nativescript/2019/01/17/managing-app-versioning.html">
-        Managing App Versioning on iOS
-      </a>
-    </h2>
-    <div class="post-meta">
+      <header>
+  <h1 class="post-title">Managing App Versioning on iOS</h1>
+</header>
+<div class="content">
+  <div class="post-meta">
   <span class="post-date">17 Jan 2019</span>
   <span class="post-categories">
     
@@ -302,202 +296,178 @@
   </span>
 </div>
 
+  <div class="post-body">
+    <p>Versioning your app’s builds is great but managing that versioning can be a pain, in this post I’m going to show you how I manage versioning and hopefully help you out.
+<!--more--></p>
+
+<h3 id="what-is-versioning">What is “versioning”?</h3>
+
+<p>“Versioning” in this context, means seeing a little <code class="highlighter-rouge">v 1.0</code> at the bottom of the page that your users land on when opening your app, which is typically the login page or home page.</p>
+
+<h3 id="whats-the-problem">What’s the problem?</h3>
+
+<p>When I first started developing NativeScript apps I manually updated the version on that landing page before each publish.</p>
+
+<!-- Sometimes I would forget to update it completely, or sometimes I would forget to update it in the middle of the build process. Then I would update it inside of XCode, which would increment the build number inside of HockeyApp, but not inside of my app. -->
+
+<p>Sometimes I would forget to update it, so a user might report a bug on build 35, but in reality they are on build 36, which makes finding and fixing that bug much harder.</p>
+
+<p>Enough of that boring stuff, let’s talk about how to “automate” it.</p>
+
+<p>Something awesome I found is that you can actually pull data from your plist file, so you don’t have to update your html file each time you update your plist file, here’s how!</p>
+
+<h3 id="set-the-app-version">Set the App Version</h3>
+
+<p>Given you set your version inside of your plist file like this:</p>
+
+<p><img src="http://localhost:4000/assets/images/plistVersionNumber.png" alt="plist version number" class="img-responsive" /></p>
+
+<h3 id="pull-the-app-version">Pull the App Version</h3>
+
+<p>Pulling the version is simple, first you need to add the NativeScript utils into your component.</p>
+
+<p>Add this line just below all of your imports for your component.</p>
+
+<p><img src="http://localhost:4000/assets/images/utilsScreenShot.png" alt="import utils" class="img-responsive" /></p>
+
+<p>Then inside of your component you can use this to pull that version number.</p>
+
+<p>In this case I’m setting a <code class="highlighter-rouge">version</code>, a component property, to the version number</p>
+
+<p><img src="http://localhost:4000/assets/images/settingAppVersion.png" alt="setting app version" class="img-responsive" /></p>
+
+<p>Notice how you use the <code class="highlighter-rouge">key</code> to retreieve the value from your plist file</p>
+
+<h3 id="display-the-app-version">Display the App Version</h3>
+
+<p>Now all you need to do is update your html to dispay that <code class="highlighter-rouge">version</code> property with data binding like so:</p>
+
+<p><img src="http://localhost:4000/assets/images/settingAppVersionUICode.png" alt="setting app version ui code" class="img-responsive" /></p>
+
+<p>Which looks like this on a login page:</p>
+
+<p><img src="http://localhost:4000/assets/images/settingAppVersionUI.png" alt="setting app version ui" class="img-responsive" /></p>
+
+<p>Feel free to try and implement something similar into some of your own apps!</p>
+
+<p>If you have any questions or comments feel free to leave them below, or reach out to me. As always, stop by and check out the <a href="http://docs.nativescript.org" title="NativeScript Docs Link">NativeScript Docs</a> :)</p>
+
     
-      <p>Versioning your app’s builds is great but managing that versioning can be a pain, in this post I’m going to show you how I manage versioning and hopefully help you out.</p>
 
 
-    
 
-    
-      
-      
-      
-
-      
-        <a href="/nativescript/2019/01/17/managing-app-versioning.html">More &hellip;</a>
-      
-    
-  </article>
+<div class="post-tags">
   
-  <article class="post-body">
-    <h2 class="post-title">
-      <a href="/nativescript/2018/12/14/creating-dynamic-font-awesome-icons.html">
-        Creating Dynamic Font Awesome Icons
-      </a>
-    </h2>
-    <div class="post-meta">
-  <span class="post-date">14 Dec 2018</span>
-  <span class="post-categories">
     
-      &bull;
-
-      
-      
-      
-
-      
-        <a href="/category/nativescript.html">
-          NativeScript
-        </a>
-      
+    <a href="/tags.html#intro">
     
-  </span>
+      <span class="icon">
+        <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
+</svg>
+      </span>&nbsp;<span class="tag-name">Intro</span>
+    </a>
+  
+    
+    <a href="/tags.html#overview">
+    
+      <span class="icon">
+        <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
+</svg>
+      </span>&nbsp;<span class="tag-name">Overview</span>
+    </a>
+  
+    
+    <a href="/tags.html#nativescript">
+    
+      <span class="icon">
+        <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
+</svg>
+      </span>&nbsp;<span class="tag-name">NativeScript</span>
+    </a>
+  
 </div>
-
-    
-      <p>Font Awesome icons are great, but sometimes we want to change them, their color, or size dynamically. Let’s see how to do that with NativeScript</p>
-
-
-    
-
-    
-      
-      
-      
-
-      
-        <a href="/nativescript/2018/12/14/creating-dynamic-font-awesome-icons.html">More &hellip;</a>
-      
-    
-  </article>
-  
-  <article class="post-body">
-    <h2 class="post-title">
-      <a href="/nativescript/2018/11/01/using-plugins.html">
-        Using Plugins
-      </a>
-    </h2>
-    <div class="post-meta">
-  <span class="post-date">01 Nov 2018</span>
-  <span class="post-categories">
-    
-      &bull;
-
-      
-      
-      
-
-      
-        <a href="/category/nativescript.html">
-          NativeScript
-        </a>
-      
-    
-  </span>
-</div>
-
-    
-      <p>What are plugins? How can they help us? How do we use them? Let’s see how to install and use plugins with NativeScript</p>
-
-
-    
-
-    
-      
-      
-      
-
-      
-        <a href="/nativescript/2018/11/01/using-plugins.html">More &hellip;</a>
-      
-    
-  </article>
-  
-  <article class="post-body">
-    <h2 class="post-title">
-      <a href="/nativescript/2018/10/31/creating-modals.html">
-        Creating Modals
-      </a>
-    </h2>
-    <div class="post-meta">
-  <span class="post-date">31 Oct 2018</span>
-  <span class="post-categories">
-    
-      &bull;
-
-      
-      
-      
-
-      
-        <a href="/category/nativescript.html">
-          NativeScript
-        </a>
-      
-    
-  </span>
-</div>
-
-    
-      <p>Sometimes you don’t want to clutter a single page with a bunch of inputs, lets see how to use modals to help with this!</p>
-
-
-    
-
-    
-      
-      
-      
-
-      
-        <a href="/nativescript/2018/10/31/creating-modals.html">More &hellip;</a>
-      
-    
-  </article>
-  
-  <article class="post-body">
-    <h2 class="post-title">
-      <a href="/nativescript/2018/08/03/accessing-native-apis.html">
-        Accessing Native APIs with NativeScript
-      </a>
-    </h2>
-    <div class="post-meta">
-  <span class="post-date">03 Aug 2018</span>
-  <span class="post-categories">
-    
-      &bull;
-
-      
-      
-      
-
-      
-        <a href="/category/nativescript.html">
-          NativeScript
-        </a>
-      
-    
-  </span>
-</div>
-
-    
-      <p>One of the biggest advantages of NativeScript is the ability to access native device API’s. In this post I’ll show you how.</p>
-
-
-    
-
-    
-      
-      
-      
-
-      
-        <a href="/nativescript/2018/08/03/accessing-native-apis.html">More &hellip;</a>
-      
-    
-  </article>
-  
+  </div>
 
   
-<div class="pagination">
-  <a class="pagination-item older"
-     href="/page2">
-    Older
-  </a>
-</div>
+  <section class="comments">
+    <h2>Comments</h2>
+    
+  <div id="disqus_thread">
+    <button class="disqus-load" onClick="loadDisqusComments()">
+      Load Comments
+    </button>
+  </div>
+  <script>
+
+  /**
+  *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW
+  *  TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+  *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT:s
+  *  https://disqus.com/admin/universalcode/#configuration-variables
+  */
+  var disqus_config = function () {
+    this.page.url = "http://localhost:4000/nativescript/2019/01/17/managing-app-versioning.html";
+    this.page.identifier = "" ||
+                           "http://localhost:4000/nativescript/2019/01/17/managing-app-versioning.html";
+  }
+  function loadDisqusComments() { // DON'T EDIT BELOW THIS LINE
+    var d = document, s = d.createElement('script');
+    s.src = '//tylerablake.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+  }
+  </script>
+  <noscript>
+    Please enable JavaScript to view the
+    <a href="https://disqus.com/?ref_noscript">comments powered by Disqus</a>.
+  </noscript>
 
 
+
+  </section>
+
+  <section class="related">
+  <h2>Related Posts</h2>
+  <ul class="posts-list">
+    
+      <li>
+        <h3>
+          <a href="/nativescript/2018/12/14/creating-dynamic-font-awesome-icons.html">
+            Creating Dynamic Font Awesome Icons
+            <small>14 Dec 2018</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/nativescript/2018/11/01/using-plugins.html">
+            Using Plugins
+            <small>01 Nov 2018</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/nativescript/2018/10/31/creating-modals.html">
+            Creating Modals
+            <small>31 Oct 2018</small>
+          </a>
+        </h3>
+      </li>
+    
+  </ul>
+</section>
+
 </div>
+
     </main>
 
     <!-- Optional footer content -->

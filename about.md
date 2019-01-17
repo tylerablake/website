@@ -18,7 +18,7 @@ sidebar_link: true
 
 <div class="message">
 <p>
-  Hey there! Thanks for stopping by my blog, my name is Tyler Blake and I am a software developer from Louisville, KY. I love mentoring, teaching, and learning most things development. Currently I'm all about NativeScript! 
+  Hey there! Thanks for stopping by my blog, my name is Tyler Blake and I am a NativeScript developer at FocustApps in Louisville, KY. I love mentoring, teaching, and learning most things development. Currently I'm all about NativeScript! 
 </p>
 
 <p>If you would like to know more about me feel free to follow me on Twitter and/or message me. </p>
