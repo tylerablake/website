@@ -1,4 +1,121 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.3">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2019-01-17T18:09:29-05:00</updated><id>http://localhost:4000/</id><title type="html">Tyler Blake</title><subtitle>Stay a while and listen.</subtitle><author><name>Tyler Blake</name></author><entry><title type="html">Managing App Versioning on iOS</title><link href="http://localhost:4000/nativescript/2019/01/17/managing-app-versioning.html" rel="alternate" type="text/html" title="Managing App Versioning on iOS" /><published>2019-01-17T00:00:00-05:00</published><updated>2019-01-17T12:30:00-05:00</updated><id>http://localhost:4000/nativescript/2019/01/17/managing-app-versioning</id><content type="html" xml:base="http://localhost:4000/nativescript/2019/01/17/managing-app-versioning.html">&lt;p&gt;Versioning your app’s builds is great but managing that versioning can be a pain, in this post I’m going to show you how I manage versioning and hopefully help you out.
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.3">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2019-06-14T17:27:55-04:00</updated><id>http://localhost:4000/</id><title type="html">Tyler Blake</title><subtitle>Stay a while and listen.</subtitle><author><name>Tyler Blake</name></author><entry><title type="html">Capturing Signatures with NativeScript + Angular</title><link href="http://localhost:4000/nativescript/2019/05/02/capturing-signatures.html" rel="alternate" type="text/html" title="Capturing Signatures with NativeScript + Angular" /><published>2019-05-02T00:00:00-04:00</published><updated>2019-05-02T10:30:00-04:00</updated><id>http://localhost:4000/nativescript/2019/05/02/capturing-signatures</id><content type="html" xml:base="http://localhost:4000/nativescript/2019/05/02/capturing-signatures.html">&lt;p&gt;Today I’m going to show you how to capture user signatures with NativeScript using the &lt;a href=&quot;https://github.com/bradmartin/nativescript-drawingpad&quot; title=&quot;nativescript-drawingpad link&quot;&gt;nativescript-drawingpad&lt;/a&gt; plugin created by &lt;a href=&quot;https://twitter.com/_bradmartin_&quot; title=&quot;brad martin twitter link&quot;&gt;Brad Martin&lt;/a&gt;.
+&lt;!--more--&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;install-the-plugin&quot;&gt;Install the Plugin&lt;/h2&gt;
+
+&lt;p&gt;Inside of your NativeScript &lt;strong&gt;(v4+)&lt;/strong&gt; with Angular project, run the following command in your terminal&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;tns plugin add nativescript-drawingpad&lt;/code&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;configure-the-plugin&quot;&gt;Configure the Plugin&lt;/h2&gt;
+
+&lt;p&gt;We need to do a few things to configure the plugin for use. First we will add the UI, then configure the &lt;code class=&quot;highlighter-rouge&quot;&gt;component.ts&lt;/code&gt; file.&lt;/p&gt;
+
+&lt;h2 id=&quot;add-the-ui&quot;&gt;Add the UI&lt;/h2&gt;
+
+&lt;p&gt;Add the following to your component.html file:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;lt;GridLayout rows=&quot;*,auto&quot; columns=&quot;*&quot; backgroundColor=&quot;#FFFFFF&quot;&amp;gt;
+
+    &amp;lt;StackLayout col=&quot;0&quot; row=&quot;0&quot; horizontalAlignment=&quot;center&quot; verticalAlignment=&quot;center&quot; backgroundColor=&quot;#FFFFFF&quot;&amp;gt;
+        &amp;lt;Label [visibility]=&quot;signatureImage ? 'visible' : 'collapsed'&quot; text=&quot;Preview&quot; textWrap=&quot;true&quot; horizontalAlignment=&quot;center&quot; verticalAlignment=&quot;center&quot;&amp;gt;&amp;lt;/Label&amp;gt;
+        &amp;lt;Image [visibility]=&quot;signatureImage ? 'visible' : 'collapsed'&quot; [src]=&quot;signatureImage&quot; height=&quot;150&quot; width=&quot;90%&quot; borderColor=&quot;black&quot; borderWidth=&quot;2&quot;&amp;gt;&amp;lt;/Image&amp;gt;
+
+        &amp;lt;Label text=&quot;Sign/Update below&quot; textWrap=&quot;true&quot; horizontalAlignment=&quot;center&quot; verticalAlignment=&quot;center&quot; marginTop=&quot;20&quot;&amp;gt;&amp;lt;/Label&amp;gt;
+
+        &amp;lt;DrawingPad #DrawingPad height=&quot;150&quot; width=&quot;90%&quot; id=&quot;drawingPad&quot; penColor=&quot;#FF6B6B&quot; penWidth=&quot;3&quot; borderColor=&quot;black&quot;
+            borderWidth=&quot;2&quot;&amp;gt;
+        &amp;lt;/DrawingPad&amp;gt;
+    &amp;lt;/StackLayout&amp;gt;
+
+    &amp;lt;GridLayout col=&quot;0&quot; row=&quot;1&quot; rows=&quot;auto,*&quot; columns=&quot;*,*&quot;&amp;gt;
+        &amp;lt;Button col=&quot;0&quot; row=&quot;0&quot; colSpan=&quot;2&quot; text=&quot;Clear Signature&quot; (tap)=&quot;clearMyDrawing()&quot;&amp;gt;&amp;lt;/Button&amp;gt;
+
+        &amp;lt;Button col=&quot;0&quot; row=&quot;1&quot; class=&quot;btn btn-primary&quot; text=&quot;Back&quot; (tap)=&quot;onBackTap()&quot;&amp;gt;&amp;lt;/Button&amp;gt;
+        &amp;lt;Button col=&quot;1&quot; row=&quot;1&quot; class=&quot;btn btn-primary&quot; text=&quot;Done&quot; (tap)=&quot;onDoneTap()&quot;&amp;gt;&amp;lt;/Button&amp;gt;
+    &amp;lt;/GridLayout&amp;gt;
+
+&amp;lt;/GridLayout&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;This will create a simple UI with a few buttons and a box so the user knows where to sign, it will look like this:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/images/sign-here-page.png&quot; alt=&quot;Sign Here Page&quot; class=&quot;img-responsive&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;hook-up-code-behind&quot;&gt;Hook Up Code Behind&lt;/h2&gt;
+
+&lt;p&gt;Now we need to hook up the Clear Signature and Done buttons. To do this we need to do 3 things to our component.ts file&lt;/p&gt;
+
+&lt;h4 id=&quot;1-add-imports&quot;&gt;1. Add Imports&lt;/h4&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;import { Component, ElementRef, ViewChild } from &quot;@angular/core&quot;;
+import * as imageSourceModule from &quot;image-source&quot;;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;2-add-properties&quot;&gt;2. Add Properties&lt;/h4&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;signatureImage: imageSourceModule.ImageSource; // Image of signature
+signatureImageString: string; // Base64 signature string
+@ViewChild(&quot;DrawingPad&quot;) DrawingPad: ElementRef; // Reference to DrawingPad UI
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;3-add-methods&quot;&gt;3. Add Methods&lt;/h4&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;clearMyDrawing(args) {
+    const pad = this.DrawingPad.nativeElement;
+    pad.clearDrawing();
+}
+
+onDoneTap(): void {
+    // get reference to the drawing pad
+    const pad = this.DrawingPad.nativeElement;
+
+    // then get the drawing (Bitmap on Android) of the drawingpad
+    let drawingImage;
+    pad.getDrawing().then(
+        (data) =&amp;gt; {
+            console.log(data);
+            if (data) {
+                drawingImage = data;
+                this.signatureImageString = imageSourceModule.fromNativeSource(data).toBase64String(&quot;png&quot;);
+                this.params.closeCallback(this.signatureImageString);
+            }
+        },
+        (err) =&amp;gt; {
+            console.log(err);
+        }
+    );
+
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Now with any luck, we should be able to see that signature after we hit “Done”.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/images/signature-saved.png&quot; alt=&quot;Signature Saved Picture&quot; class=&quot;img-responsive&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;save-the-signature&quot;&gt;Save the Signature&lt;/h2&gt;
+
+&lt;p&gt;How you would like to save that signature is up to you, in the code you have both the &lt;code class=&quot;highlighter-rouge&quot;&gt;ImageSource&lt;/code&gt; and the &lt;code class=&quot;highlighter-rouge&quot;&gt;base64&lt;/code&gt; of the user’s signature. :)&lt;/p&gt;
+
+&lt;h2 id=&quot;edit-the-signature&quot;&gt;Edit the Signature&lt;/h2&gt;
+
+&lt;p&gt;If you’d like to edit the signature all we have to do is convert from &lt;code class=&quot;highlighter-rouge&quot;&gt;base64&lt;/code&gt; to &lt;code class=&quot;highlighter-rouge&quot;&gt;ImageSource&lt;/code&gt; when navigating to the page.&lt;/p&gt;
+
+&lt;p&gt;If you use &lt;code class=&quot;highlighter-rouge&quot;&gt;params&lt;/code&gt; or &lt;code class=&quot;highlighter-rouge&quot;&gt;queryParams&lt;/code&gt; to pass data from one component to another then all you have to do is update your constructor to look like this:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;constructor(private params: ModalDialogParams) {
+  // Convert base64 string signature to an Image object
+  this.signatureImage = imageSourceModule.fromBase64(params.context);
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Then since we added &lt;strong&gt;[src]=”signatureImage”&lt;/strong&gt; to our &lt;code class=&quot;highlighter-rouge&quot;&gt;component.html&lt;/code&gt; file earlier, it will bind to &lt;code class=&quot;highlighter-rouge&quot;&gt;this.signatureImage&lt;/code&gt; when the view loads.&lt;/p&gt;
+
+&lt;p&gt;Hope this helps you out on your app!&lt;/p&gt;
+
+&lt;p&gt;I tried to keep this blog post short and sweet so if you run into any issues feel free to reach out.&lt;/p&gt;
+
+&lt;p&gt;See you next time! :)&lt;/p&gt;</content><author><name>Tyler Blake</name></author><category term="Overview" /><category term="NativeScript" /><summary type="html">Today I’m going to show you how to capture user signatures with NativeScript using the nativescript-drawingpad plugin created by Brad Martin.</summary></entry><entry><title type="html">Managing App Versioning on iOS</title><link href="http://localhost:4000/nativescript/2019/01/17/managing-app-versioning.html" rel="alternate" type="text/html" title="Managing App Versioning on iOS" /><published>2019-01-17T00:00:00-05:00</published><updated>2019-01-17T12:30:00-05:00</updated><id>http://localhost:4000/nativescript/2019/01/17/managing-app-versioning</id><content type="html" xml:base="http://localhost:4000/nativescript/2019/01/17/managing-app-versioning.html">&lt;p&gt;Versioning your app’s builds is great but managing that versioning can be a pain, in this post I’m going to show you how I manage versioning and hopefully help you out.
 &lt;!--more--&gt;&lt;/p&gt;
 
 &lt;h3 id=&quot;what-is-versioning&quot;&gt;What is “versioning”?&lt;/h3&gt;
@@ -655,39 +772,4 @@ your property ID in your config file.&lt;/p&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;There’s also a bunch of minor tweaks and adjustments throughout the
-theme. Hope this works for you!&lt;/p&gt;</content><author><name>Tyler Blake</name></author><summary type="html">Hydeout updates the original Hyde theme for Jekyll 3.x and adds new functionality. Keep It Simple In keeping with the original Hyde theme, Hydeout aims to keep the overall design lightweight and plugin-free. JavaScript is currently limited only to Disqus and Google Analytics (and is only loaded if you provide configuration variables). Hydeout makes heavy use of Flexbox in its CSS. If Flexbox is not available, the CSS degrades into a single column layout. Customization Hydeout replaces Hyde’s class-based theming with the use of the following SASS variables: $sidebar-bg-color: #202020 !default; $sidebar-sticky: true !default; $layout-reverse: false !default; $link-color: #268bd2 !default; To override these variables, create your own assets/css/main.scss file. Define your own variables, then import in Hydeout’s SCSS, like so: --- # Jekyll needs front matter for SCSS files --- $sidebar-bg-color: #ac4142; $link-color: #ac4142; $sidebar-sticky: false; @import &quot;hydeout&quot;; See the _variables file for other variables you can override. You can also insert custom head tags (e.g. to load your own stylesheets) by defining your own _includes/custom-head.html or insert tags at the end of the body (e.g. for custom JS) by defining your own _includes/custom-foot.html. New Features Hydeout also adds a new tags page (accessible in the sidebar) and a new “category” layout for dedicated category pages. Category pages are automatically added to the sidebar. All other pages must have sidebar_link: true in their front matter to show up in the sidebar. A simple redirect-to-Google search is available. If you want to use Google Custom Search or Algolia or something with more involved, override the search.html. Disqus integration is ready out of the box. Just add the following to your config file: disqus: shortname: my-disqus-shortname If you don’t want Disqus or want to use something else, override comments.html. For Google Analytics support, define a google_analytics variable with your property ID in your config file. There’s also a bunch of minor tweaks and adjustments throughout the theme. Hope this works for you!</summary></entry><entry><title type="html">Introducing Hyde</title><link href="http://localhost:4000/2018/04/02/introducing-hyde.html" rel="alternate" type="text/html" title="Introducing Hyde" /><published>2018-04-02T00:00:00-04:00</published><updated>2018-04-02T00:00:00-04:00</updated><id>http://localhost:4000/2018/04/02/introducing-hyde</id><content type="html" xml:base="http://localhost:4000/2018/04/02/introducing-hyde.html">&lt;p&gt;Hyde is a brazen two-column &lt;a href=&quot;http://jekyllrb.com&quot;&gt;Jekyll&lt;/a&gt; theme that pairs a prominent sidebar with uncomplicated content. It’s based on &lt;a href=&quot;http://getpoole.com&quot;&gt;Poole&lt;/a&gt;, the Jekyll butler.&lt;/p&gt;
-
-&lt;h3 id=&quot;built-on-poole&quot;&gt;Built on Poole&lt;/h3&gt;
-
-&lt;p&gt;Poole is the Jekyll Butler, serving as an upstanding and effective foundation for Jekyll themes by &lt;a href=&quot;https://twitter.com/mdo&quot;&gt;@mdo&lt;/a&gt;. Poole, and every theme built on it (like Hyde here) includes the following:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Complete Jekyll setup included (layouts, config, &lt;a href=&quot;/404&quot;&gt;404&lt;/a&gt;, &lt;a href=&quot;/feed.xml&quot;&gt;RSS feed&lt;/a&gt;, posts, and &lt;a href=&quot;/about&quot;&gt;example page&lt;/a&gt;)&lt;/li&gt;
-  &lt;li&gt;Mobile friendly design and development&lt;/li&gt;
-  &lt;li&gt;Easily scalable text and component sizing with &lt;code class=&quot;highlighter-rouge&quot;&gt;rem&lt;/code&gt; units in the CSS&lt;/li&gt;
-  &lt;li&gt;Support for a wide gamut of HTML elements&lt;/li&gt;
-  &lt;li&gt;Related posts (time-based, because Jekyll) below each post&lt;/li&gt;
-  &lt;li&gt;Syntax highlighting, courtesy Pygments (the Python-based code snippet highlighter)&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;hyde-features&quot;&gt;Hyde features&lt;/h3&gt;
-
-&lt;p&gt;In addition to the features of Poole, Hyde adds the following:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Sidebar includes support for textual modules and a dynamically generated navigation with active link support&lt;/li&gt;
-  &lt;li&gt;Two orientations for content and sidebar, default (left sidebar) and &lt;a href=&quot;https://github.com/poole/lanyon#reverse-layout&quot;&gt;reverse&lt;/a&gt; (right sidebar), available via &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;body&amp;gt;&lt;/code&gt; classes&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://github.com/poole/hyde#themes&quot;&gt;Eight optional color schemes&lt;/a&gt;, available via &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;body&amp;gt;&lt;/code&gt; classes&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://github.com/poole/hyde#readme&quot;&gt;Head to the readme&lt;/a&gt; to learn more.&lt;/p&gt;
-
-&lt;h3 id=&quot;browser-support&quot;&gt;Browser support&lt;/h3&gt;
-
-&lt;p&gt;Hyde is by preference a forward-thinking project. In addition to the latest versions of Chrome, Safari (mobile and desktop), and Firefox, it is only compatible with Internet Explorer 9 and above.&lt;/p&gt;
-
-&lt;h3 id=&quot;download&quot;&gt;Download&lt;/h3&gt;
-
-&lt;p&gt;Hyde is developed on and hosted with GitHub. Head to the &lt;a href=&quot;https://github.com/poole/hyde&quot;&gt;GitHub repository&lt;/a&gt; for downloads, bug reports, and features requests.&lt;/p&gt;
-
-&lt;p&gt;Thanks!&lt;/p&gt;</content><author><name>Tyler Blake</name></author><summary type="html">Hyde is a brazen two-column Jekyll theme that pairs a prominent sidebar with uncomplicated content. It’s based on Poole, the Jekyll butler. Built on Poole Poole is the Jekyll Butler, serving as an upstanding and effective foundation for Jekyll themes by @mdo. Poole, and every theme built on it (like Hyde here) includes the following: Complete Jekyll setup included (layouts, config, 404, RSS feed, posts, and example page) Mobile friendly design and development Easily scalable text and component sizing with rem units in the CSS Support for a wide gamut of HTML elements Related posts (time-based, because Jekyll) below each post Syntax highlighting, courtesy Pygments (the Python-based code snippet highlighter) Hyde features In addition to the features of Poole, Hyde adds the following: Sidebar includes support for textual modules and a dynamically generated navigation with active link support Two orientations for content and sidebar, default (left sidebar) and reverse (right sidebar), available via &amp;lt;body&amp;gt; classes Eight optional color schemes, available via &amp;lt;body&amp;gt; classes Head to the readme to learn more. Browser support Hyde is by preference a forward-thinking project. In addition to the latest versions of Chrome, Safari (mobile and desktop), and Firefox, it is only compatible with Internet Explorer 9 and above. Download Hyde is developed on and hosted with GitHub. Head to the GitHub repository for downloads, bug reports, and features requests. Thanks!</summary></entry></feed>
+theme. Hope this works for you!&lt;/p&gt;</content><author><name>Tyler Blake</name></author><summary type="html">Hydeout updates the original Hyde theme for Jekyll 3.x and adds new functionality. Keep It Simple In keeping with the original Hyde theme, Hydeout aims to keep the overall design lightweight and plugin-free. JavaScript is currently limited only to Disqus and Google Analytics (and is only loaded if you provide configuration variables). Hydeout makes heavy use of Flexbox in its CSS. If Flexbox is not available, the CSS degrades into a single column layout. Customization Hydeout replaces Hyde’s class-based theming with the use of the following SASS variables: $sidebar-bg-color: #202020 !default; $sidebar-sticky: true !default; $layout-reverse: false !default; $link-color: #268bd2 !default; To override these variables, create your own assets/css/main.scss file. Define your own variables, then import in Hydeout’s SCSS, like so: --- # Jekyll needs front matter for SCSS files --- $sidebar-bg-color: #ac4142; $link-color: #ac4142; $sidebar-sticky: false; @import &quot;hydeout&quot;; See the _variables file for other variables you can override. You can also insert custom head tags (e.g. to load your own stylesheets) by defining your own _includes/custom-head.html or insert tags at the end of the body (e.g. for custom JS) by defining your own _includes/custom-foot.html. New Features Hydeout also adds a new tags page (accessible in the sidebar) and a new “category” layout for dedicated category pages. Category pages are automatically added to the sidebar. All other pages must have sidebar_link: true in their front matter to show up in the sidebar. A simple redirect-to-Google search is available. If you want to use Google Custom Search or Algolia or something with more involved, override the search.html. Disqus integration is ready out of the box. Just add the following to your config file: disqus: shortname: my-disqus-shortname If you don’t want Disqus or want to use something else, override comments.html. For Google Analytics support, define a google_analytics variable with your property ID in your config file. There’s also a bunch of minor tweaks and adjustments throughout the theme. Hope this works for you!</summary></entry></feed>

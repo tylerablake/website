@@ -105,6 +105,10 @@
     
   
 
+  
+    
+  
+
 
   
 
@@ -144,6 +148,10 @@
     
   
 
+  
+
+  
+    
   
 
   
@@ -279,13 +287,139 @@
  <title>Tyler Blake</title>
  <link href="http://localhost:4000/atom.xml" rel="self"/>
  <link href="http://localhost:4000/"/>
- <updated>2019-01-17T18:09:29-05:00</updated>
+ <updated>2019-06-14T17:27:55-04:00</updated>
  <id>http://localhost:4000</id>
  <author>
    <name>Tyler Blake</name>
    <email></email>
  </author>
 
+ 
+ <entry>
+   <title>Capturing Signatures with NativeScript + Angular</title>
+   <link href="http://localhost:4000/nativescript/2019/05/02/capturing-signatures.html"/>
+   <updated>2019-05-02T00:00:00-04:00</updated>
+   <id>http://localhost:4000/nativescript/2019/05/02/capturing-signatures</id>
+   <content type="html">&lt;p&gt;Today I’m going to show you how to capture user signatures with NativeScript using the &lt;a href=&quot;https://github.com/bradmartin/nativescript-drawingpad&quot; title=&quot;nativescript-drawingpad link&quot;&gt;nativescript-drawingpad&lt;/a&gt; plugin created by &lt;a href=&quot;https://twitter.com/_bradmartin_&quot; title=&quot;brad martin twitter link&quot;&gt;Brad Martin&lt;/a&gt;.
+&lt;!--more--&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;install-the-plugin&quot;&gt;Install the Plugin&lt;/h2&gt;
+
+&lt;p&gt;Inside of your NativeScript &lt;strong&gt;(v4+)&lt;/strong&gt; with Angular project, run the following command in your terminal&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;tns plugin add nativescript-drawingpad&lt;/code&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;configure-the-plugin&quot;&gt;Configure the Plugin&lt;/h2&gt;
+
+&lt;p&gt;We need to do a few things to configure the plugin for use. First we will add the UI, then configure the &lt;code class=&quot;highlighter-rouge&quot;&gt;component.ts&lt;/code&gt; file.&lt;/p&gt;
+
+&lt;h2 id=&quot;add-the-ui&quot;&gt;Add the UI&lt;/h2&gt;
+
+&lt;p&gt;Add the following to your component.html file:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;lt;GridLayout rows=&quot;*,auto&quot; columns=&quot;*&quot; backgroundColor=&quot;#FFFFFF&quot;&amp;gt;
+
+    &amp;lt;StackLayout col=&quot;0&quot; row=&quot;0&quot; horizontalAlignment=&quot;center&quot; verticalAlignment=&quot;center&quot; backgroundColor=&quot;#FFFFFF&quot;&amp;gt;
+        &amp;lt;Label [visibility]=&quot;signatureImage ? 'visible' : 'collapsed'&quot; text=&quot;Preview&quot; textWrap=&quot;true&quot; horizontalAlignment=&quot;center&quot; verticalAlignment=&quot;center&quot;&amp;gt;&amp;lt;/Label&amp;gt;
+        &amp;lt;Image [visibility]=&quot;signatureImage ? 'visible' : 'collapsed'&quot; [src]=&quot;signatureImage&quot; height=&quot;150&quot; width=&quot;90%&quot; borderColor=&quot;black&quot; borderWidth=&quot;2&quot;&amp;gt;&amp;lt;/Image&amp;gt;
+
+        &amp;lt;Label text=&quot;Sign/Update below&quot; textWrap=&quot;true&quot; horizontalAlignment=&quot;center&quot; verticalAlignment=&quot;center&quot; marginTop=&quot;20&quot;&amp;gt;&amp;lt;/Label&amp;gt;
+
+        &amp;lt;DrawingPad #DrawingPad height=&quot;150&quot; width=&quot;90%&quot; id=&quot;drawingPad&quot; penColor=&quot;#FF6B6B&quot; penWidth=&quot;3&quot; borderColor=&quot;black&quot;
+            borderWidth=&quot;2&quot;&amp;gt;
+        &amp;lt;/DrawingPad&amp;gt;
+    &amp;lt;/StackLayout&amp;gt;
+
+    &amp;lt;GridLayout col=&quot;0&quot; row=&quot;1&quot; rows=&quot;auto,*&quot; columns=&quot;*,*&quot;&amp;gt;
+        &amp;lt;Button col=&quot;0&quot; row=&quot;0&quot; colSpan=&quot;2&quot; text=&quot;Clear Signature&quot; (tap)=&quot;clearMyDrawing()&quot;&amp;gt;&amp;lt;/Button&amp;gt;
+
+        &amp;lt;Button col=&quot;0&quot; row=&quot;1&quot; class=&quot;btn btn-primary&quot; text=&quot;Back&quot; (tap)=&quot;onBackTap()&quot;&amp;gt;&amp;lt;/Button&amp;gt;
+        &amp;lt;Button col=&quot;1&quot; row=&quot;1&quot; class=&quot;btn btn-primary&quot; text=&quot;Done&quot; (tap)=&quot;onDoneTap()&quot;&amp;gt;&amp;lt;/Button&amp;gt;
+    &amp;lt;/GridLayout&amp;gt;
+
+&amp;lt;/GridLayout&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;This will create a simple UI with a few buttons and a box so the user knows where to sign, it will look like this:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/images/sign-here-page.png&quot; alt=&quot;Sign Here Page&quot; class=&quot;img-responsive&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;hook-up-code-behind&quot;&gt;Hook Up Code Behind&lt;/h2&gt;
+
+&lt;p&gt;Now we need to hook up the Clear Signature and Done buttons. To do this we need to do 3 things to our component.ts file&lt;/p&gt;
+
+&lt;h4 id=&quot;1-add-imports&quot;&gt;1. Add Imports&lt;/h4&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;import { Component, ElementRef, ViewChild } from &quot;@angular/core&quot;;
+import * as imageSourceModule from &quot;image-source&quot;;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;2-add-properties&quot;&gt;2. Add Properties&lt;/h4&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;signatureImage: imageSourceModule.ImageSource; // Image of signature
+signatureImageString: string; // Base64 signature string
+@ViewChild(&quot;DrawingPad&quot;) DrawingPad: ElementRef; // Reference to DrawingPad UI
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;3-add-methods&quot;&gt;3. Add Methods&lt;/h4&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;clearMyDrawing(args) {
+    const pad = this.DrawingPad.nativeElement;
+    pad.clearDrawing();
+}
+
+onDoneTap(): void {
+    // get reference to the drawing pad
+    const pad = this.DrawingPad.nativeElement;
+
+    // then get the drawing (Bitmap on Android) of the drawingpad
+    let drawingImage;
+    pad.getDrawing().then(
+        (data) =&amp;gt; {
+            console.log(data);
+            if (data) {
+                drawingImage = data;
+                this.signatureImageString = imageSourceModule.fromNativeSource(data).toBase64String(&quot;png&quot;);
+                this.params.closeCallback(this.signatureImageString);
+            }
+        },
+        (err) =&amp;gt; {
+            console.log(err);
+        }
+    );
+
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Now with any luck, we should be able to see that signature after we hit “Done”.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/images/signature-saved.png&quot; alt=&quot;Signature Saved Picture&quot; class=&quot;img-responsive&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;save-the-signature&quot;&gt;Save the Signature&lt;/h2&gt;
+
+&lt;p&gt;How you would like to save that signature is up to you, in the code you have both the &lt;code class=&quot;highlighter-rouge&quot;&gt;ImageSource&lt;/code&gt; and the &lt;code class=&quot;highlighter-rouge&quot;&gt;base64&lt;/code&gt; of the user’s signature. :)&lt;/p&gt;
+
+&lt;h2 id=&quot;edit-the-signature&quot;&gt;Edit the Signature&lt;/h2&gt;
+
+&lt;p&gt;If you’d like to edit the signature all we have to do is convert from &lt;code class=&quot;highlighter-rouge&quot;&gt;base64&lt;/code&gt; to &lt;code class=&quot;highlighter-rouge&quot;&gt;ImageSource&lt;/code&gt; when navigating to the page.&lt;/p&gt;
+
+&lt;p&gt;If you use &lt;code class=&quot;highlighter-rouge&quot;&gt;params&lt;/code&gt; or &lt;code class=&quot;highlighter-rouge&quot;&gt;queryParams&lt;/code&gt; to pass data from one component to another then all you have to do is update your constructor to look like this:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;constructor(private params: ModalDialogParams) {
+  // Convert base64 string signature to an Image object
+  this.signatureImage = imageSourceModule.fromBase64(params.context);
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Then since we added &lt;strong&gt;[src]=”signatureImage”&lt;/strong&gt; to our &lt;code class=&quot;highlighter-rouge&quot;&gt;component.html&lt;/code&gt; file earlier, it will bind to &lt;code class=&quot;highlighter-rouge&quot;&gt;this.signatureImage&lt;/code&gt; when the view loads.&lt;/p&gt;
+
+&lt;p&gt;Hope this helps you out on your app!&lt;/p&gt;
+
+&lt;p&gt;I tried to keep this blog post short and sweet so if you run into any issues feel free to reach out.&lt;/p&gt;
+
+&lt;p&gt;See you next time! :)&lt;/p&gt;
+</content>
+ </entry>
  
  <entry>
    <title>Managing App Versioning on iOS</title>

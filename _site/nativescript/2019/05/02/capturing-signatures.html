@@ -11,7 +11,7 @@
 
   <title>
     
-      What Is NativeScript? &middot; Tyler Blake
+      Capturing Signatures with NativeScript + Angular &middot; Tyler Blake
     
   </title>
 
@@ -282,11 +282,11 @@
 
     <main class="container">
       <header>
-  <h1 class="post-title">What Is NativeScript?</h1>
+  <h1 class="post-title">Capturing Signatures with NativeScript + Angular</h1>
 </header>
 <div class="content">
   <div class="post-meta">
-  <span class="post-date">01 Jul 2018</span>
+  <span class="post-date">02 May 2019</span>
   <span class="post-categories">
     
       &bull;
@@ -305,39 +305,130 @@
 </div>
 
   <div class="post-body">
-    <p>NativeScript is how you build cross-platform, native iOS and Android apps with JavaScript, but what does that really mean?
+    <p>Today I’m going to show you how to capture user signatures with NativeScript using the <a href="https://github.com/bradmartin/nativescript-drawingpad" title="nativescript-drawingpad link">nativescript-drawingpad</a> plugin created by <a href="https://twitter.com/_bradmartin_" title="brad martin twitter link">Brad Martin</a>.
 <!--more--></p>
 
-<p>It means:</p>
+<h2 id="install-the-plugin">Install the Plugin</h2>
 
-<ul>
-  <li>You get to use Angular, TypeScript or JavaScript</li>
-  <li>You get truly native UI performance</li>
-  <li>You can reuse skills and code from your web projects</li>
-  <li>You also get 100% access to native device API’s via JavaScript</li>
-  <li>You get reuse of packages from npm, CocoaPods, and Gradle</li>
-  <li>It is open source</li>
-  <li>It is backed by Progress</li>
-</ul>
+<p>Inside of your NativeScript <strong>(v4+)</strong> with Angular project, run the following command in your terminal</p>
 
-<p>Blog posts <strong>are coming</strong> but in the meantime, stop by the <a href="http://docs.nativescript.org" title="NativeScript Docs Link">NativeScript Docs</a> to learn more!</p>
+<p><code class="highlighter-rouge">tns plugin add nativescript-drawingpad</code></p>
+
+<h2 id="configure-the-plugin">Configure the Plugin</h2>
+
+<p>We need to do a few things to configure the plugin for use. First we will add the UI, then configure the <code class="highlighter-rouge">component.ts</code> file.</p>
+
+<h2 id="add-the-ui">Add the UI</h2>
+
+<p>Add the following to your component.html file:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;GridLayout rows="*,auto" columns="*" backgroundColor="#FFFFFF"&gt;
+
+    &lt;StackLayout col="0" row="0" horizontalAlignment="center" verticalAlignment="center" backgroundColor="#FFFFFF"&gt;
+        &lt;Label [visibility]="signatureImage ? 'visible' : 'collapsed'" text="Preview" textWrap="true" horizontalAlignment="center" verticalAlignment="center"&gt;&lt;/Label&gt;
+        &lt;Image [visibility]="signatureImage ? 'visible' : 'collapsed'" [src]="signatureImage" height="150" width="90%" borderColor="black" borderWidth="2"&gt;&lt;/Image&gt;
+
+        &lt;Label text="Sign/Update below" textWrap="true" horizontalAlignment="center" verticalAlignment="center" marginTop="20"&gt;&lt;/Label&gt;
+
+        &lt;DrawingPad #DrawingPad height="150" width="90%" id="drawingPad" penColor="#FF6B6B" penWidth="3" borderColor="black"
+            borderWidth="2"&gt;
+        &lt;/DrawingPad&gt;
+    &lt;/StackLayout&gt;
+
+    &lt;GridLayout col="0" row="1" rows="auto,*" columns="*,*"&gt;
+        &lt;Button col="0" row="0" colSpan="2" text="Clear Signature" (tap)="clearMyDrawing()"&gt;&lt;/Button&gt;
+
+        &lt;Button col="0" row="1" class="btn btn-primary" text="Back" (tap)="onBackTap()"&gt;&lt;/Button&gt;
+        &lt;Button col="1" row="1" class="btn btn-primary" text="Done" (tap)="onDoneTap()"&gt;&lt;/Button&gt;
+    &lt;/GridLayout&gt;
+
+&lt;/GridLayout&gt;
+</code></pre></div></div>
+
+<p>This will create a simple UI with a few buttons and a box so the user knows where to sign, it will look like this:</p>
+
+<p><img src="http://localhost:4000/assets/images/sign-here-page.png" alt="Sign Here Page" class="img-responsive" /></p>
+
+<h2 id="hook-up-code-behind">Hook Up Code Behind</h2>
+
+<p>Now we need to hook up the Clear Signature and Done buttons. To do this we need to do 3 things to our component.ts file</p>
+
+<h4 id="1-add-imports">1. Add Imports</h4>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import { Component, ElementRef, ViewChild } from "@angular/core";
+import * as imageSourceModule from "image-source";
+</code></pre></div></div>
+
+<h4 id="2-add-properties">2. Add Properties</h4>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>signatureImage: imageSourceModule.ImageSource; // Image of signature
+signatureImageString: string; // Base64 signature string
+@ViewChild("DrawingPad") DrawingPad: ElementRef; // Reference to DrawingPad UI
+</code></pre></div></div>
+
+<h4 id="3-add-methods">3. Add Methods</h4>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>clearMyDrawing(args) {
+    const pad = this.DrawingPad.nativeElement;
+    pad.clearDrawing();
+}
+
+onDoneTap(): void {
+    // get reference to the drawing pad
+    const pad = this.DrawingPad.nativeElement;
+
+    // then get the drawing (Bitmap on Android) of the drawingpad
+    let drawingImage;
+    pad.getDrawing().then(
+        (data) =&gt; {
+            console.log(data);
+            if (data) {
+                drawingImage = data;
+                this.signatureImageString = imageSourceModule.fromNativeSource(data).toBase64String("png");
+                this.params.closeCallback(this.signatureImageString);
+            }
+        },
+        (err) =&gt; {
+            console.log(err);
+        }
+    );
+
+}
+</code></pre></div></div>
+
+<p>Now with any luck, we should be able to see that signature after we hit “Done”.</p>
+
+<p><img src="http://localhost:4000/assets/images/signature-saved.png" alt="Signature Saved Picture" class="img-responsive" /></p>
+
+<h2 id="save-the-signature">Save the Signature</h2>
+
+<p>How you would like to save that signature is up to you, in the code you have both the <code class="highlighter-rouge">ImageSource</code> and the <code class="highlighter-rouge">base64</code> of the user’s signature. :)</p>
+
+<h2 id="edit-the-signature">Edit the Signature</h2>
+
+<p>If you’d like to edit the signature all we have to do is convert from <code class="highlighter-rouge">base64</code> to <code class="highlighter-rouge">ImageSource</code> when navigating to the page.</p>
+
+<p>If you use <code class="highlighter-rouge">params</code> or <code class="highlighter-rouge">queryParams</code> to pass data from one component to another then all you have to do is update your constructor to look like this:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>constructor(private params: ModalDialogParams) {
+  // Convert base64 string signature to an Image object
+  this.signatureImage = imageSourceModule.fromBase64(params.context);
+}
+</code></pre></div></div>
+
+<p>Then since we added <strong>[src]=”signatureImage”</strong> to our <code class="highlighter-rouge">component.html</code> file earlier, it will bind to <code class="highlighter-rouge">this.signatureImage</code> when the view loads.</p>
+
+<p>Hope this helps you out on your app!</p>
+
+<p>I tried to keep this blog post short and sweet so if you run into any issues feel free to reach out.</p>
+
+<p>See you next time! :)</p>
 
     
 
 
 
 <div class="post-tags">
-  
-    
-    <a href="/tags.html#intro">
-    
-      <span class="icon">
-        <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-    <path d="M0 0h24v24H0z" fill="none"/>
-    <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
-</svg>
-      </span>&nbsp;<span class="tag-name">Intro</span>
-    </a>
   
     
     <a href="/tags.html#overview">
@@ -382,9 +473,9 @@
   *  https://disqus.com/admin/universalcode/#configuration-variables
   */
   var disqus_config = function () {
-    this.page.url = "http://localhost:4000/nativescript/2018/07/01/what-is-nativescript.html";
+    this.page.url = "http://localhost:4000/nativescript/2019/05/02/capturing-signatures.html";
     this.page.identifier = "" ||
-                           "http://localhost:4000/nativescript/2018/07/01/what-is-nativescript.html";
+                           "http://localhost:4000/nativescript/2019/05/02/capturing-signatures.html";
   }
   function loadDisqusComments() { // DON'T EDIT BELOW THIS LINE
     var d = document, s = d.createElement('script');
@@ -408,15 +499,6 @@
     
       <li>
         <h3>
-          <a href="/nativescript/2019/05/02/capturing-signatures.html">
-            Capturing Signatures with NativeScript + Angular
-            <small>02 May 2019</small>
-          </a>
-        </h3>
-      </li>
-    
-      <li>
-        <h3>
           <a href="/nativescript/2019/01/17/managing-app-versioning.html">
             Managing App Versioning on iOS
             <small>17 Jan 2019</small>
@@ -429,6 +511,15 @@
           <a href="/nativescript/2018/12/14/creating-dynamic-font-awesome-icons.html">
             Creating Dynamic Font Awesome Icons
             <small>14 Dec 2018</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/nativescript/2018/11/01/using-plugins.html">
+            Using Plugins
+            <small>01 Nov 2018</small>
           </a>
         </h3>
       </li>
