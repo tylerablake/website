@@ -11,7 +11,7 @@
 
   <title>
     
-      What Is NativeScript? &middot; Tyler Blake
+      Passing Events from NativeScript Views &middot; Tyler Blake
     
   </title>
 
@@ -282,11 +282,11 @@
 
     <main class="container">
       <header>
-  <h1 class="post-title">What Is NativeScript?</h1>
+  <h1 class="post-title">Passing Events from NativeScript Views</h1>
 </header>
 <div class="content">
   <div class="post-meta">
-  <span class="post-date">01 Jul 2018</span>
+  <span class="post-date">15 Jun 2019</span>
   <span class="post-categories">
     
       &bull;
@@ -305,39 +305,99 @@
 </div>
 
   <div class="post-body">
-    <p>NativeScript is how you build cross-platform, native iOS and Android apps with JavaScript, but what does that really mean?
+    <p>Today I’m going to show how to pass event data to the code behind from the view in NativeScript and modify the widget
 <!--more--></p>
 
-<p>It means:</p>
+<p><strong>Note:</strong> My example will show how to do this using a button but it can be done with any UI widget.</p>
 
-<ul>
-  <li>You get to use Angular, TypeScript or JavaScript</li>
-  <li>You get truly native UI performance</li>
-  <li>You can reuse skills and code from your web projects</li>
-  <li>You also get 100% access to native device API’s via JavaScript</li>
-  <li>You get reuse of packages from npm, CocoaPods, and Gradle</li>
-  <li>It is open source</li>
-  <li>It is backed by Progress</li>
-</ul>
+<h2 id="set-up-the-view">Set Up the View</h2>
 
-<p>Blog posts <strong>are coming</strong> but in the meantime, stop by the <a href="http://docs.nativescript.org" title="NativeScript Docs Link">NativeScript Docs</a> to learn more!</p>
+<p>Inside of your <code class="highlighter-rouge">component.html</code> file add the following:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;StackLayout&gt;
+ &lt;Button text="Tap me" class="btn btn-primary" (tap)="onButtonTap($event)"&gt;&lt;/Button&gt;   
+&lt;/StackLayout&gt;
+</code></pre></div></div>
+
+<p>You may have seen this around and wonder what is <strong>$event</strong>?</p>
+
+<p>To put it simply, it is an <code class="highlighter-rouge">event</code>, in this case the event is a <code class="highlighter-rouge">tap</code> event.</p>
+
+<h2 id="set-up-the-tap-method">Set Up the Tap Method</h2>
+
+<p>Now we need to set up the <code class="highlighter-rouge">onButtonTap()</code> method in our <code class="highlighter-rouge">component.ts</code> file.</p>
+
+<p>You might have seen <code class="highlighter-rouge">$event</code> passed to the code behind method like so <code class="highlighter-rouge">onButtonTap(args)</code> but since this isn’t typed, you won’t get any intellisense help.</p>
+
+<p>Let’s set up our <code class="highlighter-rouge">onButtonTap()</code> method like this:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>onButtonTap(args: EventData): void {    
+    // We'll fill this out next
+}
+</code></pre></div></div>
+
+<p><strong>Note:</strong> Add this import to the top of your <code class="highlighter-rouge">component.ts</code> file:</p>
+
+<p><code class="highlighter-rouge">import { EventData } from "tns-core-modules/ui/page/page";</code></p>
+
+<p>Now let’s fill out that method and update the button from the <code class="highlighter-rouge">component.ts</code> file</p>
+
+<p>First, we need to get a reference to the button, lets take a look at <code class="highlighter-rouge">args</code> which is typed as <code class="highlighter-rouge">EventData</code></p>
+
+<p>This means it has 2 properies on it:</p>
+
+<ol>
+  <li><strong>eventName</strong> - string which is the name of the event</li>
+  <li><strong>object</strong> - Observable object</li>
+</ol>
+
+<p>We can use that <code class="highlighter-rouge">object</code> property to get a reference to the button in the view.</p>
+
+<p>Update your <code class="highlighter-rouge">onButtonTap()</code> method to look like this:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>onButtonTap(args: EventData): void {
+    const button = &lt;Button&gt;args.object;        
+}
+</code></pre></div></div>
+
+<p><strong>Note:</strong> Add this import to the top of your <code class="highlighter-rouge">component.ts</code> file:</p>
+
+<p><code class="highlighter-rouge">import { Button } from "tns-core-modules/ui/button";</code></p>
+
+<p>Now if you type <code class="highlighter-rouge">button.</code> you will see a big list of properties and methods you can call on that <code class="highlighter-rouge">Button</code></p>
+
+<p><img src="http://localhost:4000/assets/images/button-intellisense-dropdown.png" alt="Button Intellisense Dropdown" class="img-responsive" /></p>
+
+<p>Let’s change the background color to red and update its text after tapping on the button by adding the following line:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>onButtonTap(args: EventData): void {
+    const button = &lt;Button&gt;args.object;   
+
+    //Add These 
+    button.backgroundColor = "red";
+    button.text = "You tapped me!";
+}
+</code></pre></div></div>
+
+<p>Now when the app launches it will be a blue button, but after tapping the button will change to red.</p>
+
+<p><strong>Before Tapping</strong></p>
+
+<p><img src="http://localhost:4000/assets/images/button-before-tap.png" alt="Button Before Tap" class="img-responsive" /></p>
+
+<p><strong>After Tapping</strong></p>
+
+<p><img src="http://localhost:4000/assets/images/button-after-tap.png" alt="Button After Tap" class="img-responsive" /></p>
+
+<p>Hope this helps you out on your app!</p>
+
+<p>See you next time! :)</p>
 
     
 
 
 
 <div class="post-tags">
-  
-    
-    <a href="/tags.html#intro">
-    
-      <span class="icon">
-        <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-    <path d="M0 0h24v24H0z" fill="none"/>
-    <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>
-</svg>
-      </span>&nbsp;<span class="tag-name">Intro</span>
-    </a>
   
     
     <a href="/tags.html#overview">
@@ -382,9 +442,9 @@
   *  https://disqus.com/admin/universalcode/#configuration-variables
   */
   var disqus_config = function () {
-    this.page.url = "http://localhost:4000/nativescript/2018/07/01/what-is-nativescript.html";
+    this.page.url = "http://localhost:4000/nativescript/2019/06/15/passing-events-from-nativescript-views.html";
     this.page.identifier = "" ||
-                           "http://localhost:4000/nativescript/2018/07/01/what-is-nativescript.html";
+                           "http://localhost:4000/nativescript/2019/06/15/passing-events-from-nativescript-views.html";
   }
   function loadDisqusComments() { // DON'T EDIT BELOW THIS LINE
     var d = document, s = d.createElement('script');
@@ -408,15 +468,6 @@
     
       <li>
         <h3>
-          <a href="/nativescript/2019/06/15/passing-events-from-nativescript-views.html">
-            Passing Events from NativeScript Views
-            <small>15 Jun 2019</small>
-          </a>
-        </h3>
-      </li>
-    
-      <li>
-        <h3>
           <a href="/nativescript/2019/05/02/capturing-signatures.html">
             Capturing Signatures with NativeScript + Angular
             <small>02 May 2019</small>
@@ -429,6 +480,15 @@
           <a href="/nativescript/2019/01/17/managing-app-versioning.html">
             Managing App Versioning on iOS
             <small>17 Jan 2019</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/nativescript/2018/12/14/creating-dynamic-font-awesome-icons.html">
+            Creating Dynamic Font Awesome Icons
+            <small>14 Dec 2018</small>
           </a>
         </h3>
       </li>

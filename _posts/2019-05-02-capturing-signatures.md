@@ -13,6 +13,7 @@ last_modified_at: 2019-05-02T14:30:00-00:00
 Today I'm going to show you how to capture user signatures with NativeScript using the [nativescript-drawingpad](https://github.com/bradmartin/nativescript-drawingpad "nativescript-drawingpad link") plugin created by [Brad Martin](https://twitter.com/_bradmartin_ "brad martin twitter link").
 <!--more-->
 
+
 ## Install the Plugin
 
 Inside of your NativeScript **(v4+)** with Angular project, run the following command in your terminal

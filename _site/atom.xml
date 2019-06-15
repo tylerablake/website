@@ -287,13 +287,108 @@
  <title>Tyler Blake</title>
  <link href="http://localhost:4000/atom.xml" rel="self"/>
  <link href="http://localhost:4000/"/>
- <updated>2019-06-14T17:27:55-04:00</updated>
+ <updated>2019-06-15T19:49:15-04:00</updated>
  <id>http://localhost:4000</id>
  <author>
    <name>Tyler Blake</name>
    <email></email>
  </author>
 
+ 
+ <entry>
+   <title>Passing Events from NativeScript Views</title>
+   <link href="http://localhost:4000/nativescript/2019/06/15/passing-events-from-nativescript-views.html"/>
+   <updated>2019-06-15T00:00:00-04:00</updated>
+   <id>http://localhost:4000/nativescript/2019/06/15/passing-events-from-nativescript-views</id>
+   <content type="html">&lt;p&gt;Today I’m going to show how to pass event data to the code behind from the view in NativeScript and modify the widget
+&lt;!--more--&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; My example will show how to do this using a button but it can be done with any UI widget.&lt;/p&gt;
+
+&lt;h2 id=&quot;set-up-the-view&quot;&gt;Set Up the View&lt;/h2&gt;
+
+&lt;p&gt;Inside of your &lt;code class=&quot;highlighter-rouge&quot;&gt;component.html&lt;/code&gt; file add the following:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;lt;StackLayout&amp;gt;
+ &amp;lt;Button text=&quot;Tap me&quot; class=&quot;btn btn-primary&quot; (tap)=&quot;onButtonTap($event)&quot;&amp;gt;&amp;lt;/Button&amp;gt;   
+&amp;lt;/StackLayout&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;You may have seen this around and wonder what is &lt;strong&gt;$event&lt;/strong&gt;?&lt;/p&gt;
+
+&lt;p&gt;To put it simply, it is an &lt;code class=&quot;highlighter-rouge&quot;&gt;event&lt;/code&gt;, in this case the event is a &lt;code class=&quot;highlighter-rouge&quot;&gt;tap&lt;/code&gt; event.&lt;/p&gt;
+
+&lt;h2 id=&quot;set-up-the-tap-method&quot;&gt;Set Up the Tap Method&lt;/h2&gt;
+
+&lt;p&gt;Now we need to set up the &lt;code class=&quot;highlighter-rouge&quot;&gt;onButtonTap()&lt;/code&gt; method in our &lt;code class=&quot;highlighter-rouge&quot;&gt;component.ts&lt;/code&gt; file.&lt;/p&gt;
+
+&lt;p&gt;You might have seen &lt;code class=&quot;highlighter-rouge&quot;&gt;$event&lt;/code&gt; passed to the code behind method like so &lt;code class=&quot;highlighter-rouge&quot;&gt;onButtonTap(args)&lt;/code&gt; but since this isn’t typed, you won’t get any intellisense help.&lt;/p&gt;
+
+&lt;p&gt;Let’s set up our &lt;code class=&quot;highlighter-rouge&quot;&gt;onButtonTap()&lt;/code&gt; method like this:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;onButtonTap(args: EventData): void {    
+    // We'll fill this out next
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; Add this import to the top of your &lt;code class=&quot;highlighter-rouge&quot;&gt;component.ts&lt;/code&gt; file:&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;import { EventData } from &quot;tns-core-modules/ui/page/page&quot;;&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Now let’s fill out that method and update the button from the &lt;code class=&quot;highlighter-rouge&quot;&gt;component.ts&lt;/code&gt; file&lt;/p&gt;
+
+&lt;p&gt;First, we need to get a reference to the button, lets take a look at &lt;code class=&quot;highlighter-rouge&quot;&gt;args&lt;/code&gt; which is typed as &lt;code class=&quot;highlighter-rouge&quot;&gt;EventData&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;This means it has 2 properies on it:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;&lt;strong&gt;eventName&lt;/strong&gt; - string which is the name of the event&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;object&lt;/strong&gt; - Observable object&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;We can use that &lt;code class=&quot;highlighter-rouge&quot;&gt;object&lt;/code&gt; property to get a reference to the button in the view.&lt;/p&gt;
+
+&lt;p&gt;Update your &lt;code class=&quot;highlighter-rouge&quot;&gt;onButtonTap()&lt;/code&gt; method to look like this:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;onButtonTap(args: EventData): void {
+    const button = &amp;lt;Button&amp;gt;args.object;        
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; Add this import to the top of your &lt;code class=&quot;highlighter-rouge&quot;&gt;component.ts&lt;/code&gt; file:&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;import { Button } from &quot;tns-core-modules/ui/button&quot;;&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Now if you type &lt;code class=&quot;highlighter-rouge&quot;&gt;button.&lt;/code&gt; you will see a big list of properties and methods you can call on that &lt;code class=&quot;highlighter-rouge&quot;&gt;Button&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/images/button-intellisense-dropdown.png&quot; alt=&quot;Button Intellisense Dropdown&quot; class=&quot;img-responsive&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Let’s change the background color to red and update its text after tapping on the button by adding the following line:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;onButtonTap(args: EventData): void {
+    const button = &amp;lt;Button&amp;gt;args.object;   
+
+    //Add These 
+    button.backgroundColor = &quot;red&quot;;
+    button.text = &quot;You tapped me!&quot;;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Now when the app launches it will be a blue button, but after tapping the button will change to red.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Before Tapping&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/images/button-before-tap.png&quot; alt=&quot;Button Before Tap&quot; class=&quot;img-responsive&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;After Tapping&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/images/button-after-tap.png&quot; alt=&quot;Button After Tap&quot; class=&quot;img-responsive&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Hope this helps you out on your app!&lt;/p&gt;
+
+&lt;p&gt;See you next time! :)&lt;/p&gt;
+</content>
+ </entry>
  
  <entry>
    <title>Capturing Signatures with NativeScript + Angular</title>
