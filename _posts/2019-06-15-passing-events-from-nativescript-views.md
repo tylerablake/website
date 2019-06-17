@@ -13,6 +13,12 @@ last_modified_at: 2019-06-15T19:30:00-00:00
 Today I'm going to show how to pass event data to the code behind from the view in NativeScript and modify the widget
 <!--more-->
 
+Here's what I am going to show you today
+
+![Blog Preview Gif]({{site.url}}/assets/images/pass-event-blog-preview.gif)
+
+
+
 **Note:** My example will show how to do this using a button but it can be done with any UI widget.
 
 ## Set Up the View

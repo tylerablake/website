@@ -287,7 +287,7 @@
  <title>Tyler Blake</title>
  <link href="http://localhost:4000/atom.xml" rel="self"/>
  <link href="http://localhost:4000/"/>
- <updated>2019-06-15T19:49:15-04:00</updated>
+ <updated>2019-06-17T09:44:22-04:00</updated>
  <id>http://localhost:4000</id>
  <author>
    <name>Tyler Blake</name>
@@ -302,6 +302,10 @@
    <id>http://localhost:4000/nativescript/2019/06/15/passing-events-from-nativescript-views</id>
    <content type="html">&lt;p&gt;Today I’m going to show how to pass event data to the code behind from the view in NativeScript and modify the widget
 &lt;!--more--&gt;&lt;/p&gt;
+
+&lt;p&gt;Here’s what I am going to show you today&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/images/pass-event-blog-preview.gif&quot; alt=&quot;Blog Preview Gif&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; My example will show how to do this using a button but it can be done with any UI widget.&lt;/p&gt;
 
