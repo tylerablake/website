@@ -1,4 +1,25 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.3">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2019-06-17T09:44:22-04:00</updated><id>http://localhost:4000/</id><title type="html">Tyler Blake</title><subtitle>Stay a while and listen.</subtitle><author><name>Tyler Blake</name></author><entry><title type="html">Passing Events from NativeScript Views</title><link href="http://localhost:4000/nativescript/2019/06/15/passing-events-from-nativescript-views.html" rel="alternate" type="text/html" title="Passing Events from NativeScript Views" /><published>2019-06-15T00:00:00-04:00</published><updated>2019-06-15T15:30:00-04:00</updated><id>http://localhost:4000/nativescript/2019/06/15/passing-events-from-nativescript-views</id><content type="html" xml:base="http://localhost:4000/nativescript/2019/06/15/passing-events-from-nativescript-views.html">&lt;p&gt;Today I’m going to show how to pass event data to the code behind from the view in NativeScript and modify the widget
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.3">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2019-06-23T22:11:27-04:00</updated><id>http://localhost:4000/</id><title type="html">Tyler Blake</title><subtitle>Stay a while and listen.</subtitle><author><name>Tyler Blake</name></author><entry><title type="html">Android vs iOS UI Differences</title><link href="http://localhost:4000/nativescript/2019/06/23/android-vs-ios-ui-differences.html" rel="alternate" type="text/html" title="Android vs iOS UI Differences" /><published>2019-06-23T00:00:00-04:00</published><updated>2019-06-15T15:30:00-04:00</updated><id>http://localhost:4000/nativescript/2019/06/23/android-vs-ios-ui-differences</id><content type="html" xml:base="http://localhost:4000/nativescript/2019/06/23/android-vs-ios-ui-differences.html">&lt;p&gt;Today I’m going to show some of the differences between Android and iOS UI and how to make your apps look more similar.
+&lt;!--more--&gt;&lt;/p&gt;
+
+&lt;p&gt;The examples are here as a quick reference to see what NS core theme class names you could be using to give your app a similar look and feel across Android and iOS devices&lt;/p&gt;
+
+&lt;h2 id=&quot;labels&quot;&gt;Labels&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/images/label-differences-with-classes.png&quot; alt=&quot;Label Differences Comparison&quot; class=&quot;img-responsive&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;buttons&quot;&gt;Buttons&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/images/button-differences-with-classes.png&quot; alt=&quot;Button Differences Comparison&quot; class=&quot;img-responsive&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;textfields&quot;&gt;TextFields&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/images/textfield-differences-with-classes.png&quot; alt=&quot;TextField Differences Comparison&quot; class=&quot;img-responsive&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Hope this helps you out on your app!&lt;/p&gt;
+
+&lt;p&gt;If you’d like to read more, be sure to check out the &lt;a href=&quot;https://docs.nativescript.org/ui/theme&quot; title=&quot;NativeScript Theme Docs&quot;&gt;NativeScript Theme Docs&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;See you next time! :)&lt;/p&gt;</content><author><name>Tyler Blake</name></author><category term="Overview" /><category term="NativeScript" /><summary type="html">Today I’m going to show some of the differences between Android and iOS UI and how to make your apps look more similar.</summary></entry><entry><title type="html">Passing Events from NativeScript Views</title><link href="http://localhost:4000/nativescript/2019/06/15/passing-events-from-nativescript-views.html" rel="alternate" type="text/html" title="Passing Events from NativeScript Views" /><published>2019-06-15T00:00:00-04:00</published><updated>2019-06-15T15:30:00-04:00</updated><id>http://localhost:4000/nativescript/2019/06/15/passing-events-from-nativescript-views</id><content type="html" xml:base="http://localhost:4000/nativescript/2019/06/15/passing-events-from-nativescript-views.html">&lt;p&gt;Today I’m going to show how to pass event data to the code behind from the view in NativeScript and modify the widget
 &lt;!--more--&gt;&lt;/p&gt;
 
 &lt;p&gt;Here’s what I am going to show you today&lt;/p&gt;
@@ -767,19 +788,4 @@ I don’t see any limitations listed for the plugin currently&lt;/li&gt;
 
 &lt;p&gt;Now you can go create all kinds of cool GridLayouts!&lt;/p&gt;
 
-&lt;p&gt;More blog posts &lt;strong&gt;are coming&lt;/strong&gt; but in the meantime, stop by the &lt;a href=&quot;http://docs.nativescript.org&quot; title=&quot;NativeScript Docs Link&quot;&gt;NativeScript Docs&lt;/a&gt; to learn more!&lt;/p&gt;</content><author><name>Tyler Blake</name></author><category term="Intro" /><category term="Overview" /><category term="NativeScript" /><summary type="html">NativeScript has many different layouts, let’s dig into grid layouts for a few.</summary></entry><entry><title type="html">What Is NativeScript?</title><link href="http://localhost:4000/nativescript/2018/07/01/what-is-nativescript.html" rel="alternate" type="text/html" title="What Is NativeScript?" /><published>2018-07-01T00:00:00-04:00</published><updated>2018-04-11T23:13:00-04:00</updated><id>http://localhost:4000/nativescript/2018/07/01/what-is-nativescript</id><content type="html" xml:base="http://localhost:4000/nativescript/2018/07/01/what-is-nativescript.html">&lt;p&gt;NativeScript is how you build cross-platform, native iOS and Android apps with JavaScript, but what does that really mean?
-&lt;!--more--&gt;&lt;/p&gt;
-
-&lt;p&gt;It means:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;You get to use Angular, TypeScript or JavaScript&lt;/li&gt;
-  &lt;li&gt;You get truly native UI performance&lt;/li&gt;
-  &lt;li&gt;You can reuse skills and code from your web projects&lt;/li&gt;
-  &lt;li&gt;You also get 100% access to native device API’s via JavaScript&lt;/li&gt;
-  &lt;li&gt;You get reuse of packages from npm, CocoaPods, and Gradle&lt;/li&gt;
-  &lt;li&gt;It is open source&lt;/li&gt;
-  &lt;li&gt;It is backed by Progress&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Blog posts &lt;strong&gt;are coming&lt;/strong&gt; but in the meantime, stop by the &lt;a href=&quot;http://docs.nativescript.org&quot; title=&quot;NativeScript Docs Link&quot;&gt;NativeScript Docs&lt;/a&gt; to learn more!&lt;/p&gt;</content><author><name>Tyler Blake</name></author><category term="Intro" /><category term="Overview" /><category term="NativeScript" /><summary type="html">NativeScript is how you build cross-platform, native iOS and Android apps with JavaScript, but what does that really mean?</summary></entry></feed>
+&lt;p&gt;More blog posts &lt;strong&gt;are coming&lt;/strong&gt; but in the meantime, stop by the &lt;a href=&quot;http://docs.nativescript.org&quot; title=&quot;NativeScript Docs Link&quot;&gt;NativeScript Docs&lt;/a&gt; to learn more!&lt;/p&gt;</content><author><name>Tyler Blake</name></author><category term="Intro" /><category term="Overview" /><category term="NativeScript" /><summary type="html">NativeScript has many different layouts, let’s dig into grid layouts for a few.</summary></entry></feed>

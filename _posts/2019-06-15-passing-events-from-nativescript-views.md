@@ -18,7 +18,6 @@ Here's what I am going to show you today
 ![Blog Preview Gif]({{site.url}}/assets/images/pass-event-blog-preview.gif)
 
 
-
 **Note:** My example will show how to do this using a button but it can be done with any UI widget.
 
 ## Set Up the View
