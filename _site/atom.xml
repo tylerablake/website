@@ -100,6 +100,10 @@
   
 
   
+    
+  
+
+  
 
   
     
@@ -137,6 +141,10 @@
     
       <a class="category-link "
           href="/category/nativescript.html">NativeScript</a>
+    
+  
+
+  
     
   
 
@@ -287,7 +295,7 @@
  <title>Tyler Blake</title>
  <link href="http://localhost:4000/atom.xml" rel="self"/>
  <link href="http://localhost:4000/"/>
- <updated>2019-07-16T22:34:08-04:00</updated>
+ <updated>2019-07-19T12:59:53-05:00</updated>
  <id>http://localhost:4000</id>
  <author>
    <name>Tyler Blake</name>
@@ -298,7 +306,7 @@
  <entry>
    <title>Android vs iOS UI Differences</title>
    <link href="http://localhost:4000/nativescript/2019/06/23/android-vs-ios-ui-differences.html"/>
-   <updated>2019-06-23T00:00:00-04:00</updated>
+   <updated>2019-06-23T00:00:00-05:00</updated>
    <id>http://localhost:4000/nativescript/2019/06/23/android-vs-ios-ui-differences</id>
    <content type="html">&lt;p&gt;Today I’m going to show some of the differences between Android and iOS UI and how to make your apps look more similar.
 &lt;!--more--&gt;&lt;/p&gt;
@@ -328,7 +336,7 @@
  <entry>
    <title>Passing Events from NativeScript Views</title>
    <link href="http://localhost:4000/nativescript/2019/06/15/passing-events-from-nativescript-views.html"/>
-   <updated>2019-06-15T00:00:00-04:00</updated>
+   <updated>2019-06-15T00:00:00-05:00</updated>
    <id>http://localhost:4000/nativescript/2019/06/15/passing-events-from-nativescript-views</id>
    <content type="html">&lt;p&gt;Today I’m going to show how to pass event data to the code behind from the view in NativeScript and modify the widget
 &lt;!--more--&gt;&lt;/p&gt;
@@ -427,7 +435,7 @@
  <entry>
    <title>Capturing Signatures with NativeScript + Angular</title>
    <link href="http://localhost:4000/nativescript/2019/05/02/capturing-signatures.html"/>
-   <updated>2019-05-02T00:00:00-04:00</updated>
+   <updated>2019-05-02T00:00:00-05:00</updated>
    <id>http://localhost:4000/nativescript/2019/05/02/capturing-signatures</id>
    <content type="html">&lt;p&gt;Today I’m going to show you how to capture user signatures with NativeScript using the &lt;a href=&quot;https://github.com/bradmartin/nativescript-drawingpad&quot; title=&quot;nativescript-drawingpad link&quot;&gt;nativescript-drawingpad&lt;/a&gt; plugin created by &lt;a href=&quot;https://twitter.com/_bradmartin_&quot; title=&quot;brad martin twitter link&quot;&gt;Brad Martin&lt;/a&gt;.
 &lt;!--more--&gt;&lt;/p&gt;
@@ -553,7 +561,7 @@ onDoneTap(): void {
  <entry>
    <title>Managing App Versioning on iOS</title>
    <link href="http://localhost:4000/nativescript/2019/01/17/managing-app-versioning.html"/>
-   <updated>2019-01-17T00:00:00-05:00</updated>
+   <updated>2019-01-17T00:00:00-06:00</updated>
    <id>http://localhost:4000/nativescript/2019/01/17/managing-app-versioning</id>
    <content type="html">&lt;p&gt;Versioning your app’s builds is great but managing that versioning can be a pain, in this post I’m going to show you how I manage versioning and hopefully help you out.
 &lt;!--more--&gt;&lt;/p&gt;
@@ -615,7 +623,7 @@ onDoneTap(): void {
  <entry>
    <title>Creating Dynamic Font Awesome Icons</title>
    <link href="http://localhost:4000/nativescript/2018/12/14/creating-dynamic-font-awesome-icons.html"/>
-   <updated>2018-12-14T00:00:00-05:00</updated>
+   <updated>2018-12-14T00:00:00-06:00</updated>
    <id>http://localhost:4000/nativescript/2018/12/14/creating-dynamic-font-awesome-icons</id>
    <content type="html">&lt;p&gt;Font Awesome icons are great, but sometimes we want to change them, their color, or size dynamically. Let’s see how to do that with NativeScript
 &lt;!--more--&gt;&lt;/p&gt;
@@ -672,7 +680,7 @@ Please don’t hate on my &lt;code class=&quot;highlighter-rouge&quot;&gt;if&lt;
  <entry>
    <title>Using Plugins</title>
    <link href="http://localhost:4000/nativescript/2018/11/01/using-plugins.html"/>
-   <updated>2018-11-01T00:00:00-04:00</updated>
+   <updated>2018-11-01T00:00:00-05:00</updated>
    <id>http://localhost:4000/nativescript/2018/11/01/using-plugins</id>
    <content type="html">&lt;p&gt;What are plugins? How can they help us? How do we use them? Let’s see how to install and use plugins with NativeScript
 &lt;!--more--&gt;&lt;/p&gt;
@@ -775,7 +783,7 @@ I don’t see any limitations listed for the plugin currently&lt;/li&gt;
  <entry>
    <title>Creating Modals</title>
    <link href="http://localhost:4000/nativescript/2018/10/31/creating-modals.html"/>
-   <updated>2018-10-31T00:00:00-04:00</updated>
+   <updated>2018-10-31T00:00:00-05:00</updated>
    <id>http://localhost:4000/nativescript/2018/10/31/creating-modals</id>
    <content type="html">&lt;p&gt;Sometimes you don’t want to clutter a single page with a bunch of inputs, lets see how to use modals to help with this!
 &lt;!--more--&gt;&lt;/p&gt;
@@ -865,7 +873,7 @@ I don’t see any limitations listed for the plugin currently&lt;/li&gt;
  <entry>
    <title>Accessing Native APIs with NativeScript</title>
    <link href="http://localhost:4000/nativescript/2018/08/03/accessing-native-apis.html"/>
-   <updated>2018-08-03T00:00:00-04:00</updated>
+   <updated>2018-08-03T00:00:00-05:00</updated>
    <id>http://localhost:4000/nativescript/2018/08/03/accessing-native-apis</id>
    <content type="html">&lt;p&gt;One of the biggest advantages of NativeScript is the ability to access native device API’s. In this post I’ll show you how.
 &lt;!--more--&gt;&lt;/p&gt;
@@ -947,7 +955,7 @@ I don’t see any limitations listed for the plugin currently&lt;/li&gt;
  <entry>
    <title>Setting Up Your Machine</title>
    <link href="http://localhost:4000/environment/2018/07/17/setting-up-your-machine.html"/>
-   <updated>2018-07-17T00:00:00-04:00</updated>
+   <updated>2018-07-17T00:00:00-05:00</updated>
    <id>http://localhost:4000/environment/2018/07/17/setting-up-your-machine</id>
    <content type="html">&lt;p&gt;There are many different ways to set up your development environment for NativeScript. Here I’ll show you mine.
 &lt;!--more--&gt;&lt;/p&gt;
@@ -1106,7 +1114,7 @@ I don’t see any limitations listed for the plugin currently&lt;/li&gt;
  <entry>
    <title>Understanding Grid Layouts</title>
    <link href="http://localhost:4000/nativescript/2018/07/03/understanding-grid-layouts.html"/>
-   <updated>2018-07-03T00:00:00-04:00</updated>
+   <updated>2018-07-03T00:00:00-05:00</updated>
    <id>http://localhost:4000/nativescript/2018/07/03/understanding-grid-layouts</id>
    <content type="html">&lt;p&gt;NativeScript has many different layouts, let’s dig into grid layouts for a few.
 &lt;!--more--&gt;&lt;/p&gt;
@@ -1180,7 +1188,7 @@ I don’t see any limitations listed for the plugin currently&lt;/li&gt;
  <entry>
    <title>What Is NativeScript?</title>
    <link href="http://localhost:4000/nativescript/2018/07/01/what-is-nativescript.html"/>
-   <updated>2018-07-01T00:00:00-04:00</updated>
+   <updated>2018-07-01T00:00:00-05:00</updated>
    <id>http://localhost:4000/nativescript/2018/07/01/what-is-nativescript</id>
    <content type="html">&lt;p&gt;NativeScript is how you build cross-platform, native iOS and Android apps with JavaScript, but what does that really mean?
 &lt;!--more--&gt;&lt;/p&gt;
@@ -1204,7 +1212,7 @@ I don’t see any limitations listed for the plugin currently&lt;/li&gt;
  <entry>
    <title>Hello Hydeout</title>
    <link href="http://localhost:4000/2018/04/05/hello-hydeout.html"/>
-   <updated>2018-04-05T00:00:00-04:00</updated>
+   <updated>2018-04-05T00:00:00-05:00</updated>
    <id>http://localhost:4000/2018/04/05/hello-hydeout</id>
    <content type="html">&lt;p&gt;Hydeout updates the original &lt;a href=&quot;https://github.com/poole/hyde&quot;&gt;Hyde&lt;/a&gt;
 theme for &lt;a href=&quot;http://jekyllrb.com&quot;&gt;Jekyll&lt;/a&gt; 3.x and adds new functionality.&lt;/p&gt;
@@ -1293,7 +1301,7 @@ theme. Hope this works for you!&lt;/p&gt;
  <entry>
    <title>Introducing Hyde</title>
    <link href="http://localhost:4000/2018/04/02/introducing-hyde.html"/>
-   <updated>2018-04-02T00:00:00-04:00</updated>
+   <updated>2018-04-02T00:00:00-05:00</updated>
    <id>http://localhost:4000/2018/04/02/introducing-hyde</id>
    <content type="html">&lt;p&gt;Hyde is a brazen two-column &lt;a href=&quot;http://jekyllrb.com&quot;&gt;Jekyll&lt;/a&gt; theme that pairs a prominent sidebar with uncomplicated content. It’s based on &lt;a href=&quot;http://getpoole.com&quot;&gt;Poole&lt;/a&gt;, the Jekyll butler.&lt;/p&gt;
 
