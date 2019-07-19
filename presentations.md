@@ -1,6 +1,7 @@
 ---
 layout: page
 title: Presentations
+sidebar_link: true
 ---
 
 # NativeScript
