@@ -298,7 +298,7 @@
  <title>Tyler Blake</title>
  <link href="http://localhost:4000/atom.xml" rel="self"/>
  <link href="http://localhost:4000/"/>
- <updated>2019-07-19T13:20:22-05:00</updated>
+ <updated>2019-08-01T23:53:52-04:00</updated>
  <id>http://localhost:4000</id>
  <author>
    <name>Tyler Blake</name>
@@ -307,9 +307,222 @@
 
  
  <entry>
+   <title>Automated UI Testing in NativeScript</title>
+   <link href="http://localhost:4000/nativescript/2019/08/01/automated-ui-testing-in-nativescript.html"/>
+   <updated>2019-08-01T00:00:00-04:00</updated>
+   <id>http://localhost:4000/nativescript/2019/08/01/automated-ui-testing-in-nativescript</id>
+   <content type="html">&lt;p&gt;Do you want a guide on how to set up automated ui testing for your NativeScript apps? Welp, here it is!
+&lt;!--more--&gt;&lt;/p&gt;
+
+&lt;p&gt;This post outlines my experiences of working with the &lt;code class=&quot;highlighter-rouge&quot;&gt;nativescript-dev-appium&lt;/code&gt; plugin and writing my tests manually.&lt;/p&gt;
+
+&lt;p&gt;I have received a few messages requesting help with e2e testing so I wanted to get this post out there quicky. I will update it as I have more information to share, as well as write a few more blog posts on things like &lt;em&gt;Using the Appium Client&lt;/em&gt; and &lt;em&gt;Using the appium-doctor to Diagnose Installation Problems&lt;/em&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; This post contains my finds and gotchas along the way, I started by following the NativeScript docs on e2e testing &lt;a href=&quot;https://docs.nativescript.org/angular/tooling/testing/end-to-end-testing/overview&quot; title=&quot;nativescript e2e testing guide&quot; target=&quot;_blank&quot;&gt;NativeScript E2E Guide&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;I did my setup on a Mac, so if you are on Windows or Linux, your installation process might be different. Please refer to the NativeScript guide above if you have issues or reach out in the &lt;a href=&quot;https://www.nativescript.org/slack-invitation-form&quot; title=&quot;nativescript community Slack invite link&quot; target=&quot;_blank&quot;&gt;NS community Slack&lt;/a&gt; and I’ll try to help you!&lt;/p&gt;
+
+&lt;h2 id=&quot;machine-setup&quot;&gt;Machine Setup&lt;/h2&gt;
+
+&lt;h3 id=&quot;install-appium&quot;&gt;Install Appium&lt;/h3&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Run &lt;code class=&quot;highlighter-rouge&quot;&gt;npm install -g appium&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;You might have to run &lt;code class=&quot;highlighter-rouge&quot;&gt;sudo npm install -g appium&lt;/code&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;ios-dependencies&quot;&gt;iOS Dependencies&lt;/h3&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Run &lt;code class=&quot;highlighter-rouge&quot;&gt;brew install carthage&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;Run &lt;code class=&quot;highlighter-rouge&quot;&gt;brew install libimobiledevice --HEAD&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;Run &lt;code class=&quot;highlighter-rouge&quot;&gt;brew install ideviceinstaller&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;Run &lt;code class=&quot;highlighter-rouge&quot;&gt;brew install ios-webkit-debug-proxy&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;Run &lt;code class=&quot;highlighter-rouge&quot;&gt;npm install -g ios-deploy&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;android-dependencies&quot;&gt;Android Dependencies&lt;/h3&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Run &lt;code class=&quot;highlighter-rouge&quot;&gt;brew install telnet&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;project-setup&quot;&gt;Project Setup&lt;/h2&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Run &lt;code class=&quot;highlighter-rouge&quot;&gt;npm install -D nativescript-dev-appium&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;During the installation process you will be asked a few questions&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;What framework you are using (JS/TS, Angular, Vue) - I chose Angular&lt;/li&gt;
+  &lt;li&gt;What is your preferred testing framework (Mocha, Jasmine, etc.) - I chose Mocha&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; After installing I recommend you go to your &lt;code class=&quot;highlighter-rouge&quot;&gt;tsconfig.json&lt;/code&gt; and add your new &lt;code class=&quot;highlighter-rouge&quot;&gt;e2e&lt;/code&gt; folder to your &lt;code class=&quot;highlighter-rouge&quot;&gt;excludes&lt;/code&gt; array&lt;/p&gt;
+
+&lt;p&gt;This brings us to our first &lt;strong&gt;gotcha&lt;/strong&gt;!&lt;/p&gt;
+
+&lt;h4 id=&quot;gotcha-1---running-the-default-tests&quot;&gt;Gotcha #1 - Running the Default Tests&lt;/h4&gt;
+&lt;p&gt;The default tests generated when you install the &lt;code class=&quot;highlighter-rouge&quot;&gt;nativescript-dev-appium&lt;/code&gt; plugin are for the hello-world-ts template.&lt;/p&gt;
+
+&lt;p&gt;If you used a different template the generated tests will likely fail&lt;/p&gt;
+
+&lt;h2 id=&quot;testing-workflow&quot;&gt;Testing Workflow&lt;/h2&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Make changes to your app&lt;/li&gt;
+  &lt;li&gt;Build your app &lt;code class=&quot;highlighter-rouge&quot;&gt;tns build ios|android&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;Write your test&lt;/li&gt;
+  &lt;li&gt;Run your test &lt;code class=&quot;highlighter-rouge&quot;&gt;npm run e2e -- --runType &amp;lt;capabilityName&amp;gt;&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;capabilityName&amp;gt;&lt;/code&gt; is the corresponding key to the simulator/device you want to run the tests against inside of your new &lt;code class=&quot;highlighter-rouge&quot;&gt;appium.capabilities.json&lt;/code&gt; file&lt;/p&gt;
+
+&lt;p&gt;Example: &lt;code class=&quot;highlighter-rouge&quot;&gt;npm run e2e -- --runType sim.iPhone7&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; The first &lt;code class=&quot;highlighter-rouge&quot;&gt;--&lt;/code&gt; is not a typo, I believe it is a flag to set &lt;code class=&quot;highlighter-rouge&quot;&gt;fullReset: true&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;noReset: false&lt;/code&gt; in the appium.capabilities on the fly&lt;/p&gt;
+
+&lt;p&gt;If you ran &lt;code class=&quot;highlighter-rouge&quot;&gt;npm run e2e -- --runType sim.iPhone7&lt;/code&gt; like me without having an iPhone7 simulator running, it should fallback to the simulator you have running, or atleast it did for me :)&lt;/p&gt;
+
+&lt;p&gt;If that command runs without any errors after a little bit a web browser tab should open, and the terminal should alert you of the results (in this case 0 passed 2 failed with information on why, see gotcha #1)&lt;/p&gt;
+
+&lt;h4 id=&quot;gotcha-2---app-permission-requests&quot;&gt;Gotcha #2 - App Permission Requests&lt;/h4&gt;
+
+&lt;p&gt;My app has a location permission that immediately pops up, the tests will hang/fail but I manually accepted the permission alert from iOS and then the tests ran successfully&lt;/p&gt;
+
+&lt;p&gt;You can set up auto accept alerts by adding this line in the JSON body for the capabilityName you are using when running your tests, found in your &lt;code class=&quot;highlighter-rouge&quot;&gt;appium.capabilities.json&lt;/code&gt; file&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;&quot;autoAcceptAlerts&quot;: true&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;You have many other options you can use like&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;&quot;locationServicesAuthorized&quot;: true&lt;/code&gt;
+&lt;code class=&quot;highlighter-rouge&quot;&gt;“autoDismissAlerts” : false&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;For a full list of the different capabilities of both iOS and Android check the &lt;a href=&quot;https://appium.io/docs/en/writing-running-appium/caps&quot; title=&quot;appium capability docs&quot; target=&quot;_blank&quot;&gt;Appium Docs on Capabilities&lt;/a&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;gotcha-3---find-element-by-image&quot;&gt;Gotcha #3 - Find Element By Image&lt;/h4&gt;
+
+&lt;p&gt;With Appium you have many ways to find elements, one of them is &lt;code class=&quot;highlighter-rouge&quot;&gt;findElementByImage(base64String, threshold)&lt;/code&gt; where you pass in a base64 string of your image and Appium will search for that image in the page using the supplied threshold.&lt;/p&gt;
+
+&lt;p&gt;Intellisense was telling me that method takes the &lt;code class=&quot;highlighter-rouge&quot;&gt;path&lt;/code&gt; not the &lt;code class=&quot;highlighter-rouge&quot;&gt;base64&lt;/code&gt; encoded string.&lt;/p&gt;
+
+&lt;p&gt;I added the image to the &lt;code class=&quot;highlighter-rouge&quot;&gt;e2e/resources/images/projectName/iPhone 6&lt;/code&gt; folder.&lt;/p&gt;
+
+&lt;p&gt;Then I updated the test to try &lt;code class=&quot;highlighter-rouge&quot;&gt;await driver.findElementByImage(&quot;blue_truck_icon@3x”)&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;But then got the following error in the mocha reporter:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Error response status: 13, , UnknownError - An unknown server-side error occurred while processing the command. 
+
+Selenium error: An unknown server-side error occurred while processing the command. 
+
+Original error: opencv4nodejs module is required to use OpenCV features. 
+
+Please install it first (npm i -g opencv4nodejs) and restart Appium. 
+
+Read https://github.com/justadudewhohacks/opencv4nodejs#how-to-install for more details on this topic.
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;I tried to run &lt;code class=&quot;highlighter-rouge&quot;&gt;npm I -g opencv4nodejs&lt;/code&gt; and got this error:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Error: failed to execute cmake --version, cmake is required to build opencv,
+
+error is: Error: Command failed: cmake --version
+
+/bin/sh: cmake: command not found
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;To get around this error I ran these commands&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;brew install cmake&lt;/code&gt; - to install cmake&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;cmake —version&lt;/code&gt; - to verify cmake installation&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Then I tried to run &lt;code class=&quot;highlighter-rouge&quot;&gt;npm I -g opencv4nodejs&lt;/code&gt; again, after installing what felt like 5 million files/dependencies/etc the installation succeeded&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; You might want to make sure your laptop is plugged in, I lost about 20% battery during this step 😂&lt;/p&gt;
+
+&lt;p&gt;All that leads me to our next &lt;strong&gt;gotcha&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;gotcha-4---what-does-findelementbyimage-expect-path-or-base64&quot;&gt;Gotcha #4 - What does findElementByImage() expect? Path or base64??&lt;/h4&gt;
+
+&lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; The &lt;code class=&quot;highlighter-rouge&quot;&gt;findElementByImage()&lt;/code&gt; method is an experimental feature so you might want to avoid trying to use it if you can, but if you must, here is my experience. I hope it helps you! 🤞&lt;/p&gt;
+
+&lt;p&gt;I looked at the source code for &lt;code class=&quot;highlighter-rouge&quot;&gt;findElementByImage()&lt;/code&gt; method and found that it is expecting the image fileName &lt;strong&gt;without the extension&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Then it builds out a path to that file, and converts it to a base64encoded string before passing it to the Appium driver&lt;/p&gt;
+
+&lt;p&gt;So I tried using &lt;code class=&quot;highlighter-rouge&quot;&gt;driver.findElementByImage(imageName);&lt;/code&gt; again but it didn’t work.&lt;/p&gt;
+
+&lt;p&gt;I got the error &lt;code class=&quot;highlighter-rouge&quot;&gt;Error: The provided image does not exist!!!&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;When the &lt;code class=&quot;highlighter-rouge&quot;&gt;findElementByImage()&lt;/code&gt; method tries to create the &lt;code class=&quot;highlighter-rouge&quot;&gt;filePath&lt;/code&gt; for the fileName you passed it, it looks in the following directory &lt;code class=&quot;highlighter-rouge&quot;&gt;e2e/resources/images/projectName/deviceName/fileName.png&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;After verifying that the &lt;code class=&quot;highlighter-rouge&quot;&gt;generatedPath&lt;/code&gt; by the &lt;code class=&quot;highlighter-rouge&quot;&gt;findElementsByImage()&lt;/code&gt; method was correct I got the following error even though the image &lt;strong&gt;was&lt;/strong&gt; on the screen at the time:&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Error response status: 7, NoSuchElement - An element could not be located on the page using the given search parameters&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;I switched to search for an image in the ActionBar to test and see if I could get Appium findElementByImage() method to succeed but it didn’t.&lt;/p&gt;
+
+&lt;h4 id=&quot;gotcha-5---findelementbyimage---imagethresholdmatch&quot;&gt;Gotcha #5 - findElementByImage() - ImageThresholdMatch&lt;/h4&gt;
+
+&lt;p&gt;The image I was search for was a pin using the Google Maps SDK, so maybe that’s why the Appium driver couldn’t find it&lt;/p&gt;
+
+&lt;p&gt;I switched to search for an image in the ActionBar to test and see if I could get Appium’s &lt;code class=&quot;highlighter-rouge&quot;&gt;findElementByImage()&lt;/code&gt; method to succeed but it didn’t…&lt;/p&gt;
+
+&lt;p&gt;The 2nd parameter for &lt;code class=&quot;highlighter-rouge&quot;&gt;findElementByImage()&lt;/code&gt; is a &lt;code class=&quot;highlighter-rouge&quot;&gt;imageThresholdMatch&lt;/code&gt;, which is a setting for how close the images must match to be returned by the driver&lt;/p&gt;
+
+&lt;p&gt;The &lt;code class=&quot;highlighter-rouge&quot;&gt;imageThresholdMatch&lt;/code&gt; parameter is optional, and defaults to 0.4 if not passed&lt;/p&gt;
+
+&lt;p&gt;The range for the &lt;code class=&quot;highlighter-rouge&quot;&gt;imageThresholdMatch&lt;/code&gt; parameter is 0 (no comparison) - 1 (pixel by pixel comparison)&lt;/p&gt;
+
+&lt;p&gt;When I passed in &lt;code class=&quot;highlighter-rouge&quot;&gt;findElementByImage(fileName, 0);&lt;/code&gt; the test succeeded finally!!&lt;/p&gt;
+
+&lt;p&gt;After doing some more research I found some information regarding this &lt;code class=&quot;highlighter-rouge&quot;&gt;imageThresholdMatch&lt;/code&gt; on the &lt;a href=&quot;http://appium.io/docs/en/advanced-concepts/image-elements&quot; title=&quot;appium find element by image docs&quot; target=&quot;_blank&quot;&gt;Appium Docs on Finding Elements by Image&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Under the &lt;strong&gt;Related Settings&lt;/strong&gt; section, I read more into the &lt;code class=&quot;highlighter-rouge&quot;&gt;imageThresholdMatch&lt;/code&gt;, here is what it said:&lt;/p&gt;
+
+&lt;p&gt;The OpenCV match threshold below which to consider the find a failure.&lt;/p&gt;
+
+&lt;p&gt;Basically the range of possibilities is between 0 (which means no threshold should be used) and 1 (which means that the reference image must be an exact pixel-for-pixel match).&lt;/p&gt;
+
+&lt;p&gt;The exact values in between have no absolute meaning&lt;/p&gt;
+
+&lt;p&gt;For example a match that requires drastic resizing of a reference image will come out as a lower match strength than otherwise&lt;/p&gt;
+
+&lt;p&gt;It’s recommended you try the default setting&lt;/p&gt;
+
+&lt;p&gt;Then incrementally &lt;strong&gt;lower&lt;/strong&gt; the threshold if you’re &lt;strong&gt;not finding&lt;/strong&gt; matching elements&lt;/p&gt;
+
+&lt;p&gt;If you’re matching the &lt;strong&gt;wrong&lt;/strong&gt; element, try &lt;strong&gt;increasing&lt;/strong&gt; the threshold value&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; If you use 0 as the threshold, it appears to &lt;strong&gt;always&lt;/strong&gt; pass the &lt;code class=&quot;highlighter-rouge&quot;&gt;assert.exists()&lt;/code&gt; test&lt;/p&gt;
+
+&lt;h4 id=&quot;gotcha-6---findelementbyclassname&quot;&gt;Gotcha #6 - findElementByClassName()&lt;/h4&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;findElementByClassName()&lt;/code&gt; does &lt;strong&gt;not&lt;/strong&gt; search for css class names like you might expect, but rather className like &lt;code class=&quot;highlighter-rouge&quot;&gt;Image&lt;/code&gt; or &lt;code class=&quot;highlighter-rouge&quot;&gt;TextField&lt;/code&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;gotcha--7---findelementbyautomationtext&quot;&gt;Gotcha # 7 - findElementByAutomationText()&lt;/h4&gt;
+
+&lt;p&gt;I tried setting automationText on an element in my view, and find it using the &lt;code class=&quot;highlighter-rouge&quot;&gt;findElementByAutomationText()&lt;/code&gt; method but it did not work…&lt;/p&gt;
+
+&lt;p&gt;After looking at the source code, it looks like &lt;code class=&quot;highlighter-rouge&quot;&gt;findElementByAutomationText()&lt;/code&gt; calls &lt;code class=&quot;highlighter-rouge&quot;&gt;findElementByAccessibilityId()&lt;/code&gt; (this might be a bug)&lt;/p&gt;
+
+&lt;p&gt;This is where I switched and went to using the Appium client to help me with the rest of my testing. I will post another blog post about that shortly! Stand by! 😉&lt;/p&gt;
+
+&lt;p&gt;See you next time! ✌️&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
    <title>Android vs iOS UI Differences</title>
    <link href="http://localhost:4000/nativescript/2019/06/23/android-vs-ios-ui-differences.html"/>
-   <updated>2019-06-23T00:00:00-05:00</updated>
+   <updated>2019-06-23T00:00:00-04:00</updated>
    <id>http://localhost:4000/nativescript/2019/06/23/android-vs-ios-ui-differences</id>
    <content type="html">&lt;p&gt;Today I’m going to show some of the differences between Android and iOS UI and how to make your apps look more similar.
 &lt;!--more--&gt;&lt;/p&gt;
@@ -339,7 +552,7 @@
  <entry>
    <title>Passing Events from NativeScript Views</title>
    <link href="http://localhost:4000/nativescript/2019/06/15/passing-events-from-nativescript-views.html"/>
-   <updated>2019-06-15T00:00:00-05:00</updated>
+   <updated>2019-06-15T00:00:00-04:00</updated>
    <id>http://localhost:4000/nativescript/2019/06/15/passing-events-from-nativescript-views</id>
    <content type="html">&lt;p&gt;Today I’m going to show how to pass event data to the code behind from the view in NativeScript and modify the widget
 &lt;!--more--&gt;&lt;/p&gt;
@@ -438,7 +651,7 @@
  <entry>
    <title>Capturing Signatures with NativeScript + Angular</title>
    <link href="http://localhost:4000/nativescript/2019/05/02/capturing-signatures.html"/>
-   <updated>2019-05-02T00:00:00-05:00</updated>
+   <updated>2019-05-02T00:00:00-04:00</updated>
    <id>http://localhost:4000/nativescript/2019/05/02/capturing-signatures</id>
    <content type="html">&lt;p&gt;Today I’m going to show you how to capture user signatures with NativeScript using the &lt;a href=&quot;https://github.com/bradmartin/nativescript-drawingpad&quot; title=&quot;nativescript-drawingpad link&quot;&gt;nativescript-drawingpad&lt;/a&gt; plugin created by &lt;a href=&quot;https://twitter.com/_bradmartin_&quot; title=&quot;brad martin twitter link&quot;&gt;Brad Martin&lt;/a&gt;.
 &lt;!--more--&gt;&lt;/p&gt;
@@ -564,7 +777,7 @@ onDoneTap(): void {
  <entry>
    <title>Managing App Versioning on iOS</title>
    <link href="http://localhost:4000/nativescript/2019/01/17/managing-app-versioning.html"/>
-   <updated>2019-01-17T00:00:00-06:00</updated>
+   <updated>2019-01-17T00:00:00-05:00</updated>
    <id>http://localhost:4000/nativescript/2019/01/17/managing-app-versioning</id>
    <content type="html">&lt;p&gt;Versioning your app’s builds is great but managing that versioning can be a pain, in this post I’m going to show you how I manage versioning and hopefully help you out.
 &lt;!--more--&gt;&lt;/p&gt;
@@ -626,7 +839,7 @@ onDoneTap(): void {
  <entry>
    <title>Creating Dynamic Font Awesome Icons</title>
    <link href="http://localhost:4000/nativescript/2018/12/14/creating-dynamic-font-awesome-icons.html"/>
-   <updated>2018-12-14T00:00:00-06:00</updated>
+   <updated>2018-12-14T00:00:00-05:00</updated>
    <id>http://localhost:4000/nativescript/2018/12/14/creating-dynamic-font-awesome-icons</id>
    <content type="html">&lt;p&gt;Font Awesome icons are great, but sometimes we want to change them, their color, or size dynamically. Let’s see how to do that with NativeScript
 &lt;!--more--&gt;&lt;/p&gt;
@@ -683,7 +896,7 @@ Please don’t hate on my &lt;code class=&quot;highlighter-rouge&quot;&gt;if&lt;
  <entry>
    <title>Using Plugins</title>
    <link href="http://localhost:4000/nativescript/2018/11/01/using-plugins.html"/>
-   <updated>2018-11-01T00:00:00-05:00</updated>
+   <updated>2018-11-01T00:00:00-04:00</updated>
    <id>http://localhost:4000/nativescript/2018/11/01/using-plugins</id>
    <content type="html">&lt;p&gt;What are plugins? How can they help us? How do we use them? Let’s see how to install and use plugins with NativeScript
 &lt;!--more--&gt;&lt;/p&gt;
@@ -786,7 +999,7 @@ I don’t see any limitations listed for the plugin currently&lt;/li&gt;
  <entry>
    <title>Creating Modals</title>
    <link href="http://localhost:4000/nativescript/2018/10/31/creating-modals.html"/>
-   <updated>2018-10-31T00:00:00-05:00</updated>
+   <updated>2018-10-31T00:00:00-04:00</updated>
    <id>http://localhost:4000/nativescript/2018/10/31/creating-modals</id>
    <content type="html">&lt;p&gt;Sometimes you don’t want to clutter a single page with a bunch of inputs, lets see how to use modals to help with this!
 &lt;!--more--&gt;&lt;/p&gt;
@@ -876,7 +1089,7 @@ I don’t see any limitations listed for the plugin currently&lt;/li&gt;
  <entry>
    <title>Accessing Native APIs with NativeScript</title>
    <link href="http://localhost:4000/nativescript/2018/08/03/accessing-native-apis.html"/>
-   <updated>2018-08-03T00:00:00-05:00</updated>
+   <updated>2018-08-03T00:00:00-04:00</updated>
    <id>http://localhost:4000/nativescript/2018/08/03/accessing-native-apis</id>
    <content type="html">&lt;p&gt;One of the biggest advantages of NativeScript is the ability to access native device API’s. In this post I’ll show you how.
 &lt;!--more--&gt;&lt;/p&gt;
@@ -958,7 +1171,7 @@ I don’t see any limitations listed for the plugin currently&lt;/li&gt;
  <entry>
    <title>Setting Up Your Machine</title>
    <link href="http://localhost:4000/environment/2018/07/17/setting-up-your-machine.html"/>
-   <updated>2018-07-17T00:00:00-05:00</updated>
+   <updated>2018-07-17T00:00:00-04:00</updated>
    <id>http://localhost:4000/environment/2018/07/17/setting-up-your-machine</id>
    <content type="html">&lt;p&gt;There are many different ways to set up your development environment for NativeScript. Here I’ll show you mine.
 &lt;!--more--&gt;&lt;/p&gt;
@@ -1117,7 +1330,7 @@ I don’t see any limitations listed for the plugin currently&lt;/li&gt;
  <entry>
    <title>Understanding Grid Layouts</title>
    <link href="http://localhost:4000/nativescript/2018/07/03/understanding-grid-layouts.html"/>
-   <updated>2018-07-03T00:00:00-05:00</updated>
+   <updated>2018-07-03T00:00:00-04:00</updated>
    <id>http://localhost:4000/nativescript/2018/07/03/understanding-grid-layouts</id>
    <content type="html">&lt;p&gt;NativeScript has many different layouts, let’s dig into grid layouts for a few.
 &lt;!--more--&gt;&lt;/p&gt;
@@ -1191,7 +1404,7 @@ I don’t see any limitations listed for the plugin currently&lt;/li&gt;
  <entry>
    <title>What Is NativeScript?</title>
    <link href="http://localhost:4000/nativescript/2018/07/01/what-is-nativescript.html"/>
-   <updated>2018-07-01T00:00:00-05:00</updated>
+   <updated>2018-07-01T00:00:00-04:00</updated>
    <id>http://localhost:4000/nativescript/2018/07/01/what-is-nativescript</id>
    <content type="html">&lt;p&gt;NativeScript is how you build cross-platform, native iOS and Android apps with JavaScript, but what does that really mean?
 &lt;!--more--&gt;&lt;/p&gt;
@@ -1215,7 +1428,7 @@ I don’t see any limitations listed for the plugin currently&lt;/li&gt;
  <entry>
    <title>Hello Hydeout</title>
    <link href="http://localhost:4000/2018/04/05/hello-hydeout.html"/>
-   <updated>2018-04-05T00:00:00-05:00</updated>
+   <updated>2018-04-05T00:00:00-04:00</updated>
    <id>http://localhost:4000/2018/04/05/hello-hydeout</id>
    <content type="html">&lt;p&gt;Hydeout updates the original &lt;a href=&quot;https://github.com/poole/hyde&quot;&gt;Hyde&lt;/a&gt;
 theme for &lt;a href=&quot;http://jekyllrb.com&quot;&gt;Jekyll&lt;/a&gt; 3.x and adds new functionality.&lt;/p&gt;
@@ -1304,7 +1517,7 @@ theme. Hope this works for you!&lt;/p&gt;
  <entry>
    <title>Introducing Hyde</title>
    <link href="http://localhost:4000/2018/04/02/introducing-hyde.html"/>
-   <updated>2018-04-02T00:00:00-05:00</updated>
+   <updated>2018-04-02T00:00:00-04:00</updated>
    <id>http://localhost:4000/2018/04/02/introducing-hyde</id>
    <content type="html">&lt;p&gt;Hyde is a brazen two-column &lt;a href=&quot;http://jekyllrb.com&quot;&gt;Jekyll&lt;/a&gt; theme that pairs a prominent sidebar with uncomplicated content. It’s based on &lt;a href=&quot;http://getpoole.com&quot;&gt;Poole&lt;/a&gt;, the Jekyll butler.&lt;/p&gt;
 

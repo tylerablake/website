@@ -1,4 +1,208 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.3">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2019-07-19T13:20:22-05:00</updated><id>http://localhost:4000/</id><title type="html">Tyler Blake</title><subtitle>Stay a while and listen.</subtitle><author><name>Tyler Blake</name></author><entry><title type="html">Android vs iOS UI Differences</title><link href="http://localhost:4000/nativescript/2019/06/23/android-vs-ios-ui-differences.html" rel="alternate" type="text/html" title="Android vs iOS UI Differences" /><published>2019-06-23T00:00:00-05:00</published><updated>2019-06-15T14:30:00-05:00</updated><id>http://localhost:4000/nativescript/2019/06/23/android-vs-ios-ui-differences</id><content type="html" xml:base="http://localhost:4000/nativescript/2019/06/23/android-vs-ios-ui-differences.html">&lt;p&gt;Today I’m going to show some of the differences between Android and iOS UI and how to make your apps look more similar.
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.3">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2019-08-01T23:53:52-04:00</updated><id>http://localhost:4000/</id><title type="html">Tyler Blake</title><subtitle>Stay a while and listen.</subtitle><author><name>Tyler Blake</name></author><entry><title type="html">Automated UI Testing in NativeScript</title><link href="http://localhost:4000/nativescript/2019/08/01/automated-ui-testing-in-nativescript.html" rel="alternate" type="text/html" title="Automated UI Testing in NativeScript" /><published>2019-08-01T00:00:00-04:00</published><updated>2019-08-01T16:42:00-04:00</updated><id>http://localhost:4000/nativescript/2019/08/01/automated-ui-testing-in-nativescript</id><content type="html" xml:base="http://localhost:4000/nativescript/2019/08/01/automated-ui-testing-in-nativescript.html">&lt;p&gt;Do you want a guide on how to set up automated ui testing for your NativeScript apps? Welp, here it is!
+&lt;!--more--&gt;&lt;/p&gt;
+
+&lt;p&gt;This post outlines my experiences of working with the &lt;code class=&quot;highlighter-rouge&quot;&gt;nativescript-dev-appium&lt;/code&gt; plugin and writing my tests manually.&lt;/p&gt;
+
+&lt;p&gt;I have received a few messages requesting help with e2e testing so I wanted to get this post out there quicky. I will update it as I have more information to share, as well as write a few more blog posts on things like &lt;em&gt;Using the Appium Client&lt;/em&gt; and &lt;em&gt;Using the appium-doctor to Diagnose Installation Problems&lt;/em&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; This post contains my finds and gotchas along the way, I started by following the NativeScript docs on e2e testing &lt;a href=&quot;https://docs.nativescript.org/angular/tooling/testing/end-to-end-testing/overview&quot; title=&quot;nativescript e2e testing guide&quot; target=&quot;_blank&quot;&gt;NativeScript E2E Guide&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;I did my setup on a Mac, so if you are on Windows or Linux, your installation process might be different. Please refer to the NativeScript guide above if you have issues or reach out in the &lt;a href=&quot;https://www.nativescript.org/slack-invitation-form&quot; title=&quot;nativescript community Slack invite link&quot; target=&quot;_blank&quot;&gt;NS community Slack&lt;/a&gt; and I’ll try to help you!&lt;/p&gt;
+
+&lt;h2 id=&quot;machine-setup&quot;&gt;Machine Setup&lt;/h2&gt;
+
+&lt;h3 id=&quot;install-appium&quot;&gt;Install Appium&lt;/h3&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Run &lt;code class=&quot;highlighter-rouge&quot;&gt;npm install -g appium&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;You might have to run &lt;code class=&quot;highlighter-rouge&quot;&gt;sudo npm install -g appium&lt;/code&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;ios-dependencies&quot;&gt;iOS Dependencies&lt;/h3&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Run &lt;code class=&quot;highlighter-rouge&quot;&gt;brew install carthage&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;Run &lt;code class=&quot;highlighter-rouge&quot;&gt;brew install libimobiledevice --HEAD&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;Run &lt;code class=&quot;highlighter-rouge&quot;&gt;brew install ideviceinstaller&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;Run &lt;code class=&quot;highlighter-rouge&quot;&gt;brew install ios-webkit-debug-proxy&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;Run &lt;code class=&quot;highlighter-rouge&quot;&gt;npm install -g ios-deploy&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;android-dependencies&quot;&gt;Android Dependencies&lt;/h3&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Run &lt;code class=&quot;highlighter-rouge&quot;&gt;brew install telnet&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;project-setup&quot;&gt;Project Setup&lt;/h2&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Run &lt;code class=&quot;highlighter-rouge&quot;&gt;npm install -D nativescript-dev-appium&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;During the installation process you will be asked a few questions&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;What framework you are using (JS/TS, Angular, Vue) - I chose Angular&lt;/li&gt;
+  &lt;li&gt;What is your preferred testing framework (Mocha, Jasmine, etc.) - I chose Mocha&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; After installing I recommend you go to your &lt;code class=&quot;highlighter-rouge&quot;&gt;tsconfig.json&lt;/code&gt; and add your new &lt;code class=&quot;highlighter-rouge&quot;&gt;e2e&lt;/code&gt; folder to your &lt;code class=&quot;highlighter-rouge&quot;&gt;excludes&lt;/code&gt; array&lt;/p&gt;
+
+&lt;p&gt;This brings us to our first &lt;strong&gt;gotcha&lt;/strong&gt;!&lt;/p&gt;
+
+&lt;h4 id=&quot;gotcha-1---running-the-default-tests&quot;&gt;Gotcha #1 - Running the Default Tests&lt;/h4&gt;
+&lt;p&gt;The default tests generated when you install the &lt;code class=&quot;highlighter-rouge&quot;&gt;nativescript-dev-appium&lt;/code&gt; plugin are for the hello-world-ts template.&lt;/p&gt;
+
+&lt;p&gt;If you used a different template the generated tests will likely fail&lt;/p&gt;
+
+&lt;h2 id=&quot;testing-workflow&quot;&gt;Testing Workflow&lt;/h2&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Make changes to your app&lt;/li&gt;
+  &lt;li&gt;Build your app &lt;code class=&quot;highlighter-rouge&quot;&gt;tns build ios|android&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;Write your test&lt;/li&gt;
+  &lt;li&gt;Run your test &lt;code class=&quot;highlighter-rouge&quot;&gt;npm run e2e -- --runType &amp;lt;capabilityName&amp;gt;&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;capabilityName&amp;gt;&lt;/code&gt; is the corresponding key to the simulator/device you want to run the tests against inside of your new &lt;code class=&quot;highlighter-rouge&quot;&gt;appium.capabilities.json&lt;/code&gt; file&lt;/p&gt;
+
+&lt;p&gt;Example: &lt;code class=&quot;highlighter-rouge&quot;&gt;npm run e2e -- --runType sim.iPhone7&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; The first &lt;code class=&quot;highlighter-rouge&quot;&gt;--&lt;/code&gt; is not a typo, I believe it is a flag to set &lt;code class=&quot;highlighter-rouge&quot;&gt;fullReset: true&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;noReset: false&lt;/code&gt; in the appium.capabilities on the fly&lt;/p&gt;
+
+&lt;p&gt;If you ran &lt;code class=&quot;highlighter-rouge&quot;&gt;npm run e2e -- --runType sim.iPhone7&lt;/code&gt; like me without having an iPhone7 simulator running, it should fallback to the simulator you have running, or atleast it did for me :)&lt;/p&gt;
+
+&lt;p&gt;If that command runs without any errors after a little bit a web browser tab should open, and the terminal should alert you of the results (in this case 0 passed 2 failed with information on why, see gotcha #1)&lt;/p&gt;
+
+&lt;h4 id=&quot;gotcha-2---app-permission-requests&quot;&gt;Gotcha #2 - App Permission Requests&lt;/h4&gt;
+
+&lt;p&gt;My app has a location permission that immediately pops up, the tests will hang/fail but I manually accepted the permission alert from iOS and then the tests ran successfully&lt;/p&gt;
+
+&lt;p&gt;You can set up auto accept alerts by adding this line in the JSON body for the capabilityName you are using when running your tests, found in your &lt;code class=&quot;highlighter-rouge&quot;&gt;appium.capabilities.json&lt;/code&gt; file&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;&quot;autoAcceptAlerts&quot;: true&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;You have many other options you can use like&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;&quot;locationServicesAuthorized&quot;: true&lt;/code&gt;
+&lt;code class=&quot;highlighter-rouge&quot;&gt;“autoDismissAlerts” : false&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;For a full list of the different capabilities of both iOS and Android check the &lt;a href=&quot;https://appium.io/docs/en/writing-running-appium/caps&quot; title=&quot;appium capability docs&quot; target=&quot;_blank&quot;&gt;Appium Docs on Capabilities&lt;/a&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;gotcha-3---find-element-by-image&quot;&gt;Gotcha #3 - Find Element By Image&lt;/h4&gt;
+
+&lt;p&gt;With Appium you have many ways to find elements, one of them is &lt;code class=&quot;highlighter-rouge&quot;&gt;findElementByImage(base64String, threshold)&lt;/code&gt; where you pass in a base64 string of your image and Appium will search for that image in the page using the supplied threshold.&lt;/p&gt;
+
+&lt;p&gt;Intellisense was telling me that method takes the &lt;code class=&quot;highlighter-rouge&quot;&gt;path&lt;/code&gt; not the &lt;code class=&quot;highlighter-rouge&quot;&gt;base64&lt;/code&gt; encoded string.&lt;/p&gt;
+
+&lt;p&gt;I added the image to the &lt;code class=&quot;highlighter-rouge&quot;&gt;e2e/resources/images/projectName/iPhone 6&lt;/code&gt; folder.&lt;/p&gt;
+
+&lt;p&gt;Then I updated the test to try &lt;code class=&quot;highlighter-rouge&quot;&gt;await driver.findElementByImage(&quot;blue_truck_icon@3x”)&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;But then got the following error in the mocha reporter:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Error response status: 13, , UnknownError - An unknown server-side error occurred while processing the command. 
+
+Selenium error: An unknown server-side error occurred while processing the command. 
+
+Original error: opencv4nodejs module is required to use OpenCV features. 
+
+Please install it first (npm i -g opencv4nodejs) and restart Appium. 
+
+Read https://github.com/justadudewhohacks/opencv4nodejs#how-to-install for more details on this topic.
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;I tried to run &lt;code class=&quot;highlighter-rouge&quot;&gt;npm I -g opencv4nodejs&lt;/code&gt; and got this error:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Error: failed to execute cmake --version, cmake is required to build opencv,
+
+error is: Error: Command failed: cmake --version
+
+/bin/sh: cmake: command not found
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;To get around this error I ran these commands&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;brew install cmake&lt;/code&gt; - to install cmake&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;cmake —version&lt;/code&gt; - to verify cmake installation&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Then I tried to run &lt;code class=&quot;highlighter-rouge&quot;&gt;npm I -g opencv4nodejs&lt;/code&gt; again, after installing what felt like 5 million files/dependencies/etc the installation succeeded&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; You might want to make sure your laptop is plugged in, I lost about 20% battery during this step 😂&lt;/p&gt;
+
+&lt;p&gt;All that leads me to our next &lt;strong&gt;gotcha&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;gotcha-4---what-does-findelementbyimage-expect-path-or-base64&quot;&gt;Gotcha #4 - What does findElementByImage() expect? Path or base64??&lt;/h4&gt;
+
+&lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; The &lt;code class=&quot;highlighter-rouge&quot;&gt;findElementByImage()&lt;/code&gt; method is an experimental feature so you might want to avoid trying to use it if you can, but if you must, here is my experience. I hope it helps you! 🤞&lt;/p&gt;
+
+&lt;p&gt;I looked at the source code for &lt;code class=&quot;highlighter-rouge&quot;&gt;findElementByImage()&lt;/code&gt; method and found that it is expecting the image fileName &lt;strong&gt;without the extension&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Then it builds out a path to that file, and converts it to a base64encoded string before passing it to the Appium driver&lt;/p&gt;
+
+&lt;p&gt;So I tried using &lt;code class=&quot;highlighter-rouge&quot;&gt;driver.findElementByImage(imageName);&lt;/code&gt; again but it didn’t work.&lt;/p&gt;
+
+&lt;p&gt;I got the error &lt;code class=&quot;highlighter-rouge&quot;&gt;Error: The provided image does not exist!!!&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;When the &lt;code class=&quot;highlighter-rouge&quot;&gt;findElementByImage()&lt;/code&gt; method tries to create the &lt;code class=&quot;highlighter-rouge&quot;&gt;filePath&lt;/code&gt; for the fileName you passed it, it looks in the following directory &lt;code class=&quot;highlighter-rouge&quot;&gt;e2e/resources/images/projectName/deviceName/fileName.png&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;After verifying that the &lt;code class=&quot;highlighter-rouge&quot;&gt;generatedPath&lt;/code&gt; by the &lt;code class=&quot;highlighter-rouge&quot;&gt;findElementsByImage()&lt;/code&gt; method was correct I got the following error even though the image &lt;strong&gt;was&lt;/strong&gt; on the screen at the time:&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Error response status: 7, NoSuchElement - An element could not be located on the page using the given search parameters&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;I switched to search for an image in the ActionBar to test and see if I could get Appium findElementByImage() method to succeed but it didn’t.&lt;/p&gt;
+
+&lt;h4 id=&quot;gotcha-5---findelementbyimage---imagethresholdmatch&quot;&gt;Gotcha #5 - findElementByImage() - ImageThresholdMatch&lt;/h4&gt;
+
+&lt;p&gt;The image I was search for was a pin using the Google Maps SDK, so maybe that’s why the Appium driver couldn’t find it&lt;/p&gt;
+
+&lt;p&gt;I switched to search for an image in the ActionBar to test and see if I could get Appium’s &lt;code class=&quot;highlighter-rouge&quot;&gt;findElementByImage()&lt;/code&gt; method to succeed but it didn’t…&lt;/p&gt;
+
+&lt;p&gt;The 2nd parameter for &lt;code class=&quot;highlighter-rouge&quot;&gt;findElementByImage()&lt;/code&gt; is a &lt;code class=&quot;highlighter-rouge&quot;&gt;imageThresholdMatch&lt;/code&gt;, which is a setting for how close the images must match to be returned by the driver&lt;/p&gt;
+
+&lt;p&gt;The &lt;code class=&quot;highlighter-rouge&quot;&gt;imageThresholdMatch&lt;/code&gt; parameter is optional, and defaults to 0.4 if not passed&lt;/p&gt;
+
+&lt;p&gt;The range for the &lt;code class=&quot;highlighter-rouge&quot;&gt;imageThresholdMatch&lt;/code&gt; parameter is 0 (no comparison) - 1 (pixel by pixel comparison)&lt;/p&gt;
+
+&lt;p&gt;When I passed in &lt;code class=&quot;highlighter-rouge&quot;&gt;findElementByImage(fileName, 0);&lt;/code&gt; the test succeeded finally!!&lt;/p&gt;
+
+&lt;p&gt;After doing some more research I found some information regarding this &lt;code class=&quot;highlighter-rouge&quot;&gt;imageThresholdMatch&lt;/code&gt; on the &lt;a href=&quot;http://appium.io/docs/en/advanced-concepts/image-elements&quot; title=&quot;appium find element by image docs&quot; target=&quot;_blank&quot;&gt;Appium Docs on Finding Elements by Image&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Under the &lt;strong&gt;Related Settings&lt;/strong&gt; section, I read more into the &lt;code class=&quot;highlighter-rouge&quot;&gt;imageThresholdMatch&lt;/code&gt;, here is what it said:&lt;/p&gt;
+
+&lt;p&gt;The OpenCV match threshold below which to consider the find a failure.&lt;/p&gt;
+
+&lt;p&gt;Basically the range of possibilities is between 0 (which means no threshold should be used) and 1 (which means that the reference image must be an exact pixel-for-pixel match).&lt;/p&gt;
+
+&lt;p&gt;The exact values in between have no absolute meaning&lt;/p&gt;
+
+&lt;p&gt;For example a match that requires drastic resizing of a reference image will come out as a lower match strength than otherwise&lt;/p&gt;
+
+&lt;p&gt;It’s recommended you try the default setting&lt;/p&gt;
+
+&lt;p&gt;Then incrementally &lt;strong&gt;lower&lt;/strong&gt; the threshold if you’re &lt;strong&gt;not finding&lt;/strong&gt; matching elements&lt;/p&gt;
+
+&lt;p&gt;If you’re matching the &lt;strong&gt;wrong&lt;/strong&gt; element, try &lt;strong&gt;increasing&lt;/strong&gt; the threshold value&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; If you use 0 as the threshold, it appears to &lt;strong&gt;always&lt;/strong&gt; pass the &lt;code class=&quot;highlighter-rouge&quot;&gt;assert.exists()&lt;/code&gt; test&lt;/p&gt;
+
+&lt;h4 id=&quot;gotcha-6---findelementbyclassname&quot;&gt;Gotcha #6 - findElementByClassName()&lt;/h4&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;findElementByClassName()&lt;/code&gt; does &lt;strong&gt;not&lt;/strong&gt; search for css class names like you might expect, but rather className like &lt;code class=&quot;highlighter-rouge&quot;&gt;Image&lt;/code&gt; or &lt;code class=&quot;highlighter-rouge&quot;&gt;TextField&lt;/code&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;gotcha--7---findelementbyautomationtext&quot;&gt;Gotcha # 7 - findElementByAutomationText()&lt;/h4&gt;
+
+&lt;p&gt;I tried setting automationText on an element in my view, and find it using the &lt;code class=&quot;highlighter-rouge&quot;&gt;findElementByAutomationText()&lt;/code&gt; method but it did not work…&lt;/p&gt;
+
+&lt;p&gt;After looking at the source code, it looks like &lt;code class=&quot;highlighter-rouge&quot;&gt;findElementByAutomationText()&lt;/code&gt; calls &lt;code class=&quot;highlighter-rouge&quot;&gt;findElementByAccessibilityId()&lt;/code&gt; (this might be a bug)&lt;/p&gt;
+
+&lt;p&gt;This is where I switched and went to using the Appium client to help me with the rest of my testing. I will post another blog post about that shortly! Stand by! 😉&lt;/p&gt;
+
+&lt;p&gt;See you next time! ✌️&lt;/p&gt;</content><author><name>Tyler Blake</name></author><category term="Guide" /><category term="NativeScript" /><summary type="html">Do you want a guide on how to set up automated ui testing for your NativeScript apps? Welp, here it is!</summary></entry><entry><title type="html">Android vs iOS UI Differences</title><link href="http://localhost:4000/nativescript/2019/06/23/android-vs-ios-ui-differences.html" rel="alternate" type="text/html" title="Android vs iOS UI Differences" /><published>2019-06-23T00:00:00-04:00</published><updated>2019-06-15T15:30:00-04:00</updated><id>http://localhost:4000/nativescript/2019/06/23/android-vs-ios-ui-differences</id><content type="html" xml:base="http://localhost:4000/nativescript/2019/06/23/android-vs-ios-ui-differences.html">&lt;p&gt;Today I’m going to show some of the differences between Android and iOS UI and how to make your apps look more similar.
 &lt;!--more--&gt;&lt;/p&gt;
 
 &lt;p&gt;The examples are here as a quick reference to see what NS core theme class names you could be using to give your app a similar look and feel across Android and iOS devices&lt;/p&gt;
@@ -19,7 +223,7 @@
 
 &lt;p&gt;If you’d like to read more, be sure to check out the &lt;a href=&quot;https://docs.nativescript.org/ui/theme&quot; title=&quot;NativeScript Theme Docs&quot;&gt;NativeScript Theme Docs&lt;/a&gt;.&lt;/p&gt;
 
-&lt;p&gt;See you next time! :)&lt;/p&gt;</content><author><name>Tyler Blake</name></author><category term="Overview" /><category term="NativeScript" /><summary type="html">Today I’m going to show some of the differences between Android and iOS UI and how to make your apps look more similar.</summary></entry><entry><title type="html">Passing Events from NativeScript Views</title><link href="http://localhost:4000/nativescript/2019/06/15/passing-events-from-nativescript-views.html" rel="alternate" type="text/html" title="Passing Events from NativeScript Views" /><published>2019-06-15T00:00:00-05:00</published><updated>2019-06-15T14:30:00-05:00</updated><id>http://localhost:4000/nativescript/2019/06/15/passing-events-from-nativescript-views</id><content type="html" xml:base="http://localhost:4000/nativescript/2019/06/15/passing-events-from-nativescript-views.html">&lt;p&gt;Today I’m going to show how to pass event data to the code behind from the view in NativeScript and modify the widget
+&lt;p&gt;See you next time! :)&lt;/p&gt;</content><author><name>Tyler Blake</name></author><category term="Overview" /><category term="NativeScript" /><summary type="html">Today I’m going to show some of the differences between Android and iOS UI and how to make your apps look more similar.</summary></entry><entry><title type="html">Passing Events from NativeScript Views</title><link href="http://localhost:4000/nativescript/2019/06/15/passing-events-from-nativescript-views.html" rel="alternate" type="text/html" title="Passing Events from NativeScript Views" /><published>2019-06-15T00:00:00-04:00</published><updated>2019-06-15T15:30:00-04:00</updated><id>http://localhost:4000/nativescript/2019/06/15/passing-events-from-nativescript-views</id><content type="html" xml:base="http://localhost:4000/nativescript/2019/06/15/passing-events-from-nativescript-views.html">&lt;p&gt;Today I’m going to show how to pass event data to the code behind from the view in NativeScript and modify the widget
 &lt;!--more--&gt;&lt;/p&gt;
 
 &lt;p&gt;Here’s what I am going to show you today&lt;/p&gt;
@@ -109,7 +313,7 @@
 
 &lt;p&gt;Hope this helps you out on your app!&lt;/p&gt;
 
-&lt;p&gt;See you next time! :)&lt;/p&gt;</content><author><name>Tyler Blake</name></author><category term="Overview" /><category term="NativeScript" /><summary type="html">Today I’m going to show how to pass event data to the code behind from the view in NativeScript and modify the widget</summary></entry><entry><title type="html">Capturing Signatures with NativeScript + Angular</title><link href="http://localhost:4000/nativescript/2019/05/02/capturing-signatures.html" rel="alternate" type="text/html" title="Capturing Signatures with NativeScript + Angular" /><published>2019-05-02T00:00:00-05:00</published><updated>2019-05-02T09:30:00-05:00</updated><id>http://localhost:4000/nativescript/2019/05/02/capturing-signatures</id><content type="html" xml:base="http://localhost:4000/nativescript/2019/05/02/capturing-signatures.html">&lt;p&gt;Today I’m going to show you how to capture user signatures with NativeScript using the &lt;a href=&quot;https://github.com/bradmartin/nativescript-drawingpad&quot; title=&quot;nativescript-drawingpad link&quot;&gt;nativescript-drawingpad&lt;/a&gt; plugin created by &lt;a href=&quot;https://twitter.com/_bradmartin_&quot; title=&quot;brad martin twitter link&quot;&gt;Brad Martin&lt;/a&gt;.
+&lt;p&gt;See you next time! :)&lt;/p&gt;</content><author><name>Tyler Blake</name></author><category term="Overview" /><category term="NativeScript" /><summary type="html">Today I’m going to show how to pass event data to the code behind from the view in NativeScript and modify the widget</summary></entry><entry><title type="html">Capturing Signatures with NativeScript + Angular</title><link href="http://localhost:4000/nativescript/2019/05/02/capturing-signatures.html" rel="alternate" type="text/html" title="Capturing Signatures with NativeScript + Angular" /><published>2019-05-02T00:00:00-04:00</published><updated>2019-05-02T10:30:00-04:00</updated><id>http://localhost:4000/nativescript/2019/05/02/capturing-signatures</id><content type="html" xml:base="http://localhost:4000/nativescript/2019/05/02/capturing-signatures.html">&lt;p&gt;Today I’m going to show you how to capture user signatures with NativeScript using the &lt;a href=&quot;https://github.com/bradmartin/nativescript-drawingpad&quot; title=&quot;nativescript-drawingpad link&quot;&gt;nativescript-drawingpad&lt;/a&gt; plugin created by &lt;a href=&quot;https://twitter.com/_bradmartin_&quot; title=&quot;brad martin twitter link&quot;&gt;Brad Martin&lt;/a&gt;.
 &lt;!--more--&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;install-the-plugin&quot;&gt;Install the Plugin&lt;/h2&gt;
@@ -226,7 +430,7 @@ onDoneTap(): void {
 
 &lt;p&gt;I tried to keep this blog post short and sweet so if you run into any issues feel free to reach out.&lt;/p&gt;
 
-&lt;p&gt;See you next time! :)&lt;/p&gt;</content><author><name>Tyler Blake</name></author><category term="Overview" /><category term="NativeScript" /><summary type="html">Today I’m going to show you how to capture user signatures with NativeScript using the nativescript-drawingpad plugin created by Brad Martin.</summary></entry><entry><title type="html">Managing App Versioning on iOS</title><link href="http://localhost:4000/nativescript/2019/01/17/managing-app-versioning.html" rel="alternate" type="text/html" title="Managing App Versioning on iOS" /><published>2019-01-17T00:00:00-06:00</published><updated>2019-01-17T11:30:00-06:00</updated><id>http://localhost:4000/nativescript/2019/01/17/managing-app-versioning</id><content type="html" xml:base="http://localhost:4000/nativescript/2019/01/17/managing-app-versioning.html">&lt;p&gt;Versioning your app’s builds is great but managing that versioning can be a pain, in this post I’m going to show you how I manage versioning and hopefully help you out.
+&lt;p&gt;See you next time! :)&lt;/p&gt;</content><author><name>Tyler Blake</name></author><category term="Overview" /><category term="NativeScript" /><summary type="html">Today I’m going to show you how to capture user signatures with NativeScript using the nativescript-drawingpad plugin created by Brad Martin.</summary></entry><entry><title type="html">Managing App Versioning on iOS</title><link href="http://localhost:4000/nativescript/2019/01/17/managing-app-versioning.html" rel="alternate" type="text/html" title="Managing App Versioning on iOS" /><published>2019-01-17T00:00:00-05:00</published><updated>2019-01-17T12:30:00-05:00</updated><id>http://localhost:4000/nativescript/2019/01/17/managing-app-versioning</id><content type="html" xml:base="http://localhost:4000/nativescript/2019/01/17/managing-app-versioning.html">&lt;p&gt;Versioning your app’s builds is great but managing that versioning can be a pain, in this post I’m going to show you how I manage versioning and hopefully help you out.
 &lt;!--more--&gt;&lt;/p&gt;
 
 &lt;h3 id=&quot;what-is-versioning&quot;&gt;What is “versioning”?&lt;/h3&gt;
@@ -279,7 +483,7 @@ onDoneTap(): void {
 
 &lt;p&gt;Feel free to try and implement something similar into some of your own apps!&lt;/p&gt;
 
-&lt;p&gt;If you have any questions or comments feel free to leave them below, or reach out to me. As always, stop by and check out the &lt;a href=&quot;http://docs.nativescript.org&quot; title=&quot;NativeScript Docs Link&quot;&gt;NativeScript Docs&lt;/a&gt; :)&lt;/p&gt;</content><author><name>Tyler Blake</name></author><category term="Intro" /><category term="Overview" /><category term="NativeScript" /><summary type="html">Versioning your app’s builds is great but managing that versioning can be a pain, in this post I’m going to show you how I manage versioning and hopefully help you out.</summary></entry><entry><title type="html">Creating Dynamic Font Awesome Icons</title><link href="http://localhost:4000/nativescript/2018/12/14/creating-dynamic-font-awesome-icons.html" rel="alternate" type="text/html" title="Creating Dynamic Font Awesome Icons" /><published>2018-12-14T00:00:00-06:00</published><updated>2018-12-14T07:30:00-06:00</updated><id>http://localhost:4000/nativescript/2018/12/14/creating-dynamic-font-awesome-icons</id><content type="html" xml:base="http://localhost:4000/nativescript/2018/12/14/creating-dynamic-font-awesome-icons.html">&lt;p&gt;Font Awesome icons are great, but sometimes we want to change them, their color, or size dynamically. Let’s see how to do that with NativeScript
+&lt;p&gt;If you have any questions or comments feel free to leave them below, or reach out to me. As always, stop by and check out the &lt;a href=&quot;http://docs.nativescript.org&quot; title=&quot;NativeScript Docs Link&quot;&gt;NativeScript Docs&lt;/a&gt; :)&lt;/p&gt;</content><author><name>Tyler Blake</name></author><category term="Intro" /><category term="Overview" /><category term="NativeScript" /><summary type="html">Versioning your app’s builds is great but managing that versioning can be a pain, in this post I’m going to show you how I manage versioning and hopefully help you out.</summary></entry><entry><title type="html">Creating Dynamic Font Awesome Icons</title><link href="http://localhost:4000/nativescript/2018/12/14/creating-dynamic-font-awesome-icons.html" rel="alternate" type="text/html" title="Creating Dynamic Font Awesome Icons" /><published>2018-12-14T00:00:00-05:00</published><updated>2018-12-14T08:30:00-05:00</updated><id>http://localhost:4000/nativescript/2018/12/14/creating-dynamic-font-awesome-icons</id><content type="html" xml:base="http://localhost:4000/nativescript/2018/12/14/creating-dynamic-font-awesome-icons.html">&lt;p&gt;Font Awesome icons are great, but sometimes we want to change them, their color, or size dynamically. Let’s see how to do that with NativeScript
 &lt;!--more--&gt;&lt;/p&gt;
 
 &lt;p&gt;For this example let’s say we have a list that we want to show battery life of items.&lt;/p&gt;
@@ -327,7 +531,7 @@ Please don’t hate on my &lt;code class=&quot;highlighter-rouge&quot;&gt;if&lt;
 
 &lt;p&gt;Feel free to try and implement something similar into some of your own apps!&lt;/p&gt;
 
-&lt;p&gt;If you have any questions or comments feel free to leave them below and as always, stop by and check out the &lt;a href=&quot;http://docs.nativescript.org&quot; title=&quot;NativeScript Docs Link&quot;&gt;NativeScript Docs&lt;/a&gt; :)&lt;/p&gt;</content><author><name>Tyler Blake</name></author><category term="Intro" /><category term="Overview" /><category term="NativeScript" /><summary type="html">Font Awesome icons are great, but sometimes we want to change them, their color, or size dynamically. Let’s see how to do that with NativeScript</summary></entry><entry><title type="html">Using Plugins</title><link href="http://localhost:4000/nativescript/2018/11/01/using-plugins.html" rel="alternate" type="text/html" title="Using Plugins" /><published>2018-11-01T00:00:00-05:00</published><updated>2018-11-01T05:30:00-05:00</updated><id>http://localhost:4000/nativescript/2018/11/01/using-plugins</id><content type="html" xml:base="http://localhost:4000/nativescript/2018/11/01/using-plugins.html">&lt;p&gt;What are plugins? How can they help us? How do we use them? Let’s see how to install and use plugins with NativeScript
+&lt;p&gt;If you have any questions or comments feel free to leave them below and as always, stop by and check out the &lt;a href=&quot;http://docs.nativescript.org&quot; title=&quot;NativeScript Docs Link&quot;&gt;NativeScript Docs&lt;/a&gt; :)&lt;/p&gt;</content><author><name>Tyler Blake</name></author><category term="Intro" /><category term="Overview" /><category term="NativeScript" /><summary type="html">Font Awesome icons are great, but sometimes we want to change them, their color, or size dynamically. Let’s see how to do that with NativeScript</summary></entry><entry><title type="html">Using Plugins</title><link href="http://localhost:4000/nativescript/2018/11/01/using-plugins.html" rel="alternate" type="text/html" title="Using Plugins" /><published>2018-11-01T00:00:00-04:00</published><updated>2018-11-01T06:30:00-04:00</updated><id>http://localhost:4000/nativescript/2018/11/01/using-plugins</id><content type="html" xml:base="http://localhost:4000/nativescript/2018/11/01/using-plugins.html">&lt;p&gt;What are plugins? How can they help us? How do we use them? Let’s see how to install and use plugins with NativeScript
 &lt;!--more--&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;what-is-a-plugin&quot;&gt;What is a plugin?&lt;/h2&gt;
@@ -420,7 +624,7 @@ I don’t see any limitations listed for the plugin currently&lt;/li&gt;
 
 &lt;p&gt;Swing by the &lt;a href=&quot;https://market.nativescript.org/&quot; title=&quot;nativescript marketplace link&quot;&gt;NativeScript Marketplace&lt;/a&gt; and start adding plugins to your NativeScript app!&lt;/p&gt;
 
-&lt;p&gt;If you have any questions or comments feel free to leave them below and as always, stop by and check out the &lt;a href=&quot;http://docs.nativescript.org&quot; title=&quot;NativeScript Docs Link&quot;&gt;NativeScript Docs&lt;/a&gt; :)&lt;/p&gt;</content><author><name>Tyler Blake</name></author><category term="Intro" /><category term="Overview" /><category term="NativeScript" /><summary type="html">What are plugins? How can they help us? How do we use them? Let’s see how to install and use plugins with NativeScript</summary></entry><entry><title type="html">Creating Modals</title><link href="http://localhost:4000/nativescript/2018/10/31/creating-modals.html" rel="alternate" type="text/html" title="Creating Modals" /><published>2018-10-31T00:00:00-05:00</published><updated>2018-10-31T06:30:00-05:00</updated><id>http://localhost:4000/nativescript/2018/10/31/creating-modals</id><content type="html" xml:base="http://localhost:4000/nativescript/2018/10/31/creating-modals.html">&lt;p&gt;Sometimes you don’t want to clutter a single page with a bunch of inputs, lets see how to use modals to help with this!
+&lt;p&gt;If you have any questions or comments feel free to leave them below and as always, stop by and check out the &lt;a href=&quot;http://docs.nativescript.org&quot; title=&quot;NativeScript Docs Link&quot;&gt;NativeScript Docs&lt;/a&gt; :)&lt;/p&gt;</content><author><name>Tyler Blake</name></author><category term="Intro" /><category term="Overview" /><category term="NativeScript" /><summary type="html">What are plugins? How can they help us? How do we use them? Let’s see how to install and use plugins with NativeScript</summary></entry><entry><title type="html">Creating Modals</title><link href="http://localhost:4000/nativescript/2018/10/31/creating-modals.html" rel="alternate" type="text/html" title="Creating Modals" /><published>2018-10-31T00:00:00-04:00</published><updated>2018-10-31T07:30:00-04:00</updated><id>http://localhost:4000/nativescript/2018/10/31/creating-modals</id><content type="html" xml:base="http://localhost:4000/nativescript/2018/10/31/creating-modals.html">&lt;p&gt;Sometimes you don’t want to clutter a single page with a bunch of inputs, lets see how to use modals to help with this!
 &lt;!--more--&gt;&lt;/p&gt;
 
 &lt;p&gt;One of the primary focuses for software is to collect user data, on mobile devices we have to be considerate of our users and make data entry easier for them.&lt;/p&gt;
@@ -501,7 +705,7 @@ I don’t see any limitations listed for the plugin currently&lt;/li&gt;
 
 &lt;p&gt;&lt;strong&gt;Note: You can only have 1 modal open at a time. You can not open 1 modal which opens a 2nd modal, you must close each modal before opening another one.&lt;/strong&gt;&lt;/p&gt;
 
-&lt;p&gt;If you have any questions or comments feel free to leave them below and as always, stop by and check out the &lt;a href=&quot;http://docs.nativescript.org&quot; title=&quot;NativeScript Docs Link&quot;&gt;NativeScript Docs&lt;/a&gt; :)&lt;/p&gt;</content><author><name>Tyler Blake</name></author><category term="Intro" /><category term="Overview" /><category term="NativeScript" /><summary type="html">Sometimes you don’t want to clutter a single page with a bunch of inputs, lets see how to use modals to help with this!</summary></entry><entry><title type="html">Accessing Native APIs with NativeScript</title><link href="http://localhost:4000/nativescript/2018/08/03/accessing-native-apis.html" rel="alternate" type="text/html" title="Accessing Native APIs with NativeScript" /><published>2018-08-03T00:00:00-05:00</published><updated>2018-08-03T08:30:00-05:00</updated><id>http://localhost:4000/nativescript/2018/08/03/accessing-native-apis</id><content type="html" xml:base="http://localhost:4000/nativescript/2018/08/03/accessing-native-apis.html">&lt;p&gt;One of the biggest advantages of NativeScript is the ability to access native device API’s. In this post I’ll show you how.
+&lt;p&gt;If you have any questions or comments feel free to leave them below and as always, stop by and check out the &lt;a href=&quot;http://docs.nativescript.org&quot; title=&quot;NativeScript Docs Link&quot;&gt;NativeScript Docs&lt;/a&gt; :)&lt;/p&gt;</content><author><name>Tyler Blake</name></author><category term="Intro" /><category term="Overview" /><category term="NativeScript" /><summary type="html">Sometimes you don’t want to clutter a single page with a bunch of inputs, lets see how to use modals to help with this!</summary></entry><entry><title type="html">Accessing Native APIs with NativeScript</title><link href="http://localhost:4000/nativescript/2018/08/03/accessing-native-apis.html" rel="alternate" type="text/html" title="Accessing Native APIs with NativeScript" /><published>2018-08-03T00:00:00-04:00</published><updated>2018-08-03T09:30:00-04:00</updated><id>http://localhost:4000/nativescript/2018/08/03/accessing-native-apis</id><content type="html" xml:base="http://localhost:4000/nativescript/2018/08/03/accessing-native-apis.html">&lt;p&gt;One of the biggest advantages of NativeScript is the ability to access native device API’s. In this post I’ll show you how.
 &lt;!--more--&gt;&lt;/p&gt;
 
 &lt;p&gt;Many other hybrid frameworks don’t allow you to access device API’s which causes limitations to app capability and performance. At first it sounds intimidating especially if you haven’t written any Swift/Java code before but it will be a lot less scary after this post.&lt;/p&gt;
@@ -573,7 +777,7 @@ I don’t see any limitations listed for the plugin currently&lt;/li&gt;
 
 &lt;p&gt;A presentation by Robert Laverty: &lt;a href=&quot;http://www.youtube.com/watch?v=zCdbrkmvdVI&quot; title=&quot;Robert Laverty Presentation Link&quot;&gt;Robert Laverty Presentation&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;And as always, stop by and check out the &lt;a href=&quot;http://docs.nativescript.org&quot; title=&quot;NativeScript Docs Link&quot;&gt;NativeScript Docs&lt;/a&gt; :)&lt;/p&gt;</content><author><name>Tyler Blake</name></author><category term="Intro" /><category term="Overview" /><category term="NativeScript" /><summary type="html">One of the biggest advantages of NativeScript is the ability to access native device API’s. In this post I’ll show you how.</summary></entry><entry><title type="html">Setting Up Your Machine</title><link href="http://localhost:4000/environment/2018/07/17/setting-up-your-machine.html" rel="alternate" type="text/html" title="Setting Up Your Machine" /><published>2018-07-17T00:00:00-05:00</published><updated>2018-07-17T05:30:00-05:00</updated><id>http://localhost:4000/environment/2018/07/17/setting-up-your-machine</id><content type="html" xml:base="http://localhost:4000/environment/2018/07/17/setting-up-your-machine.html">&lt;p&gt;There are many different ways to set up your development environment for NativeScript. Here I’ll show you mine.
+&lt;p&gt;And as always, stop by and check out the &lt;a href=&quot;http://docs.nativescript.org&quot; title=&quot;NativeScript Docs Link&quot;&gt;NativeScript Docs&lt;/a&gt; :)&lt;/p&gt;</content><author><name>Tyler Blake</name></author><category term="Intro" /><category term="Overview" /><category term="NativeScript" /><summary type="html">One of the biggest advantages of NativeScript is the ability to access native device API’s. In this post I’ll show you how.</summary></entry><entry><title type="html">Setting Up Your Machine</title><link href="http://localhost:4000/environment/2018/07/17/setting-up-your-machine.html" rel="alternate" type="text/html" title="Setting Up Your Machine" /><published>2018-07-17T00:00:00-04:00</published><updated>2018-07-17T06:30:00-04:00</updated><id>http://localhost:4000/environment/2018/07/17/setting-up-your-machine</id><content type="html" xml:base="http://localhost:4000/environment/2018/07/17/setting-up-your-machine.html">&lt;p&gt;There are many different ways to set up your development environment for NativeScript. Here I’ll show you mine.
 &lt;!--more--&gt;&lt;/p&gt;
 
 &lt;p&gt;The following shows the list I use to set up my machine for NativeScript development on my Mac.&lt;/p&gt;
@@ -723,69 +927,4 @@ I don’t see any limitations listed for the plugin currently&lt;/li&gt;
   &lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;If you run into any issues I didn’t, stop by the &lt;a href=&quot;http://docs.nativescript.org/start/quick-setup&quot; title=&quot;NativeScript Setup Link&quot;&gt;NativeScript Setup Docs&lt;/a&gt; for a more in depth setup guide.&lt;/p&gt;</content><author><name>Tyler Blake</name></author><category term="Setup" /><category term="Environment" /><category term="NativeScript" /><summary type="html">There are many different ways to set up your development environment for NativeScript. Here I’ll show you mine.</summary></entry><entry><title type="html">Understanding Grid Layouts</title><link href="http://localhost:4000/nativescript/2018/07/03/understanding-grid-layouts.html" rel="alternate" type="text/html" title="Understanding Grid Layouts" /><published>2018-07-03T00:00:00-05:00</published><updated>2018-07-03T07:43:00-05:00</updated><id>http://localhost:4000/nativescript/2018/07/03/understanding-grid-layouts</id><content type="html" xml:base="http://localhost:4000/nativescript/2018/07/03/understanding-grid-layouts.html">&lt;p&gt;NativeScript has many different layouts, let’s dig into grid layouts for a few.
-&lt;!--more--&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;basic-grids&quot;&gt;Basic Grids&lt;/h2&gt;
-
-&lt;p&gt;Here is an example of a &lt;strong&gt;1x3&lt;/strong&gt;  grid layout:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/images/example1x3Grid.png&quot; alt=&quot;Example 1x3 Grid&quot; class=&quot;img-responsive&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Here is an example of a &lt;strong&gt;2x3&lt;/strong&gt;  grid layout:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/images/example2x3Grid.png&quot; alt=&quot;Example 2x3 Grid&quot; class=&quot;img-responsive&quot; /&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;recap&quot;&gt;Recap:&lt;/h3&gt;
-
-&lt;p&gt;A &lt;strong&gt;GridLayout&lt;/strong&gt; is just that, you have columns and rows. In the 2x3 grid layout, we are telling NativeScript that we want it to generate a grid that has 2 columns and 3 rows. After you populate the &lt;code class=&quot;highlighter-rouge&quot;&gt;rows&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;columns&lt;/code&gt; attributes of the GridLayout, you have to tell the elements within the GridLayout where they should be positioned within the grid through the &lt;code class=&quot;highlighter-rouge&quot;&gt;col&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;row&lt;/code&gt; attributes.&lt;/p&gt;
-
-&lt;p&gt;GridLayout row and column definitions are &lt;strong&gt;zero based&lt;/strong&gt;. This means &lt;code class=&quot;highlighter-rouge&quot;&gt;row=&quot;0&quot;&lt;/code&gt; actually refers to the first row in the grid.&lt;/p&gt;
-
-&lt;p&gt;You can make a GridLayout have as many rows/columns as you like/need.&lt;/p&gt;
-
-&lt;h2 id=&quot;rowspan-and-colspan&quot;&gt;RowSpan and ColSpan&lt;/h2&gt;
-
-&lt;p&gt;Here is an example using the rowSpan attribute:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/images/rowSpan.png&quot; alt=&quot;Example RowSpan Grid&quot; class=&quot;img-responsive&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Notice how we told it to make the orange StackLayout in column 1 row 0 to span 3 rows, in this instance it will span the entire grid since it only has 3 rows.&lt;/p&gt;
-
-&lt;p&gt;Now lets see what happens when you use both the rowSpan and colSpan attributes:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/images/colSpanAndRowSpan.png&quot; alt=&quot;Example RowSpan and ColSpan Grid&quot; class=&quot;img-responsive&quot; /&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;recap-1&quot;&gt;Recap:&lt;/h3&gt;
-&lt;p&gt;In this example we told the orange StackLayout to span 2 rows instead of 3 which will make it span 2 out of 3 rows in the GridLayout this time. We also made the green StackLayout span 2 columns which will make it span the entire width.&lt;/p&gt;
-
-&lt;h2 id=&quot;what-does--do&quot;&gt;What does * do?&lt;/h2&gt;
-
-&lt;p&gt;Setting a row or column to &lt;code class=&quot;highlighter-rouge&quot;&gt;*&lt;/code&gt; makes it take up the rest of the space available. If you use &lt;code class=&quot;highlighter-rouge&quot;&gt;rows=&quot;*,*&quot;&lt;/code&gt; then you will get 2 rows, 1 takes up the top 50% of the space available, the other takes up the bottom 50%. Here is an example:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/images/usingStars.png&quot; alt=&quot;Example Grid using stars&quot; class=&quot;img-responsive&quot; /&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;recap-2&quot;&gt;Recap:&lt;/h3&gt;
-&lt;p&gt;In this example we made a grid with 2 columns, one with a defined size of 50, the other is &lt;code class=&quot;highlighter-rouge&quot;&gt;*&lt;/code&gt;. We have 3 rows, two with a defined size of 100, and the last is &lt;code class=&quot;highlighter-rouge&quot;&gt;*&lt;/code&gt;. We can see that the manually defined size rows/columns are generated and the row and column with &lt;code class=&quot;highlighter-rouge&quot;&gt;*&lt;/code&gt; size stretch the rest of the space available.&lt;/p&gt;
-
-&lt;h2 id=&quot;explicit-row-and-column-sizes&quot;&gt;Explicit Row and Column Sizes&lt;/h2&gt;
-
-&lt;p&gt;In the last example we manually defined some column and row sizes in the GridLayout instead of just using &lt;code class=&quot;highlighter-rouge&quot;&gt;*&lt;/code&gt;. Here is another example of that:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/images/usingManualWidths.png&quot; alt=&quot;Example RowSpan and ColSpan Grid&quot; class=&quot;img-responsive&quot; /&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;recap-3&quot;&gt;Recap:&lt;/h3&gt;
-&lt;p&gt;Here we can see that the rows are evenly divideded upon the space available. However, the columns are not. The first column is 100 pixels wide, and the second is 300 pixels wide. This can come in handy when you have very specific requirements or needs for your GridLayout.&lt;/p&gt;
-
-&lt;h2 id=&quot;what-about-auto&quot;&gt;What about Auto?&lt;/h2&gt;
-
-&lt;p&gt;Using the auto value for a column or width will have the row or column take up as much space is needed. Lets see that in action:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/images/autoAndStar.png&quot; alt=&quot;Example Auto and Star Grid&quot; class=&quot;img-responsive&quot; /&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;recap-4&quot;&gt;Recap:&lt;/h3&gt;
-&lt;p&gt;Here we have a GridLayout with 1 row and 2 columns. The columns are defined with &lt;code class=&quot;highlighter-rouge&quot;&gt;columns=&quot;auto,*&quot;&lt;/code&gt; inside the GridLayout. We know that the &lt;code class=&quot;highlighter-rouge&quot;&gt;*&lt;/code&gt; means the second column will stretch the rest of the space available. The auto value means that the first column will use as much space as it needs. Since we gave that StackLayout a width of 50 pixels, the first column will only take up 50 pixels.&lt;/p&gt;
-
-&lt;p&gt;Now you can go create all kinds of cool GridLayouts!&lt;/p&gt;
-
-&lt;p&gt;More blog posts &lt;strong&gt;are coming&lt;/strong&gt; but in the meantime, stop by the &lt;a href=&quot;http://docs.nativescript.org&quot; title=&quot;NativeScript Docs Link&quot;&gt;NativeScript Docs&lt;/a&gt; to learn more!&lt;/p&gt;</content><author><name>Tyler Blake</name></author><category term="Intro" /><category term="Overview" /><category term="NativeScript" /><summary type="html">NativeScript has many different layouts, let’s dig into grid layouts for a few.</summary></entry></feed>
+&lt;p&gt;If you run into any issues I didn’t, stop by the &lt;a href=&quot;http://docs.nativescript.org/start/quick-setup&quot; title=&quot;NativeScript Setup Link&quot;&gt;NativeScript Setup Docs&lt;/a&gt; for a more in depth setup guide.&lt;/p&gt;</content><author><name>Tyler Blake</name></author><category term="Setup" /><category term="Environment" /><category term="NativeScript" /><summary type="html">There are many different ways to set up your development environment for NativeScript. Here I’ll show you mine.</summary></entry></feed>
