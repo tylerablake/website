@@ -6,8 +6,6 @@ sidebar_link: true
 
 # 2020
 
-## NativeScript
-
 ### JavaScript and Friends Conference (Columbus, OH)
 
 * <a href="https://www.youtube.com/watch?v=2SaN9U3S7kM">Mobile Wars: The Rise of Cross Platform Apps (recording)</a>
@@ -17,8 +15,6 @@ sidebar_link: true
 * <a href="https://tylerablake.github.io/nativescript-infinity-gauntlet/">Mobile Wars: The Rise of Cross Platform Apps (recording coming soon)</a>
 
 # 2019
-
-## NativeScript
 
 ### KCDC (Kansas City, MO)
 
