@@ -116,6 +116,10 @@ _Just a few things I like to do as well_
 * System Preferences/Energy Saver Increase threshold for turning off display
 
     I also find this annoying
+    
+* System Preferences/Trackpad uncheck "Force Click and haptic feedback"
+
+    I'm just not a fan of the Force Click..
 
 
 
