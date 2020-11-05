@@ -120,7 +120,10 @@ _Just a few things I like to do as well_
 * System Preferences/Trackpad uncheck "Force Click and haptic feedback"
 
     I'm just not a fan of the Force Click..
+    
+* System Preferences/Accessibility/Zoom check "Use scroll gesture with modifier keys to zoom"
 
+    I prefer to hold control and swipe to zoom in on the screen
 
 
 ## Common Issues and Fixes
