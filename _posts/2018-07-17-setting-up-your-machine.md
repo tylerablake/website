@@ -101,15 +101,19 @@ If you were able to get the iOS simulator and Android emulator to load the blank
 
 _Just a few things I like to do as well_
 
-* Preferences/Accessibility/Keyboard/Keyboard Preferences/Shortcuts Select "All Controls" at the bottom
+* System Preferences/Accessibility/Keyboard/Keyboard Preferences/Shortcuts Select "All Controls" at the bottom
 
     Allows you to tab through buttons/options in OSX dialogs
+    
+* System Preferences/Mission Control uncheck "Automatically rearrange Spaces based on most recent use"
 
-* Preferences/Displays Uncheck "Automatically Adjust Brightness"
+    Spaces are the key to my productivity on a Mac, it's important my Spaces don't get moved around on me!
+
+* System Preferences/Displays Uncheck "Automatically Adjust Brightness"
 
     I find this annoying
 
-* Preferences/Energy Saver Increase threshold for turning off display
+* System Preferences/Energy Saver Increase threshold for turning off display
 
     I also find this annoying
 
